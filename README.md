@@ -15,7 +15,7 @@
   
 ### Target: iOS 13
   * Dark Mode
-  * Contextual Actions
+  * Contextual Menus
   * SF Symbols
   
 
