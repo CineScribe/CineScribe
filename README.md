@@ -15,7 +15,7 @@
   
 ### Target: iOS 13
   * Dark Mode
-  * COntextual Actions
+  * Contextual Actions
   * SF Symbols
   
 
