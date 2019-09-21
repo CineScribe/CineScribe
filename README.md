@@ -13,7 +13,6 @@
   * Pull to Reach
   * The Movie database API
   
-### Target:
-    iOS 13
+### Target: iOS 13
   
 
