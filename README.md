@@ -14,5 +14,8 @@
   * The Movie database API
   
 ### Target: iOS 13
+  * Dark Mode
+  * COntextual Actions
+  * SF Symbols
   
 
