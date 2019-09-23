@@ -19,6 +19,7 @@
 		374B05AA233914C50089FB4E /* Acknowledgements.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374B05A9233914C50089FB4E /* Acknowledgements.storyboard */; };
 		374B05AC233914E40089FB4E /* MovieDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374B05AB233914E40089FB4E /* MovieDetail.storyboard */; };
 		374B05AE2339151A0089FB4E /* NoteDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374B05AD2339151A0089FB4E /* NoteDetail.storyboard */; };
+		37C7DA8D233940430081D771 /* movieDatabaseApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7DA8C233940430081D771 /* movieDatabaseApiKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		374B05A9233914C50089FB4E /* Acknowledgements.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Acknowledgements.storyboard; sourceTree = "<group>"; };
 		374B05AB233914E40089FB4E /* MovieDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MovieDetail.storyboard; sourceTree = "<group>"; };
 		374B05AD2339151A0089FB4E /* NoteDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoteDetail.storyboard; sourceTree = "<group>"; };
+		37C7DA8C233940430081D771 /* movieDatabaseApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movieDatabaseApiKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,10 +70,7 @@
 		374B05872339134E0089FB4E /* CineScribe */ = {
 			isa = PBXGroup;
 			children = (
-				374B05A2233913FD0089FB4E /* TMDB Networking */,
-				374B05A1233913E20089FB4E /* Firebase */,
-				374B05A0233913D70089FB4E /* Model Controllers */,
-				374B059F233913CF0089FB4E /* Models */,
+				37C7DA8B233940250081D771 /* TMDB Networking */,
 				374B059E233913C10089FB4E /* View Controllers */,
 				374B059D233913B70089FB4E /* Storyboards */,
 				374B059C233913800089FB4E /* Resources */,
@@ -113,30 +112,10 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		374B059F233913CF0089FB4E /* Models */ = {
+		37C7DA8B233940250081D771 /* TMDB Networking */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		374B05A0233913D70089FB4E /* Model Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Model Controllers";
-			sourceTree = "<group>";
-		};
-		374B05A1233913E20089FB4E /* Firebase */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Firebase;
-			sourceTree = "<group>";
-		};
-		374B05A2233913FD0089FB4E /* TMDB Networking */ = {
-			isa = PBXGroup;
-			children = (
+				37C7DA8C233940430081D771 /* movieDatabaseApiKey.swift */,
 			);
 			path = "TMDB Networking";
 			sourceTree = "<group>";
@@ -218,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37C7DA8D233940430081D771 /* movieDatabaseApiKey.swift in Sources */,
 				374B058D2339134E0089FB4E /* ViewController.swift in Sources */,
 				374B05892339134E0089FB4E /* AppDelegate.swift in Sources */,
 				374B058B2339134E0089FB4E /* SceneDelegate.swift in Sources */,
