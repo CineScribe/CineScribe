@@ -24,11 +24,14 @@
 		37C7DA94233945420081D771 /* BasicMovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7DA93233945420081D771 /* BasicMovieDetails.swift */; };
 		37C7DA97233970340081D771 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7DA96233970340081D771 /* ListTableViewCell.swift */; };
 		37C7DA99233975420081D771 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37C7DA98233975420081D771 /* Default-568h@2x.png */; };
+		5FF4545D4CE7CA5E8E13BDC3 /* Pods_CineScribe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3913FE1A12FB521BF003354A /* Pods_CineScribe.framework */; };
+		B56D6F542339783600524A9C /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D6F532339783600524A9C /* FirebaseClient.swift */; };
 		37C7DA9B23397D9A0081D771 /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7DA9A23397D9A0081D771 /* NoteCollectionViewCell.swift */; };
 		37C7DA9D23397E640081D771 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7DA9C23397E640081D771 /* NotesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11B7C0A24823808F00BF0FEF /* Pods-CineScribe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CineScribe.release.xcconfig"; path = "Pods/Target Support Files/Pods-CineScribe/Pods-CineScribe.release.xcconfig"; sourceTree = "<group>"; };
 		374B05852339134E0089FB4E /* CineScribe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CineScribe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		374B05882339134E0089FB4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		374B058A2339134E0089FB4E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +51,9 @@
 		37C7DA93233945420081D771 /* BasicMovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicMovieDetails.swift; sourceTree = "<group>"; };
 		37C7DA96233970340081D771 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		37C7DA98233975420081D771 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		3913FE1A12FB521BF003354A /* Pods_CineScribe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CineScribe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B56D6F532339783600524A9C /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
+		CB64B24A8D9C2404E1783B99 /* Pods-CineScribe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CineScribe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CineScribe/Pods-CineScribe.debug.xcconfig"; sourceTree = "<group>"; };
 		37C7DA9A23397D9A0081D771 /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
 		37C7DA9C23397E640081D771 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FF4545D4CE7CA5E8E13BDC3 /* Pods_CineScribe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +76,8 @@
 				37C7DA98233975420081D771 /* Default-568h@2x.png */,
 				374B05872339134E0089FB4E /* CineScribe */,
 				374B05862339134E0089FB4E /* Products */,
+				A5D2BB69366E5B1139E48FC6 /* Pods */,
+				B1E67E54114BEE4B7565F2BB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				37C7DA8C233940430081D771 /* movieDatabaseApiKey.swift */,
+				B56D6F532339783600524A9C /* FirebaseClient.swift */,
 			);
 			path = "TMDB Networking";
 			sourceTree = "<group>";
@@ -154,6 +164,23 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		A5D2BB69366E5B1139E48FC6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CB64B24A8D9C2404E1783B99 /* Pods-CineScribe.debug.xcconfig */,
+				11B7C0A24823808F00BF0FEF /* Pods-CineScribe.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B1E67E54114BEE4B7565F2BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3913FE1A12FB521BF003354A /* Pods_CineScribe.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -161,9 +188,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 374B0599233913500089FB4E /* Build configuration list for PBXNativeTarget "CineScribe" */;
 			buildPhases = (
+				B8FAF381F17EC7F00251C1C0 /* [CP] Check Pods Manifest.lock */,
 				374B05812339134E0089FB4E /* Sources */,
 				374B05822339134E0089FB4E /* Frameworks */,
 				374B05832339134E0089FB4E /* Resources */,
+				22CE62749F1C4705B543634B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -226,6 +255,49 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		22CE62749F1C4705B543634B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CineScribe/Pods-CineScribe-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CineScribe/Pods-CineScribe-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B8FAF381F17EC7F00251C1C0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CineScribe-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		374B05812339134E0089FB4E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -241,6 +313,7 @@
 				374B058B2339134E0089FB4E /* SceneDelegate.swift in Sources */,
 				37C7DA90233944F70081D771 /* Movie.swift in Sources */,
 				37C7DA92233945170081D771 /* Note.swift in Sources */,
+				B56D6F542339783600524A9C /* FirebaseClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,15 +455,13 @@
 		};
 		374B059A233913500089FB4E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB64B24A8D9C2404E1783B99 /* Pods-CineScribe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D6VB3396MT;
 				INFOPLIST_FILE = "$(SRCROOT)/CineScribe/Resources/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.marlonraskin.CineScribe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -400,15 +471,13 @@
 		};
 		374B059B233913500089FB4E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11B7C0A24823808F00BF0FEF /* Pods-CineScribe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D6VB3396MT;
 				INFOPLIST_FILE = "$(SRCROOT)/CineScribe/Resources/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.marlonraskin.CineScribe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
