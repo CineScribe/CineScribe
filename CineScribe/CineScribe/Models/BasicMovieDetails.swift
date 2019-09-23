@@ -9,5 +9,7 @@
 import Foundation
 
 struct BasicMovieDetails {
-	
+	let id: String
+	let title: String
+	let coverImage: URL?
 }

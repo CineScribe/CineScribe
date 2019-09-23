@@ -13,7 +13,7 @@ struct Note {
     let title: String
     let dateCreated: Date
     let hasWatched: Bool
-    let memorableQuotes: String?
+    let memorableQuotes: [String]?
     let sceneDescription: String?
     let actDescription: String?
     let actorNotes: String?
