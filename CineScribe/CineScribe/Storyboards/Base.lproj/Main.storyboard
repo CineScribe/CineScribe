@@ -64,7 +64,7 @@
                                             <outlet property="listCount" destination="apO-y7-avG" id="vVU-7c-TxS"/>
                                             <outlet property="listNameLabel" destination="03g-me-I5k" id="KuX-fm-5Jg"/>
                                             <outlet property="movieArtImageView" destination="Nva-2E-ivz" id="RQP-aq-qAz"/>
-                                            <segue destination="Ph8-Qk-pQy" kind="show" id="LZ0-fn-JJc"/>
+                                            <segue destination="Ph8-Qk-pQy" kind="show" identifier="ShowNotesSegue" id="LZ0-fn-JJc"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -94,37 +94,93 @@
         <!--In Progress-->
         <scene sceneID="Hic-5G-mMm">
             <objects>
-                <viewController id="Ph8-Qk-pQy" sceneMemberID="viewController">
+                <viewController id="Ph8-Qk-pQy" customClass="NotesViewController" customModule="CineScribe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H6E-8P-F1c">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8dh-gT-LuJ">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8dh-gT-LuJ">
                                 <rect key="frame" x="0.0" y="140" width="414" height="673"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BaL-3v-PyR">
-                                    <size key="itemSize" width="180" height="180"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BaL-3v-PyR">
+                                    <size key="itemSize" width="170" height="180"/>
+                                    <size key="estimatedItemSize" width="175" height="180"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="16" minY="20" maxX="16" maxY="20"/>
+                                    <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NoteCell" id="fLg-cC-8qq">
-                                        <rect key="frame" x="16" y="20" width="180" height="180"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NoteCell" id="fLg-cC-8qq" customClass="NoteCollectionViewCell" customModule="CineScribe" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="20" width="170" height="172"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hXT-K2-Zvo">
-                                            <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="170" height="172"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9oU-l5-shN">
+                                                    <rect key="frame" x="0.0" y="0.0" width="170" height="172"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="T0p-iH-htl">
+                                                            <rect key="frame" x="0.0" y="0.0" width="170" height="172"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="it_movie" translatesAutoresizingMaskIntoConstraints="NO" id="D2T-8c-DA2">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="170" height="140"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="170" id="LPl-TV-PBO"/>
+                                                                        <constraint firstAttribute="height" constant="140" id="alG-96-WP6"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It: Chapter 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcj-wz-DDs">
+                                                                    <rect key="frame" x="0.0" y="142" width="170" height="30"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="30" id="Kcj-aC-5DZ"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="T0p-iH-htl" firstAttribute="leading" secondItem="9oU-l5-shN" secondAttribute="leading" id="5kB-Lr-Djv"/>
+                                                        <constraint firstAttribute="trailing" secondItem="T0p-iH-htl" secondAttribute="trailing" id="OkE-pw-GGn"/>
+                                                        <constraint firstItem="T0p-iH-htl" firstAttribute="top" secondItem="9oU-l5-shN" secondAttribute="top" id="VH7-wt-ykY"/>
+                                                        <constraint firstAttribute="bottom" secondItem="T0p-iH-htl" secondAttribute="bottom" id="yMI-VP-o9a"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="9oU-l5-shN" secondAttribute="trailing" id="0DQ-ia-0OX"/>
+                                                <constraint firstItem="9oU-l5-shN" firstAttribute="leading" secondItem="hXT-K2-Zvo" secondAttribute="leading" id="His-eG-vc8"/>
+                                                <constraint firstItem="9oU-l5-shN" firstAttribute="top" secondItem="hXT-K2-Zvo" secondAttribute="top" id="IGs-ct-ufA"/>
+                                                <constraint firstAttribute="bottom" secondItem="9oU-l5-shN" secondAttribute="bottom" id="Wz3-4u-3ot"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="movieArtImageView" destination="9oU-l5-shN" id="gYK-AB-H09"/>
+                                            <outlet property="noteTitleLabel" destination="lcj-wz-DDs" id="tzs-AF-QS5"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="8dh-gT-LuJ" firstAttribute="leading" secondItem="Cu9-ZV-uzL" secondAttribute="leading" id="4et-O4-0k5"/>
+                            <constraint firstItem="8dh-gT-LuJ" firstAttribute="trailing" secondItem="Cu9-ZV-uzL" secondAttribute="trailing" id="GgY-7e-UQI"/>
+                            <constraint firstItem="8dh-gT-LuJ" firstAttribute="top" secondItem="Cu9-ZV-uzL" secondAttribute="top" id="h0s-Ex-v55"/>
+                            <constraint firstItem="8dh-gT-LuJ" firstAttribute="bottom" secondItem="Cu9-ZV-uzL" secondAttribute="bottom" id="w1w-Tg-7ln"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Cu9-ZV-uzL"/>
                     </view>
-                    <navigationItem key="navigationItem" title="In Progress" id="LlP-7J-stS"/>
+                    <navigationItem key="navigationItem" title="In Progress" id="LlP-7J-stS">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="doc.plaintext" catalog="system" id="dlY-Z6-pGh"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="notesCollectionView" destination="8dh-gT-LuJ" id="PoG-Vg-Uxz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bed-kq-mfT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -136,6 +192,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="6wI-Yv-Ha5" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="F7y-8H-zAb">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -173,6 +230,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="doc.plaintext" catalog="system" width="56" height="64"/>
         <image name="folder" catalog="system" width="64" height="48"/>
         <image name="folder.badge.plus" catalog="system" width="64" height="44"/>
         <image name="it_movie" width="2000" height="3000"/>
