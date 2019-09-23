@@ -26,6 +26,8 @@
 		37C7DA99233975420081D771 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37C7DA98233975420081D771 /* Default-568h@2x.png */; };
 		5FF4545D4CE7CA5E8E13BDC3 /* Pods_CineScribe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3913FE1A12FB521BF003354A /* Pods_CineScribe.framework */; };
 		B56D6F542339783600524A9C /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D6F532339783600524A9C /* FirebaseClient.swift */; };
+		37C7DA9B23397D9A0081D771 /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7DA9A23397D9A0081D771 /* NoteCollectionViewCell.swift */; };
+		37C7DA9D23397E640081D771 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7DA9C23397E640081D771 /* NotesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		3913FE1A12FB521BF003354A /* Pods_CineScribe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CineScribe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56D6F532339783600524A9C /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		CB64B24A8D9C2404E1783B99 /* Pods-CineScribe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CineScribe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CineScribe/Pods-CineScribe.debug.xcconfig"; sourceTree = "<group>"; };
+		37C7DA9A23397D9A0081D771 /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
+		37C7DA9C23397E640081D771 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				374B058C2339134E0089FB4E /* mainViewController.swift */,
+				37C7DA9C23397E640081D771 /* NotesViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				37C7DA96233970340081D771 /* ListTableViewCell.swift */,
+				37C7DA9A23397D9A0081D771 /* NoteCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -297,11 +303,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37C7DA9B23397D9A0081D771 /* NoteCollectionViewCell.swift in Sources */,
 				37C7DA8D233940430081D771 /* movieDatabaseApiKey.swift in Sources */,
 				37C7DA97233970340081D771 /* ListTableViewCell.swift in Sources */,
 				37C7DA94233945420081D771 /* BasicMovieDetails.swift in Sources */,
 				374B058D2339134E0089FB4E /* mainViewController.swift in Sources */,
 				374B05892339134E0089FB4E /* AppDelegate.swift in Sources */,
+				37C7DA9D23397E640081D771 /* NotesViewController.swift in Sources */,
 				374B058B2339134E0089FB4E /* SceneDelegate.swift in Sources */,
 				37C7DA90233944F70081D771 /* Movie.swift in Sources */,
 				37C7DA92233945170081D771 /* Note.swift in Sources */,
