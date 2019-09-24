@@ -88,3 +88,7 @@ class SearchTableViewController: UITableViewController {
     */
 
 }
+
+extension SearchTableViewController: UISearchBarDelegate {
+	
+}
