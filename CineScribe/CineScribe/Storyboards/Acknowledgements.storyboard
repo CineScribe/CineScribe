@@ -25,11 +25,13 @@
             </objects>
             <point key="canvasLocation" x="871.01449275362324" y="132.58928571428572"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Dev / Info-->
         <scene sceneID="LQv-mF-4lb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rkK-19-ch4" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Dev / Info" image="circle.bottomthird.split" catalog="system" id="wgM-CI-SLN"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gfV-1E-T5z">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -45,4 +47,7 @@
             <point key="canvasLocation" x="-39.130434782608695" y="132.58928571428572"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="circle.bottomthird.split" catalog="system" width="64" height="62"/>
+    </resources>
 </document>
