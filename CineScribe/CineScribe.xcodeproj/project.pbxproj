@@ -20,7 +20,6 @@
 		374B05AE2339151A0089FB4E /* NoteDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374B05AD2339151A0089FB4E /* NoteDetail.storyboard */; };
 		379C461E233A86840000F928 /* NewNoteForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379C461D233A86840000F928 /* NewNoteForm.swift */; };
 		379C4620233A86970000F928 /* NewNoteForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 379C461F233A86970000F928 /* NewNoteForm.xib */; };
-		379C4622233A98920000F928 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379C4621233A98920000F928 /* Credits.swift */; };
 		379C4624233A9ACE0000F928 /* MovieController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379C4623233A9ACE0000F928 /* MovieController.swift */; };
 		37A9A5682339DD3C0030AFD7 /* NewNote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A9A5672339DD3C0030AFD7 /* NewNote.storyboard */; };
 		37A9A56B2339E0790030AFD7 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A9A56A2339E0790030AFD7 /* CustomTextField.swift */; };
@@ -60,7 +59,6 @@
 		374B05AD2339151A0089FB4E /* NoteDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoteDetail.storyboard; sourceTree = "<group>"; };
 		379C461D233A86840000F928 /* NewNoteForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteForm.swift; sourceTree = "<group>"; };
 		379C461F233A86970000F928 /* NewNoteForm.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewNoteForm.xib; sourceTree = "<group>"; };
-		379C4621233A98920000F928 /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
 		379C4623233A9ACE0000F928 /* MovieController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieController.swift; sourceTree = "<group>"; };
 		37A9A5672339DD3C0030AFD7 /* NewNote.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewNote.storyboard; sourceTree = "<group>"; };
 		37A9A56A2339E0790030AFD7 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -190,7 +188,6 @@
 			children = (
 				37C7DA8F233944F70081D771 /* Movie.swift */,
 				37C7DA91233945170081D771 /* Note.swift */,
-				379C4621233A98920000F928 /* Credits.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -360,7 +357,6 @@
 				37C7DA90233944F70081D771 /* Movie.swift in Sources */,
 				37C7DA9F23398B940081D771 /* DiscoverViewController.swift in Sources */,
 				37C7DAA123398BAD0081D771 /* SearchTableViewController.swift in Sources */,
-				379C4622233A98920000F928 /* Credits.swift in Sources */,
 				37C7DA92233945170081D771 /* Note.swift in Sources */,
 				B56D6F542339783600524A9C /* FirebaseClient.swift in Sources */,
 				37AF5074233A74AE00E18CA0 /* MovieDiscoverCollectionViewCell.swift in Sources */,

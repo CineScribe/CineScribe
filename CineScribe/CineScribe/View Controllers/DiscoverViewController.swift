@@ -31,22 +31,38 @@ class DiscoverViewController: UIViewController {
 		let nowPlayingCollectionView = LabeledHorizontalCollectionWrapper()
 		nowPlayingCollectionView.title = "Now Playing"
 		searchStackView.addArrangedSubview(nowPlayingCollectionView)
-		movieController.nowPlayingMovies { (results) in
+		movieController.fetchNowPlayingMovies { (results) in
 			do {
 				let movieResults = try results.get()
 				nowPlayingCollectionView.movies = movieResults
 			} catch {
-				NSLog("Error getting movie from result: \(error)")
+				NSLog("Error getting 'Now Playing' movie from result: \(error)")
 			}
 		}
 
 		let upcomingCollectionView = LabeledHorizontalCollectionWrapper()
 		upcomingCollectionView.title = "Upcoming"
 		searchStackView.addArrangedSubview(upcomingCollectionView)
+		movieController.fetchUpcomingMovies { (results) in
+			do {
+				let upcomingResults = try results.get()
+				upcomingCollectionView.movies = upcomingResults
+			} catch {
+				NSLog("Error getting 'Upcoming Movies' from results: \(error)")
+			}
+		}
 		
 		let topRatedCollectionView = LabeledHorizontalCollectionWrapper()
 		topRatedCollectionView.title = "Top Rated"
 		searchStackView.addArrangedSubview(topRatedCollectionView)
+		movieController.fetchTopRatedMovies { (results) in
+			do {
+				let topRatedResults = try results.get()
+				topRatedCollectionView.movies = topRatedResults
+			} catch {
+				NSLog("Error getting 'Top-Rated Movies' from results: \(error)")
+			}
+		}
     }
     
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
