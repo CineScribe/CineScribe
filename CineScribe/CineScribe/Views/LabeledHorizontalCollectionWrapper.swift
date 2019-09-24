@@ -16,7 +16,9 @@ class LabeledHorizontalCollectionWrapper: UIView {
 
 	var movies: [Movie] = [] {
 		didSet {
-			moviesDiscoverCollectionView.reloadData()
+			DispatchQueue.main.async {
+				self.moviesDiscoverCollectionView.reloadData()
+			}
 		}
 	}
 
