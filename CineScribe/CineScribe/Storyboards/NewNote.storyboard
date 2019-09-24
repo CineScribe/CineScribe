@@ -148,7 +148,11 @@
                         <viewLayoutGuide key="safeArea" id="hLD-54-BSp"/>
                     </view>
                     <navigationItem key="navigationItem" title="New Note" id="yin-R1-gax">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="rSM-7c-ing"/>
+                        <barButtonItem key="rightBarButtonItem" title="Coose Movie" style="plain" id="rSM-7c-ing">
+                            <connections>
+                                <segue destination="iDA-0d-t3A" kind="presentation" id="Faz-yI-EOC"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="1000"/>
@@ -163,6 +167,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mwr-ZN-Edh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3144.9275362318845" y="140.625"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="5co-WF-3Pa">
+            <objects>
+                <viewController id="bQk-cr-9zh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OxW-xJ-gv4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="odo-ah-14J">
+                                <rect key="frame" x="0.0" y="56" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="dE5-dN-0lf"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="PB9-vV-vNE">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="wI1-Pr-RcI"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gyp-SS-WIP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4871.0144927536239" y="176.78571428571428"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8fy-7R-CP4">
@@ -201,6 +230,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vzL-1s-wop" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2234.7826086956525" y="140.625"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dc2-eT-IKd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iDA-0d-t3A" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qnM-vX-iqP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bQk-cr-9zh" kind="relationship" relationship="rootViewController" id="cIn-Lp-hvD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CrX-Pr-oGM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3960.8695652173915" y="176.78571428571428"/>
         </scene>
     </scenes>
 </document>

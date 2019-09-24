@@ -11,11 +11,32 @@ import UIKit
 class DiscoverViewController: UIViewController {
 
 	@IBOutlet weak var movieSearchBar: UISearchBar!
-//	private var searchVC: SearchTableViewController?
+	@IBOutlet var searchStackView: UIStackView!
+	@IBOutlet weak var searchScrollView: UIScrollView!
+	//	private var searchVC: SearchTableViewController?
 
 	override func viewDidLoad() {
         super.viewDidLoad()
-//		movieSearchBar.delegate = searchVC
+		searchScrollView.addSubview(searchStackView)
+		searchStackView.translatesAutoresizingMaskIntoConstraints = false
+		searchStackView.leadingAnchor.constraint(equalTo: searchScrollView.leadingAnchor).isActive = true
+		searchStackView.topAnchor.constraint(equalTo: searchScrollView.topAnchor).isActive = true
+		searchStackView.trailingAnchor.constraint(equalTo: searchScrollView.trailingAnchor).isActive = true
+		searchStackView.bottomAnchor.constraint(equalTo: searchScrollView.bottomAnchor).isActive = true
+		searchStackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+
+		let nowPlayingCollectionView = LabeledHorizontalCollectionView()
+		nowPlayingCollectionView.title = "Now Playing"
+		searchStackView.addArrangedSubview(nowPlayingCollectionView)
+
+		let upcomingCollectionView = LabeledHorizontalCollectionView()
+		upcomingCollectionView.title = "Upcoming"
+		searchStackView.addArrangedSubview(upcomingCollectionView)
+		
+		let topRatedCollectionView = LabeledHorizontalCollectionView()
+		topRatedCollectionView.title = "Top Rated"
+		searchStackView.addArrangedSubview(topRatedCollectionView)
+
     }
     
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
