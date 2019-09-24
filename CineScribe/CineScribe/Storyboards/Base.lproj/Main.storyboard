@@ -11,7 +11,7 @@
         <!--My Lists-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="mainViewController" customModule="CineScribe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="CineScribe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -80,7 +80,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Lists" id="aV4-lL-2nl">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="folder.badge.plus" catalog="system" id="YCZ-OU-n7l"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="folder.badge.plus" catalog="system" id="YCZ-OU-n7l">
+                            <connections>
+                                <action selector="createListButtonTapped:" destination="BYZ-38-t0r" id="Sma-VS-e7n"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
@@ -176,7 +180,11 @@
                         <viewLayoutGuide key="safeArea" id="Cu9-ZV-uzL"/>
                     </view>
                     <navigationItem key="navigationItem" title="In Progress" id="LlP-7J-stS">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="doc.plaintext" catalog="system" id="dlY-Z6-pGh"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="doc.plaintext" catalog="system" id="dlY-Z6-pGh">
+                            <connections>
+                                <segue destination="wEu-so-1ru" kind="presentation" id="6dj-dc-KVw"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="notesCollectionView" destination="8dh-gT-LuJ" id="PoG-Vg-Uxz"/>
@@ -185,6 +193,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bed-kq-mfT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2742" y="131"/>
+        </scene>
+        <!--NewNote-->
+        <scene sceneID="k21-5y-cOm">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewNote" id="wEu-so-1ru" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tlj-UJ-Cn0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3275" y="-120"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="DTd-5b-CQO">
