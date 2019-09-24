@@ -18,5 +18,4 @@ struct Note {
     let actDescription: String?
     let actorNotes: String?
     let cinematographyNotes: String?
-    let basicMovieDetails: BasicMovieDetails
 }
