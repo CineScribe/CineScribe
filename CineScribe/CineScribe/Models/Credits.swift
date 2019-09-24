@@ -8,31 +8,37 @@
 
 import Foundation
 
-struct Credits: Codable {
-	let cast: Cast
-	let crew: Crew
+struct MovieCreditResponse: Codable {
+	let cast: [MovieCast]
+	let crew: [MovieCrew]
 }
 
-struct Cast: Codable {
-	let castId: Int
+struct MovieCast: Codable {
 	let character: String
-	let creditId: String
 	let name: String
-	let order: Int
+	let profilePath: String?
 
-	enum CastCodingKeys: String, CodingKey {
-		case castId = "cast_id"
-		case creditId = "credit_id"
+	var profileURL: URL? {
+		guard let profilePath = profilePath else {
+			return nil
+		}
+		return URL(string: "https://image.tmdb.org/t/p/w500\(profilePath)")!
 	}
+
 }
 
-struct Crew: Codable {
-	let creditId: String
+struct MovieCrew: Codable {
+	let id: Int
 	let job: String
 	let name: String
 	let department: String
+	let profilePath: String?
 
-	enum CrewCodingKeys: String, CodingKey {
-		case creditId = "credit_id"
+	var profileURL: URL? {
+		guard let profilePath = profilePath else {
+			return nil
+		}
+		return URL(string: "https://image.tmdb.org/t/p/w500\(profilePath)")!
 	}
+
 }

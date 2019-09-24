@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - Movie
 struct MoviesResponse: Codable {
 	let page: Int
 	let totalResults: Int
@@ -22,4 +23,38 @@ struct Movie: Codable {
 	let releaseDate: String
     let poster: String?
 	let backdrop: String?
+}
+
+// MARK: - Credits
+struct MovieCreditResponse: Codable {
+	let cast: [MovieCast]
+	let crew: [MovieCrew]
+}
+
+struct MovieCast: Codable {
+	let character: String
+	let name: String
+	let profilePath: String?
+
+	var profileURL: URL? {
+		guard let profilePath = profilePath else {
+			return nil
+		}
+		return URL(string: "https://image.tmdb.org/t/p/w500\(profilePath)")!
+	}
+}
+
+struct MovieCrew: Codable {
+	let id: Int
+	let job: String
+	let name: String
+	let department: String
+	let profilePath: String?
+
+	var profileURL: URL? {
+		guard let profilePath = profilePath else {
+			return nil
+		}
+		return URL(string: "https://image.tmdb.org/t/p/w500\(profilePath)")!
+	}
 }

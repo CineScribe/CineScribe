@@ -20,7 +20,6 @@
 		374B05AE2339151A0089FB4E /* NoteDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374B05AD2339151A0089FB4E /* NoteDetail.storyboard */; };
 		379C461E233A86840000F928 /* NewNoteForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379C461D233A86840000F928 /* NewNoteForm.swift */; };
 		379C4620233A86970000F928 /* NewNoteForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 379C461F233A86970000F928 /* NewNoteForm.xib */; };
-		379C4622233A98920000F928 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379C4621233A98920000F928 /* Credits.swift */; };
 		379C4624233A9ACE0000F928 /* MovieController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379C4623233A9ACE0000F928 /* MovieController.swift */; };
 		37A9A5682339DD3C0030AFD7 /* NewNote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A9A5672339DD3C0030AFD7 /* NewNote.storyboard */; };
 		37A9A56B2339E0790030AFD7 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A9A56A2339E0790030AFD7 /* CustomTextField.swift */; };
@@ -64,7 +63,6 @@
 		374B05AD2339151A0089FB4E /* NoteDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoteDetail.storyboard; sourceTree = "<group>"; };
 		379C461D233A86840000F928 /* NewNoteForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteForm.swift; sourceTree = "<group>"; };
 		379C461F233A86970000F928 /* NewNoteForm.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewNoteForm.xib; sourceTree = "<group>"; };
-		379C4621233A98920000F928 /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
 		379C4623233A9ACE0000F928 /* MovieController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieController.swift; sourceTree = "<group>"; };
 		37A9A5672339DD3C0030AFD7 /* NewNote.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewNote.storyboard; sourceTree = "<group>"; };
 		37A9A56A2339E0790030AFD7 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };

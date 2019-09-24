@@ -30,11 +30,26 @@ class MovieController {
 	let nowPlayingBaseUrl = URL(string: "https://api.themoviedb.org/3/movie/now_playing")!
 	let apiQueryItem = URLQueryItem(name: "api_key", value: .movieDatabaseApiKey)
 
-	// MARK: - Fetch Upcoming Movies
-	func nowPlayingMovies(completion: @escaping (Result<[Movie], NetworkError>) -> Void) {
+	// MARK: - Fetch Movies Functions
+	func fetchNowPlayingMovies(completion: @escaping (Result<[Movie], NetworkError>) -> Void) {
+		var urlComponents = URLComponents(url: nowPlayingBaseUrl, resolvingAgainstBaseURL: true)
+		urlComponents?.queryItems = [apiQueryItem]
+		fetchMovieHelper(urlComponents: urlComponents, completion: completion)
+	}
+
+	func fetchTopRatedMovies(completion: @escaping (Result<[Movie], NetworkError>) -> Void) {
+		var urlComponents = URLComponents(url: topRatedBaseUrl, resolvingAgainstBaseURL: true)
+		urlComponents?.queryItems = [apiQueryItem]
+		fetchMovieHelper(urlComponents: urlComponents, completion: completion)
+	}
+
+	func fetchUpcomingMovies(completion: @escaping (Result<[Movie], NetworkError>) -> Void) {
 		var urlComponents = URLComponents(url: upcomingBaseUrl, resolvingAgainstBaseURL: true)
 		urlComponents?.queryItems = [apiQueryItem]
+		fetchMovieHelper(urlComponents: urlComponents, completion: completion)
+	}
 
+	private func fetchMovieHelper(urlComponents: URLComponents?, completion: @escaping (Result<[Movie], NetworkError>) -> Void) {
 		guard let requestUrl = urlComponents?.url else {
 			NSLog("Request URL is nil")
 			completion(.failure(.otherError))
@@ -68,5 +83,9 @@ class MovieController {
 		}.resume()
 	}
 
-	// MARK: - Fetch Now Playing Movies
+	// MARK: - Fetch Images
+
+	func fetchMovieImages(movieId: Int, completion: @escaping (Result<Data, NetworkError>) -> Void) {
+		
+	}
 }
