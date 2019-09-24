@@ -31,7 +31,6 @@
 		37AF5075233A74AE00E18CA0 /* MovieDiscoverCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37AF5073233A74AE00E18CA0 /* MovieDiscoverCollectionViewCell.xib */; };
 		37C7DA8D233940430081D771 /* movieDatabaseApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7DA8C233940430081D771 /* movieDatabaseApiKey.swift */; };
 		37C7DA90233944F70081D771 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7DA8F233944F70081D771 /* Movie.swift */; };
-		37C7DA92233945170081D771 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7DA91233945170081D771 /* Note.swift */; };
 		37C7DA97233970340081D771 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7DA96233970340081D771 /* ListTableViewCell.swift */; };
 		37C7DA9B23397D9A0081D771 /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7DA9A23397D9A0081D771 /* NoteCollectionViewCell.swift */; };
 		37C7DA9D23397E640081D771 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7DA9C23397E640081D771 /* NotesViewController.swift */; };
@@ -40,6 +39,11 @@
 		37C7DAA323398BC20081D771 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7DAA223398BC20081D771 /* SearchTableViewCell.swift */; };
 		5FF4545D4CE7CA5E8E13BDC3 /* Pods_CineScribe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3913FE1A12FB521BF003354A /* Pods_CineScribe.framework */; };
 		B56D6F542339783600524A9C /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D6F532339783600524A9C /* FirebaseClient.swift */; };
+		B56D6F56233984B000524A9C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B56D6F55233984B000524A9C /* GoogleService-Info.plist */; };
+		B56D6F5823399C5B00524A9C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D6F5723399C5B00524A9C /* User.swift */; };
+		B56D6F5B2339BBFD00524A9C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D6F5A2339BBFD00524A9C /* Extensions.swift */; };
+		B56D6F5D233A7C9A00524A9C /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D6F5C233A7C9A00524A9C /* Collection.swift */; };
+		B56D6F5F233AD8A900524A9C /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D6F5E233AD8A900524A9C /* Review.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,7 +74,6 @@
 		37AF5073233A74AE00E18CA0 /* MovieDiscoverCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDiscoverCollectionViewCell.xib; sourceTree = "<group>"; };
 		37C7DA8C233940430081D771 /* movieDatabaseApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movieDatabaseApiKey.swift; sourceTree = "<group>"; };
 		37C7DA8F233944F70081D771 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
-		37C7DA91233945170081D771 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		37C7DA96233970340081D771 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		37C7DA9A23397D9A0081D771 /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
 		37C7DA9C23397E640081D771 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +82,11 @@
 		37C7DAA223398BC20081D771 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		3913FE1A12FB521BF003354A /* Pods_CineScribe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CineScribe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56D6F532339783600524A9C /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
+		B56D6F55233984B000524A9C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B56D6F5723399C5B00524A9C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B56D6F5A2339BBFD00524A9C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B56D6F5C233A7C9A00524A9C /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		B56D6F5E233AD8A900524A9C /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		CB64B24A8D9C2404E1783B99 /* Pods-CineScribe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CineScribe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CineScribe/Pods-CineScribe.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +124,7 @@
 		374B05872339134E0089FB4E /* CineScribe */ = {
 			isa = PBXGroup;
 			children = (
+				B56D6F592339BBEC00524A9C /* Helpers */,
 				37C7DA8E233944D50081D771 /* Models */,
 				37C7DA8B233940250081D771 /* TMDB Networking */,
 				37C7DA95233970120081D771 /* Views */,
@@ -135,6 +144,7 @@
 				374B058A2339134E0089FB4E /* SceneDelegate.swift */,
 				374B0593233913500089FB4E /* LaunchScreen.storyboard */,
 				374B0596233913500089FB4E /* Info.plist */,
+				B56D6F55233984B000524A9C /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -187,7 +197,10 @@
 			isa = PBXGroup;
 			children = (
 				37C7DA8F233944F70081D771 /* Movie.swift */,
-				37C7DA91233945170081D771 /* Note.swift */,
+				B56D6F5C233A7C9A00524A9C /* Collection.swift */,
+				B56D6F5723399C5B00524A9C /* User.swift */,
+				B56D6F5E233AD8A900524A9C /* Review.swift */,
+				379C4621233A98920000F928 /* Credits.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -223,6 +236,14 @@
 				3913FE1A12FB521BF003354A /* Pods_CineScribe.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B56D6F592339BBEC00524A9C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B56D6F5A2339BBFD00524A9C /* Extensions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +306,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B56D6F56233984B000524A9C /* GoogleService-Info.plist in Resources */,
 				374B05AC233914E40089FB4E /* MovieDetail.storyboard in Resources */,
 				374B05A4233914650089FB4E /* Login.storyboard in Resources */,
 				37AF5071233A719900E18CA0 /* LabeledHorizontalCollectionWrapper.xib in Resources */,
@@ -353,11 +375,15 @@
 				37A9A5712339EBB10030AFD7 /* NewNoteViewController.swift in Sources */,
 				374B05892339134E0089FB4E /* AppDelegate.swift in Sources */,
 				37C7DA9D23397E640081D771 /* NotesViewController.swift in Sources */,
+				B56D6F5F233AD8A900524A9C /* Review.swift in Sources */,
 				374B058B2339134E0089FB4E /* SceneDelegate.swift in Sources */,
+				B56D6F5B2339BBFD00524A9C /* Extensions.swift in Sources */,
+				B56D6F5823399C5B00524A9C /* User.swift in Sources */,
+				B56D6F5D233A7C9A00524A9C /* Collection.swift in Sources */,
 				37C7DA90233944F70081D771 /* Movie.swift in Sources */,
 				37C7DA9F23398B940081D771 /* DiscoverViewController.swift in Sources */,
 				37C7DAA123398BAD0081D771 /* SearchTableViewController.swift in Sources */,
-				37C7DA92233945170081D771 /* Note.swift in Sources */,
+				379C4622233A98920000F928 /* Credits.swift in Sources */,
 				B56D6F542339783600524A9C /* FirebaseClient.swift in Sources */,
 				37AF5074233A74AE00E18CA0 /* MovieDiscoverCollectionViewCell.swift in Sources */,
 				379C461E233A86840000F928 /* NewNoteForm.swift in Sources */,

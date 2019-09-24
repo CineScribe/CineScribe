@@ -10,36 +10,50 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-	// MARK: - Properties & Outlets
+	//MARK: - IBOutlets
+	
 	@IBOutlet weak var listTableView: UITableView!
-
+	
+	//MARK: - Properties
+	
+	let firebaseClient = FirebaseClient()
+	
+	//MARK: - Life Cycle
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		listTableView.delegate = self
 		listTableView.dataSource = self
 	}
-
-	// MARK: - IBActions
+	
+	//MARK: - IBActions
+	
 	@IBAction func createListButtonTapped(_ sender: UIBarButtonItem) {
 		let alert = UIAlertController(title: "Enter a title for your new list", message: nil, preferredStyle: .alert)
 		alert.addTextField { (textField) in
 			textField.placeholder = "List Name"
 		}
-
+		
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 		let addAction = UIAlertAction(title: "Add", style: .default) { _ in
-			// Jeff's code goes here
+			guard let properTitle = alert.textFields?.first?.optionalText else { return }
+			self.firebaseClient.createCollection(title: properTitle) {
+				print("Collection Saved!")
+			}
 		}
 
-		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-		[addAction, cancelAction].forEach { alert.addAction($0) }
+		[addAction, cancelAction].forEach{ alert.addAction($0) }
 
 		present(alert, animated: true, completion: nil)
 	}
+	
+	//MARK: - Helpers
 
 
 }
 
-extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+//MARK: - TableView Datasource
+
+extension MainViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return 1
 	}
@@ -51,11 +65,3 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 		return cell
 	}
 }
-
-extension UIAlertController {
-	open override func viewDidLayoutSubviews() {
-		super.viewDidLayoutSubviews()
-		self.view.tintColor = .systemPink
-	}
-}
-

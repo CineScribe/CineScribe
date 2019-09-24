@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,12 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//		let attrs = [
-//			NSAttributedString.Key.foregroundColor: UIColor.label,
-//			NSAttributedString.Key.font: UIFont(name: "Nunito-Black", size: 24)!
-//		]
-//
-//		UINavigationBar.appearance().titleTextAttributes = attrs
+		FirebaseApp.configure()
+		Database.database().isPersistenceEnabled = true
+		
 		return true
 	}
 
