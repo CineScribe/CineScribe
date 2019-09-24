@@ -15,8 +15,11 @@ class DiscoverViewController: UIViewController {
 	@IBOutlet weak var searchScrollView: UIScrollView!
 	//	private var searchVC: SearchTableViewController?
 
+	let movieController = MovieController()
+
 	override func viewDidLoad() {
         super.viewDidLoad()
+
 		searchScrollView.addSubview(searchStackView)
 		searchStackView.translatesAutoresizingMaskIntoConstraints = false
 		searchStackView.leadingAnchor.constraint(equalTo: searchScrollView.leadingAnchor).isActive = true
@@ -25,18 +28,25 @@ class DiscoverViewController: UIViewController {
 		searchStackView.bottomAnchor.constraint(equalTo: searchScrollView.bottomAnchor).isActive = true
 		searchStackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
 
-		let nowPlayingCollectionView = LabeledHorizontalCollectionView()
+		let nowPlayingCollectionView = LabeledHorizontalCollectionWrapper()
 		nowPlayingCollectionView.title = "Now Playing"
 		searchStackView.addArrangedSubview(nowPlayingCollectionView)
+		movieController.nowPlayingMovies { (results) in
+			do {
+				let movieResults = try results.get()
+				nowPlayingCollectionView.movies = movieResults
+			} catch {
+				NSLog("Error getting movie from result: \(error)")
+			}
+		}
 
-		let upcomingCollectionView = LabeledHorizontalCollectionView()
+		let upcomingCollectionView = LabeledHorizontalCollectionWrapper()
 		upcomingCollectionView.title = "Upcoming"
 		searchStackView.addArrangedSubview(upcomingCollectionView)
 		
-		let topRatedCollectionView = LabeledHorizontalCollectionView()
+		let topRatedCollectionView = LabeledHorizontalCollectionWrapper()
 		topRatedCollectionView.title = "Top Rated"
 		searchStackView.addArrangedSubview(topRatedCollectionView)
-
     }
     
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

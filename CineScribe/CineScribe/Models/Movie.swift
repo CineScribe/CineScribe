@@ -8,12 +8,18 @@
 
 import Foundation
 
-struct Movie {
-    let id: String
+struct MoviesResponse: Codable {
+	let page: Int
+	let totalResults: Int
+	let totalPages: Int
+	let results: [Movie]
+}
+
+struct Movie: Codable {
+    let id: Int?
     let title: String
     let overview: String
-    let images: URL
-    let actors: [String]
-    let director: String
-    let writer: String
+	let releaseDate: String
+    let poster: String?
+	let backdrop: String?
 }
