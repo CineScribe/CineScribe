@@ -8,11 +8,17 @@
 
 import UIKit
 
-class LabeledHorizontalCollectionView: UIView {
+class LabeledHorizontalCollectionWrapper: UIView {
 
 	@IBOutlet var contentView: UIView!
 	@IBOutlet weak var moviesDiscoverCollectionView: UICollectionView!
 	@IBOutlet weak var collectionViewTitle: UILabel!
+
+	var movies: [Movie] = [] {
+		didSet {
+			moviesDiscoverCollectionView.reloadData()
+		}
+	}
 
 	var title: String {
 		get { return collectionViewTitle.text ?? "" }
@@ -32,7 +38,7 @@ class LabeledHorizontalCollectionView: UIView {
 
 
 	private func commonInit() {
-		let nib = UINib(nibName: "LabeledHorizontalCollectionView", bundle: nil)
+		let nib = UINib(nibName: "LabeledHorizontalCollectionWrapper", bundle: nil)
 		nib.instantiate(withOwner: self, options: nil)
 		addSubview(contentView)
 		contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -48,15 +54,17 @@ class LabeledHorizontalCollectionView: UIView {
 	}
 }
 
-extension LabeledHorizontalCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension LabeledHorizontalCollectionWrapper: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		10
+		movies.count
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiscoverCell", for: indexPath)
 		guard let discoverCell = cell as? MovieDiscoverCollectionViewCell else { return cell }
 		discoverCell.myContentView.backgroundColor = .systemPink
+		let movie = movies[indexPath.item]
+		discoverCell.movieTitleLabel.text = movie.title
 		return discoverCell
 	}
 
