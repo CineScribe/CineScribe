@@ -13,13 +13,10 @@ class MainViewController: UIViewController {
 	// MARK: - Properties & Outlets
 	@IBOutlet weak var listTableView: UITableView!
 
-
-
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		listTableView.delegate = self
 		listTableView.dataSource = self
-
 	}
 
 	// MARK: - IBActions
