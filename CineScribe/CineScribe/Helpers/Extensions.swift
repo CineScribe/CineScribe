@@ -6,7 +6,7 @@
 //  Copyright © 2019 Marlon Raskin. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension Date {
 	var transformIsoToString: String {
@@ -20,5 +20,19 @@ extension String {
 		guard self != "" else { return nil }
 		let formatter = ISO8601DateFormatter()
 		return formatter.date(from: self)
+	}
+}
+
+extension UIAlertController {
+	open override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		self.view.tintColor = .systemPink
+	}
+}
+
+extension UITextField {
+	var optionalText: String? {
+		let trimmedText = self.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+		return (trimmedText ?? "").isEmpty ? nil : trimmedText
 	}
 }

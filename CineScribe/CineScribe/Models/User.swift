@@ -23,7 +23,6 @@ struct User {
 	init?(snapshot: DataSnapshot) {
 		guard
 			let value = snapshot.value as? [String: AnyObject],
-//			let username = value["username"] as? String,
 			let id = value["id"] as? String,
 			let password = value["password"] as? String else {
 						   return nil
@@ -36,7 +35,6 @@ struct User {
 	
 	func toDictionary() -> Any {
 		return [
-//			"username": username,
 			"id": id,
 			"password": password
 		]

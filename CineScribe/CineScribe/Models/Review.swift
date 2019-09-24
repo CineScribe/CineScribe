@@ -14,7 +14,7 @@ struct Review {
     let title: String
     let dateCreated: Date
     let hasWatched: Bool
-    let movieId: Int
+	let movieId: Int 
     let memorableQuotes: String?
     let sceneDescription: String?
     let actorNotes: String?
@@ -68,7 +68,6 @@ struct Review {
 	
 	func toDictionary() -> Any {
 		return [
-			"id": id,
 			"title": title,
 			"dateCreated": dateCreated,
 			"hasWatched": hasWatched,
