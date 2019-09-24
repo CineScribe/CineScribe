@@ -16,7 +16,7 @@ class MainViewController: UIViewController {
 	
 	//MARK: - Properties
 	
-	let firebaseClient: FirebaseClient!
+	let firebaseClient = FirebaseClient()
 	
 	//MARK: - Life Cycle
 	
@@ -36,7 +36,9 @@ class MainViewController: UIViewController {
 		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 		let addAction = UIAlertAction(title: "Add", style: .default) { _ in
 			guard let properTitle = alert.textFields?.first?.optionalText else { return }
-			firebaseClient.createCollection(title: properTitle, completion: <#T##() -> Void#>)
+			self.firebaseClient.createCollection(title: properTitle) {
+				print("Collection Saved!")
+			}
 		}
 
 		[addAction, cancelAction].forEach{ alert.addAction($0) }
