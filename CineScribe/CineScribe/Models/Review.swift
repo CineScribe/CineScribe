@@ -52,18 +52,6 @@ struct Review {
 		self.sceneDescription = value["sceneDescription"] as? String
 		self.actorNotes = value["actorNotes"] as? String
 		self.cinematographyNotes = value["cinematographyNotes"] as? String
-		
-		#warning("Remove old code")
-//		if
-//			let memorableQuotes = value["memorableQuotes"] as? String,
-//			let sceneDescription = value["sceneDescription"] as? String,
-//			let actorNotes = value["actorNotes"] as? String,
-//			let cinematographyNotes = value["cinematographyNotes"] as? String {
-//			self.memorableQuotes = memorableQuotes
-//			self.sceneDescription = sceneDescription
-//			self.actorNotes = actorNotes
-//			self.cinematographyNotes = cinematographyNotes
-//		}
 	}
 	
 	func toDictionary() -> Any {
