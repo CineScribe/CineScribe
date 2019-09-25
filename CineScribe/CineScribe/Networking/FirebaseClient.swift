@@ -74,15 +74,17 @@ class FirebaseClient {
 		}
 	}
 	
-	func getAllReviews() {
-		reviewRef.child(currentUser.id.uuidString).observeSingleEvent(of: .value) { snapshot in
+	func getReviews(completion: @escaping () -> Void) {
+		reviewRef.child(currentUser.id.uuidString).observeSingleEvent(of: .value, with: { snapshot in
 			self.userReviews.removeAll()
 			for child in snapshot.children {
 				if let snap = child as? DataSnapshot,
 					let review = Review(snapshot: snap) {
-						self.userReviews.append(review)
+					self.userReviews.append(review)
 				}
 			}
+		}) { error in
+			NSLog("Error getting collections: \(error)")
 		}
 	}
 	
@@ -95,8 +97,8 @@ class FirebaseClient {
 			reviewRef.child("\(currentUser.id.uuidString)/\($0)").observeSingleEvent(of: .value) { snapshot in
 				if let review = Review(snapshot: snapshot) {
 					self.userReviews.append(review)
-					myGroup.leave()
 				}
+				myGroup.leave()
 			}
 		})
 
@@ -107,8 +109,8 @@ class FirebaseClient {
 	
 	//MARK: - Update
 	
-	func putReview(collectionId: UUID, movieId: Int?, title: String?, memorableQuotes: String?, sceneDescription: String?, actorNotes: String?, cinematographyNotes: String?, completion: @escaping () -> Void) {
-		let newReview = Review(movieId: movieId, title: title, memorableQuotes: memorableQuotes, sceneDescription: sceneDescription, actorNotes: actorNotes, cinematographyNotes: cinematographyNotes)
+	func putReview(collectionId: UUID, title: String, movieId: Int?, memorableQuotes: String?, sceneDescription: String?, actorNotes: String?, cinematographyNotes: String?, completion: @escaping () -> Void) {
+		let newReview = Review(title: title, movieId: movieId, memorableQuotes: memorableQuotes, sceneDescription: sceneDescription, actorNotes: actorNotes, cinematographyNotes: cinematographyNotes)
 		
 		reviewRef.child("\(currentUser.id.uuidString)/\(newReview.id.uuidString)").setValue(newReview.toDictionary()) { (error, _) in
 			if let error = error {

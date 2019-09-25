@@ -47,8 +47,8 @@ class ManageReviewViewController: UIViewController {
 	//MARK: - IBActions
 	
 	@IBAction func saveBtnTapped(_ sender: Any) {
-		guard let collectionId = currentcollectionId else { return }
-		firebaseClient?.putReview(collectionId: collectionId, movieId: currentMovieId, title: titleTextField.optionalText, memorableQuotes: quotesTextView.text, sceneDescription: sceneNotesTextView.text, actorNotes: actorNotesTextView.text, cinematographyNotes: cinemaNotesTextView.text, completion: {
+		guard let collectionId = currentcollectionId, let title = titleTextField.optionalText else { return }
+		firebaseClient?.putReview(collectionId: collectionId, title: title, movieId: currentMovieId, memorableQuotes: quotesTextView.text, sceneDescription: sceneNotesTextView.text, actorNotes: actorNotesTextView.text, cinematographyNotes: cinemaNotesTextView.text, completion: {
 			print("Review Saved!")
 			self.dismiss(animated: true, completion: nil)
 		})
