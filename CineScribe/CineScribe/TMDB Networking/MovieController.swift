@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum HTTPMethod: String {
 	case get = "GET"
@@ -29,6 +30,7 @@ class MovieController {
 	let topRatedBaseUrl = URL(string: "https://api.themoviedb.org/3/movie/top_rated")!
 	let nowPlayingBaseUrl = URL(string: "https://api.themoviedb.org/3/movie/now_playing")!
 	let apiQueryItem = URLQueryItem(name: "api_key", value: .movieDatabaseApiKey)
+
 
 	// MARK: - Fetch Movies Functions
 	func fetchNowPlayingMovies(completion: @escaping (Result<[Movie], NetworkError>) -> Void) {
@@ -81,11 +83,5 @@ class MovieController {
 				completion(.failure(.noDecode))
 			}
 		}.resume()
-	}
-
-	// MARK: - Fetch Images
-
-	func fetchMovieImages(movieId: Int, completion: @escaping (Result<Data, NetworkError>) -> Void) {
-		
 	}
 }

@@ -21,8 +21,16 @@ struct Movie: Codable {
     let title: String
     let overview: String
 	let releaseDate: String
-    let poster: String?
-	let backdrop: String?
+    let posterPath: String?
+	let backdropPath: String?
+
+	var posterURL: URL {
+		return URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
+	}
+
+    public var backdropURL: URL {
+        return URL(string: "https://image.tmdb.org/t/p/w500\(backdropPath ?? "")")!
+    }
 }
 
 // MARK: - Credits

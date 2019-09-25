@@ -14,6 +14,8 @@ class LabeledHorizontalCollectionWrapper: UIView {
 	@IBOutlet weak var moviesDiscoverCollectionView: UICollectionView!
 	@IBOutlet weak var collectionViewTitle: UILabel!
 
+	let imageData = ImageData()
+
 	var movies: [Movie] = [] {
 		didSet {
 			DispatchQueue.main.async {
@@ -36,7 +38,6 @@ class LabeledHorizontalCollectionWrapper: UIView {
 		super.init(coder: coder)
 		commonInit()
 	}
-
 
 
 	private func commonInit() {
@@ -64,13 +65,24 @@ extension LabeledHorizontalCollectionWrapper: UICollectionViewDelegate, UICollec
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiscoverCell", for: indexPath)
 		guard let discoverCell = cell as? MovieDiscoverCollectionViewCell else { return cell }
-		discoverCell.myContentView.backgroundColor = .systemPink
 		let movie = movies[indexPath.item]
 		discoverCell.movieTitleLabel.text = movie.title
+		discoverCell.tag = indexPath.item
+
+		imageData.fetchPosterImage(for: movie) { (error, image) in
+			if let error = error {
+				NSLog("Error getting character image: \(error)")
+			}
+
+			guard let image = image else { fatalError("Could not unwrap movie poster image") }
+			if cell.tag == indexPath.item {
+				discoverCell.movieImageView.image = image
+			}
+		}
 		return discoverCell
 	}
 
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return CGSize(width: 180, height: 180)
+		return CGSize(width: 180, height: 240)
 	}
 }
