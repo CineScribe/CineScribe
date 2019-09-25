@@ -23,14 +23,14 @@ struct Collection {
 	init?(snapshot: DataSnapshot) {
 		guard
 			let value = snapshot.value as? [String: AnyObject],
-			let title = value["title"] as? String,
-			let reviewIds = value["reviewIds"] as? [Int: String] else {
+			let title = value["title"] as? String else {
 				return nil
 		}
+		let reviewIds = value["reviewIds"] as? [Int: String]
 		
 		self.id = UUID(uuidString: snapshot.key) ?? UUID()
 		self.title = title
-		self.reviewIds = reviewIds.values.compactMap({$0})
+		self.reviewIds = reviewIds?.values.compactMap({$0}) ?? []
 	}
 	
 	func toDictionary() -> Any {

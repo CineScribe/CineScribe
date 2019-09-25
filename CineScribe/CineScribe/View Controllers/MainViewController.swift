@@ -22,7 +22,19 @@ class MainViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
 		listTableView.dataSource = self
+		
+		firebaseClient.getAllCollections {
+			self.listTableView.reloadData()
+		}
+	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if let notesVC = segue.destination as? NotesViewController, let indexPath = listTableView.indexPathForSelectedRow {
+			notesVC.firebaseClient = firebaseClient
+			notesVC.currentCollection = firebaseClient.userCollections?[indexPath.row]
+		}
 	}
 	
 	//MARK: - IBActions
@@ -55,12 +67,13 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 1
+		return firebaseClient.userCollections?.count ?? 0
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell") as? ListTableViewCell else { return UITableViewCell() }
 
+		cell.collection = firebaseClient.userCollections?[indexPath.row]
 
 		return cell
 	}

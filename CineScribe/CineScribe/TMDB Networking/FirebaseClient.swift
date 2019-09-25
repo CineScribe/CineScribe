@@ -25,7 +25,7 @@ class FirebaseClient {
 		collectionRef = rootRef.child("collections")
 		
 		#warning("Remove hard-coded user")
-		currentUser = User(username: "Santana", password: "12345")
+		currentUser = User(id: UUID(uuidString: "DDF188EF-D391-489B-B254-5B58629E99F6")!, username: "Santana", password: "12345")
 	}
 	
 	//MARK: - Create
@@ -62,18 +62,21 @@ class FirebaseClient {
 		}
 	}
 	
-	func getAllCollections() {
+	func getAllCollections(completion: @escaping () -> Void) {
 		guard let user = currentUser else { return }
 		
-		collectionRef.child(user.id.uuidString).observeSingleEvent(of: .value) { snapshot in
-			var collections = [Collection]()
-			for child in snapshot.children {
-				if let snap = child as? DataSnapshot,
-					let collection = Collection(snapshot: snap) {
-						collections.append(collection)
-				}
-			}
+		collectionRef.child(user.id.uuidString).observe(.value, with: { snapshot in
+					   var collections = [Collection]()
+					   for child in snapshot.children {
+						   if let snap = child as? DataSnapshot,
+							   let collection = Collection(snapshot: snap) {
+								   collections.append(collection)
+						   }
+					   }
 			self.userCollections = collections
+			completion()
+		}) { error in
+			NSLog("Error getting collections: \(error)")
 		}
 	}
 	

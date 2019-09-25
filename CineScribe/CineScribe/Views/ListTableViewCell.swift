@@ -14,22 +14,23 @@ class ListTableViewCell: UITableViewCell {
 	@IBOutlet weak var movieArtImageView: UIImageView!
 	@IBOutlet weak var listNameLabel: UILabel!
 	@IBOutlet weak var listCount: UILabel!
-
-
-
+	
+	var collection: Collection? {
+		didSet {
+			setUI()
+		}
+	}
 
     override func awakeFromNib() {
         super.awakeFromNib()
 		setUI()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
-
 	func setUI() {
+		guard let collection = collection else { return }
+		
 		movieArtImageView.layer.cornerRadius = 12
+		listNameLabel.text = collection.title
+		listCount.text = "\(collection.reviewIds.count)"
 	}
-
 }
