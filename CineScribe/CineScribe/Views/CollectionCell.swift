@@ -1,5 +1,5 @@
 //
-//  ListTableViewCell.swift
+//  CollectionCell.swift
 //  CineScribe
 //
 //  Created by Marlon Raskin on 9/23/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListTableViewCell: UITableViewCell {
+class CollectionCell: UITableViewCell {
 
 	// MARK: - Outlets & Properties
 	@IBOutlet weak var movieArtImageView: UIImageView!

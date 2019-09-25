@@ -31,7 +31,7 @@ class MainViewController: UIViewController {
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if let notesVC = segue.destination as? NotesViewController, let indexPath = listTableView.indexPathForSelectedRow {
+		if let notesVC = segue.destination as? ReviewsViewController, let indexPath = listTableView.indexPathForSelectedRow {
 			notesVC.firebaseClient = firebaseClient
 			notesVC.currentCollection = firebaseClient.userCollections[indexPath.row]
 		}
@@ -71,7 +71,7 @@ extension MainViewController: UITableViewDataSource {
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell") as? ListTableViewCell else { return UITableViewCell() }
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell") as? CollectionCell else { return UITableViewCell() }
 
 		cell.collection = firebaseClient.userCollections[indexPath.row]
 

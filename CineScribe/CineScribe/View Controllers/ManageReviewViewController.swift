@@ -1,5 +1,5 @@
 //
-//  NewNoteViewController.swift
+//  ManageReviewViewController.swift
 //  CineScribe
 //
 //  Created by Marlon Raskin on 9/24/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewNoteViewController: UIViewController {
+class ManageReviewViewController: UIViewController {
 
 	//MARK: - IBOutlets
 	
@@ -22,12 +22,16 @@ class NewNoteViewController: UIViewController {
 	@IBOutlet weak var sceneNotesTextView: UITextView!
 	@IBOutlet weak var actorNotesTextView: UITextView!
 	@IBOutlet weak var cinemaNotesTextView: UITextView!
+	@IBOutlet weak var saveBtn: UIBarButtonItem!
+	@IBOutlet weak var movieBtn: UIBarButtonItem!
 	
 	//MARK: - Properties
 
 	var textBtns = [UIButton]()
 	var textViews = [UITextView]()
 	var firebaseClient: FirebaseClient?
+	var currentcollectionId: UUID?
+	var currentMovieId: Int?
 	
 	//MARK: - Life Cycle
 	
@@ -41,6 +45,14 @@ class NewNoteViewController: UIViewController {
 	}
 	
 	//MARK: - IBActions
+	
+	@IBAction func saveBtnTapped(_ sender: Any) {
+		guard let collectionId = currentcollectionId else { return }
+		firebaseClient?.putReview(collectionId: collectionId, movieId: currentMovieId, title: titleTextField.optionalText, memorableQuotes: quotesTextView.text, sceneDescription: sceneNotesTextView.text, actorNotes: actorNotesTextView.text, cinematographyNotes: cinemaNotesTextView.text, completion: {
+			print("Review Saved!")
+			self.dismiss(animated: true, completion: nil)
+		})
+	}
 	
 	@IBAction func collapsableBtnTapped(_ sender: UIButton) {
 		switch sender.tag {
@@ -81,10 +93,5 @@ class NewNoteViewController: UIViewController {
 			textViews[index].layer.cornerRadius = 10
 			textViews[index].layer.masksToBounds = true
 		}
-		
-//		quotesTextView.delegate = self
-//		sceneNotesTextView.delegate = self
-//		actorNotesTextView.delegate = self
-//		cinemaNotesTextView.delegate = self
 	}
 }
