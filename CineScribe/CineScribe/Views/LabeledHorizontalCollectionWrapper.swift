@@ -24,6 +24,8 @@ class LabeledHorizontalCollectionWrapper: UIView {
 		}
 	}
 
+	var movie: Movie?
+
 	var title: String {
 		get { return collectionViewTitle.text ?? "" }
 		set { collectionViewTitle.text = newValue }
@@ -84,5 +86,10 @@ extension LabeledHorizontalCollectionWrapper: UICollectionViewDelegate, UICollec
 
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		return CGSize(width: 180, height: 240)
+	}
+
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//		let movie = movies[indexPath.item]
+		
 	}
 }

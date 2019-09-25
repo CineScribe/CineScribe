@@ -38,6 +38,7 @@
 		37C7DAA123398BAD0081D771 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7DAA023398BAD0081D771 /* SearchTableViewController.swift */; };
 		37C7DAA323398BC20081D771 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C7DAA223398BC20081D771 /* SearchTableViewCell.swift */; };
 		37CD8D90233B1D7A00EFE198 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CD8D8F233B1D7A00EFE198 /* ImageData.swift */; };
+		37CD8D94233B31C300EFE198 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CD8D93233B31C300EFE198 /* MovieDetailViewController.swift */; };
 		5FF4545D4CE7CA5E8E13BDC3 /* Pods_CineScribe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3913FE1A12FB521BF003354A /* Pods_CineScribe.framework */; };
 		B56D6F542339783600524A9C /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D6F532339783600524A9C /* FirebaseClient.swift */; };
 		B56D6F56233984B000524A9C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B56D6F55233984B000524A9C /* GoogleService-Info.plist */; };
@@ -82,6 +83,7 @@
 		37C7DAA023398BAD0081D771 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		37C7DAA223398BC20081D771 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		37CD8D8F233B1D7A00EFE198 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
+		37CD8D93233B31C300EFE198 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		3913FE1A12FB521BF003354A /* Pods_CineScribe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CineScribe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56D6F532339783600524A9C /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		B56D6F55233984B000524A9C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				37C7DA9E23398B940081D771 /* DiscoverViewController.swift */,
 				37C7DAA023398BAD0081D771 /* SearchTableViewController.swift */,
 				37A9A5702339EBB10030AFD7 /* NewNoteViewController.swift */,
+				37CD8D93233B31C300EFE198 /* MovieDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				37C7DA8D233940430081D771 /* movieDatabaseApiKey.swift in Sources */,
 				37C7DA97233970340081D771 /* ListTableViewCell.swift in Sources */,
 				374B058D2339134E0089FB4E /* MainViewController.swift in Sources */,
+				37CD8D94233B31C300EFE198 /* MovieDetailViewController.swift in Sources */,
 				37A9A5712339EBB10030AFD7 /* NewNoteViewController.swift in Sources */,
 				374B05892339134E0089FB4E /* AppDelegate.swift in Sources */,
 				37C7DA9D23397E640081D771 /* NotesViewController.swift in Sources */,

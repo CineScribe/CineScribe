@@ -1,7 +1,121 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <customFonts key="customFonts">
+        <array key="Nunito-Bold.ttf">
+            <string>Nunito-Bold</string>
+        </array>
+        <array key="Nunito-LightItalic.ttf">
+            <string>Nunito-LightItalic</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--DetailVC-->
+        <scene sceneID="PF9-Un-fl5">
+            <objects>
+                <viewController title="DetailVC" id="jIz-f2-GYw" customClass="MovieDetailViewController" customModule="CineScribe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cje-iG-x0W">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JoL-8B-KIX">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="270"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="270" id="CFS-Zx-jc4"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1uw-Mf-TQV">
+                                <rect key="frame" x="0.0" y="203" width="414" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="uwx-XP-jsB"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="27Z-h2-1wp">
+                                <rect key="frame" x="20" y="119" width="154" height="181"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="154" id="IIc-0o-Fty"/>
+                                    <constraint firstAttribute="height" constant="181" id="gLw-ra-8k6"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="afh-9k-zM7">
+                                <rect key="frame" x="20" y="320" width="374" height="41"/>
+                                <fontDescription key="fontDescription" name="Nunito-Bold" family="Nunito" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Released on:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSO-Bi-Jvo">
+                                <rect key="frame" x="43" y="364" width="351" height="19.5"/>
+                                <fontDescription key="fontDescription" name="Nunito-LightItalic" family="Nunito" pointSize="14"/>
+                                <color key="textColor" systemColor="systemPinkColor" red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yNw-ld-Yn7">
+                                <rect key="frame" x="20" y="388.5" width="374" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Tio-Mp-BcO"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8un-Vs-nXn">
+                                <rect key="frame" x="20" y="363" width="18" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="Eh4-54-IyI"/>
+                                    <constraint firstAttribute="width" constant="18" id="puq-Fy-Aue"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="calendar" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="8un-Vs-nXn" firstAttribute="leading" secondItem="GIF-oL-hKQ" secondAttribute="leading" constant="20" id="2yY-3f-Ul1"/>
+                            <constraint firstItem="afh-9k-zM7" firstAttribute="leading" secondItem="GIF-oL-hKQ" secondAttribute="leading" constant="20" id="4dY-Uc-tYf"/>
+                            <constraint firstItem="GIF-oL-hKQ" firstAttribute="trailing" secondItem="OSO-Bi-Jvo" secondAttribute="trailing" constant="20" id="5L9-g2-U2J"/>
+                            <constraint firstItem="1uw-Mf-TQV" firstAttribute="trailing" secondItem="GIF-oL-hKQ" secondAttribute="trailing" id="8y5-bA-pue"/>
+                            <constraint firstItem="27Z-h2-1wp" firstAttribute="leading" secondItem="GIF-oL-hKQ" secondAttribute="leading" constant="20" id="BLl-ZN-Zje"/>
+                            <constraint firstItem="JoL-8B-KIX" firstAttribute="top" secondItem="cje-iG-x0W" secondAttribute="top" id="Fs3-GC-sVn"/>
+                            <constraint firstItem="yNw-ld-Yn7" firstAttribute="leading" secondItem="GIF-oL-hKQ" secondAttribute="leading" constant="20" id="LY7-eW-56Y"/>
+                            <constraint firstItem="JoL-8B-KIX" firstAttribute="leading" secondItem="GIF-oL-hKQ" secondAttribute="leading" id="Viz-dz-qZ3"/>
+                            <constraint firstItem="GIF-oL-hKQ" firstAttribute="trailing" secondItem="afh-9k-zM7" secondAttribute="trailing" constant="20" id="VzW-gy-z7c"/>
+                            <constraint firstItem="1uw-Mf-TQV" firstAttribute="top" secondItem="GIF-oL-hKQ" secondAttribute="top" constant="159" id="WpV-Hp-YbC"/>
+                            <constraint firstItem="afh-9k-zM7" firstAttribute="top" secondItem="27Z-h2-1wp" secondAttribute="bottom" constant="20" id="f1v-2G-76A"/>
+                            <constraint firstItem="GIF-oL-hKQ" firstAttribute="trailing" secondItem="yNw-ld-Yn7" secondAttribute="trailing" constant="20" id="gFb-Kt-bhY"/>
+                            <constraint firstItem="OSO-Bi-Jvo" firstAttribute="leading" secondItem="8un-Vs-nXn" secondAttribute="trailing" constant="5" id="hCg-kW-VjK"/>
+                            <constraint firstItem="27Z-h2-1wp" firstAttribute="top" secondItem="GIF-oL-hKQ" secondAttribute="top" constant="75" id="lUY-Au-AkJ"/>
+                            <constraint firstItem="1uw-Mf-TQV" firstAttribute="leading" secondItem="GIF-oL-hKQ" secondAttribute="leading" id="mBk-se-Q3a"/>
+                            <constraint firstItem="OSO-Bi-Jvo" firstAttribute="top" secondItem="afh-9k-zM7" secondAttribute="bottom" constant="3" id="oPJ-Ex-b4z"/>
+                            <constraint firstItem="8un-Vs-nXn" firstAttribute="centerY" secondItem="OSO-Bi-Jvo" secondAttribute="centerY" id="qIW-A5-5St"/>
+                            <constraint firstItem="JoL-8B-KIX" firstAttribute="trailing" secondItem="GIF-oL-hKQ" secondAttribute="trailing" id="sKO-L7-7Z7"/>
+                            <constraint firstItem="yNw-ld-Yn7" firstAttribute="top" secondItem="OSO-Bi-Jvo" secondAttribute="bottom" constant="5" id="yYJ-gt-k7H"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GIF-oL-hKQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="backdropImageView" destination="JoL-8B-KIX" id="oFq-yE-cxB"/>
+                        <outlet property="fadeView" destination="1uw-Mf-TQV" id="y8C-Un-YXA"/>
+                        <outlet property="overviewTextView" destination="yNw-ld-Yn7" id="0dm-Ts-4ju"/>
+                        <outlet property="posterImageView" destination="27Z-h2-1wp" id="6HR-cD-Dz9"/>
+                        <outlet property="releaseDateLabel" destination="OSO-Bi-Jvo" id="M1F-WJ-5SQ"/>
+                        <outlet property="titleLabel" destination="afh-9k-zM7" id="Ig9-3B-fAn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IBH-x2-1iy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="102.89855072463769" y="167.41071428571428"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="calendar" catalog="system" width="64" height="54"/>
+    </resources>
 </document>
