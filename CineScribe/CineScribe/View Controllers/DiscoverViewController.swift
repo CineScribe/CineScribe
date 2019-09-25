@@ -17,6 +17,10 @@ class DiscoverViewController: UIViewController {
 
 	let movieController = MovieController()
 
+	let nowPlayingCollectionView = LabeledHorizontalCollectionWrapper()
+	let upcomingCollectionView = LabeledHorizontalCollectionWrapper()
+	let topRatedCollectionView = LabeledHorizontalCollectionWrapper()
+
 	override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,41 +32,44 @@ class DiscoverViewController: UIViewController {
 		searchStackView.bottomAnchor.constraint(equalTo: searchScrollView.bottomAnchor).isActive = true
 		searchStackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
 
-		let nowPlayingCollectionView = LabeledHorizontalCollectionWrapper()
+
 		nowPlayingCollectionView.title = "Now Playing"
 		searchStackView.addArrangedSubview(nowPlayingCollectionView)
 		movieController.fetchNowPlayingMovies { (results) in
 			do {
 				let movieResults = try results.get()
-				nowPlayingCollectionView.movies = movieResults
+				self.nowPlayingCollectionView.movies = movieResults
 			} catch {
 				NSLog("Error getting 'Now Playing' movie from result: \(error)")
 			}
 		}
 
-		let upcomingCollectionView = LabeledHorizontalCollectionWrapper()
+		nowPlayingCollectionView.delegate = self
+
 		upcomingCollectionView.title = "Upcoming"
 		searchStackView.addArrangedSubview(upcomingCollectionView)
 		movieController.fetchUpcomingMovies { (results) in
 			do {
 				let upcomingResults = try results.get()
-				upcomingCollectionView.movies = upcomingResults
+				self.upcomingCollectionView.movies = upcomingResults
 			} catch {
 				NSLog("Error getting 'Upcoming Movies' from results: \(error)")
 			}
 		}
-		
-		let topRatedCollectionView = LabeledHorizontalCollectionWrapper()
+		upcomingCollectionView.delegate = self
+
 		topRatedCollectionView.title = "Top Rated"
 		searchStackView.addArrangedSubview(topRatedCollectionView)
 		movieController.fetchTopRatedMovies { (results) in
 			do {
 				let topRatedResults = try results.get()
-				topRatedCollectionView.movies = topRatedResults
+				self.topRatedCollectionView.movies = topRatedResults
 			} catch {
 				NSLog("Error getting 'Top-Rated Movies' from results: \(error)")
 			}
 		}
+
+		topRatedCollectionView.delegate = self
     }
     
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -71,4 +78,16 @@ class DiscoverViewController: UIViewController {
 			movieSearchBar.delegate = searchVC
 		}
 	}
+}
+
+extension DiscoverViewController: LabeledHorizontalCollectionWrapperDelegate {
+	func labeledCollectionShowDetail(_ collection: LabeledHorizontalCollectionWrapper, for movie: Movie) {
+		let storyboard = UIStoryboard(name: "MovieDetail", bundle: nil)
+		guard let movieDetailVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController else { fatalError("Storyboard setup incorrectly") }
+		movieDetailVC.movie = movie
+		navigationController?.pushViewController(movieDetailVC, animated: true)
+		navigationController?.navigationBar.tintColor = .systemPink
+	}
+
+
 }
