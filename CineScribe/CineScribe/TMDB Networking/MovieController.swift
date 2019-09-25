@@ -26,10 +26,13 @@ enum NetworkError: Error {
 
 class MovieController {
 
-	let upcomingBaseUrl = URL(string: "https://api.themoviedb.org/3/movie/upcoming")!
-	let topRatedBaseUrl = URL(string: "https://api.themoviedb.org/3/movie/top_rated")!
-	let nowPlayingBaseUrl = URL(string: "https://api.themoviedb.org/3/movie/now_playing")!
-	let apiQueryItem = URLQueryItem(name: "api_key", value: .movieDatabaseApiKey)
+	public static let shared = MovieController()
+
+	private let upcomingBaseUrl = URL(string: "https://api.themoviedb.org/3/movie/upcoming")!
+	private let topRatedBaseUrl = URL(string: "https://api.themoviedb.org/3/movie/top_rated")!
+	private let nowPlayingBaseUrl = URL(string: "https://api.themoviedb.org/3/movie/now_playing")!
+	private let searchMovieBaseUrl = URL(string: "https://api.themoviedb.org/3/search/movie")!
+	private let apiQueryItem = URLQueryItem(name: "api_key", value: .movieDatabaseApiKey)
 
 
 	// MARK: - Fetch Movies Functions
@@ -84,4 +87,20 @@ class MovieController {
 			}
 		}.resume()
 	}
+
+
+	// MARK: - Search Function
+	func searchDatabse(for movie: String, completion: @escaping (Result<[Movie], NetworkError>) -> Void) {
+		var urlComponents = URLComponents(url: searchMovieBaseUrl, resolvingAgainstBaseURL: true)
+		let searchQuery = URLQueryItem(name: "query", value: movie)
+		let languageQuery = URLQueryItem(name: "language", value: "en-US")
+		let adultQueryItem = URLQueryItem(name: "include_adult", value: "false")
+
+		urlComponents?.queryItems = [searchQuery, languageQuery, adultQueryItem]
+
+		fetchMovieHelper(urlComponents: urlComponents, completion: completion)
+	}
+
+
+//	func getCredits(for movie: Movie, completion: @escpaing (Result<))
 }
