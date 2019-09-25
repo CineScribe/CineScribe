@@ -10,35 +10,81 @@ import UIKit
 
 class NewNoteViewController: UIViewController {
 
+	//MARK: - IBOutlets
+	
+	@IBOutlet weak var titleBtn: UIButton!
+	@IBOutlet weak var quotesBtn: UIButton!
+	@IBOutlet weak var sceneNotesBtn: UIButton!
+	@IBOutlet weak var actorNotesBtn: UIButton!
+	@IBOutlet weak var cinemaNotesBtn: UIButton!
+	@IBOutlet weak var titleTextField: UITextField!
+	@IBOutlet weak var quotesTextView: UITextView!
+	@IBOutlet weak var sceneNotesTextView: UITextView!
+	@IBOutlet weak var actorNotesTextView: UITextView!
+	@IBOutlet weak var cinemaNotesTextView: UITextView!
+	
+	//MARK: - Properties
 
-	@IBOutlet weak var noteScrollView: UIScrollView!
-	@IBOutlet var noteStackView: UIStackView!
-	@IBOutlet weak var reviewTitleLabel: UILabel!
-	@IBOutlet weak var movieTitleLabel: UILabel!
-	@IBOutlet weak var overviewTextView: UITextView!
-	@IBOutlet weak var actingLabel: UILabel!
-	@IBOutlet weak var movieInfoStackView: UIStackView!
-	@IBOutlet weak var movieInfoContainerView: UIView!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-		setUI()
-    }
-
-	func layoutStackView() {
-		noteStackView.leadingAnchor.constraint(equalTo: noteScrollView.leadingAnchor).isActive = true
-		noteStackView.topAnchor.constraint(equalTo: noteScrollView.topAnchor).isActive = true
-		noteStackView.trailingAnchor.constraint(equalTo: noteScrollView.trailingAnchor).isActive = true
-		noteStackView.bottomAnchor.constraint(equalTo: noteScrollView.bottomAnchor).isActive = true
+	var textBtns = [UIButton]()
+	var textViews = [UITextView]()
+	var firebaseClient: FirebaseClient?
+	
+	//MARK: - Life Cycle
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		textBtns = [titleBtn, quotesBtn, sceneNotesBtn, actorNotesBtn, cinemaNotesBtn]
+		textViews = [quotesTextView, sceneNotesTextView, actorNotesTextView, cinemaNotesTextView]
+		
+		setupViews()
 	}
-
-	func setUI() {
-		movieInfoContainerView.layer.cornerRadius = 10
-		movieInfoContainerView.layer.borderWidth = 1.5
-		movieInfoContainerView.layer.borderColor = UIColor.secondaryLabel.cgColor
+	
+	//MARK: - IBActions
+	
+	@IBAction func collapsableBtnTapped(_ sender: UIButton) {
+		switch sender.tag {
+		case 0:
+			titleTextField.isHidden.toggle()
+		case 1:
+			quotesTextView.isHidden.toggle()
+		case 2:
+			sceneNotesTextView.isHidden.toggle()
+		case 3:
+			actorNotesTextView.isHidden.toggle()
+		case 4:
+			cinemaNotesTextView.isHidden.toggle()
+		default:
+			break
+		}
 	}
-    
-
-
-
+	
+	//MARK: - Helpers
+	
+	private func setupViews() {
+		titleTextField.tag = 0
+		titleTextField.isHidden = true
+		
+		for index in 0..<textBtns.count {
+			textBtns[index].tag = index
+		}
+		
+		for index in 0..<textViews.count {
+			textViews[index].tag = index + 1
+		}
+		
+		for index in 0..<textViews.count {
+			textViews[index].isHidden = true
+			textViews[index].text = ""
+			textViews[index].layer.borderWidth = 2
+			textViews[index].layer.borderColor = UIColor.lightGray.cgColor
+			textViews[index].layer.cornerRadius = 10
+			textViews[index].layer.masksToBounds = true
+		}
+		
+//		quotesTextView.delegate = self
+//		sceneNotesTextView.delegate = self
+//		actorNotesTextView.delegate = self
+//		cinemaNotesTextView.delegate = self
+	}
 }
