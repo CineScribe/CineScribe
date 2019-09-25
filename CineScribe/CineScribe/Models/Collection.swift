@@ -12,12 +12,12 @@ import Firebase
 struct Collection {
 	let id: UUID
 	let title: String
-	var reviewIds: [String]
+	var reviews: [String:Int]
 	
-	init(id: UUID = UUID(), title: String, reviewIds: [String] = []) {
+	init(id: UUID = UUID(), title: String, reviewIds: [String:Int] = [:]) {
 		self.id = id
 		self.title = title
-		self.reviewIds = reviewIds
+		self.reviews = reviewIds
 	}
 	
 	init?(snapshot: DataSnapshot) {
@@ -26,17 +26,17 @@ struct Collection {
 			let title = value["title"] as? String else {
 				return nil
 		}
-		let reviewIds = value["reviewIds"] as? [Int: String]
+		let reviewIds = value["reviews"] as? [String:Int]
 		
 		self.id = UUID(uuidString: snapshot.key) ?? UUID()
 		self.title = title
-		self.reviewIds = reviewIds?.values.compactMap({$0}) ?? []
+		self.reviews = reviewIds ?? [:]
 	}
 	
 	func toDictionary() -> Any {
 		return [
 			"title": title,
-			"reviewIds": reviewIds
+			"reviews": reviews
 		]
 	}
 }

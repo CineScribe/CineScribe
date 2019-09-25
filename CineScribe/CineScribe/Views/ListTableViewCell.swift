@@ -31,6 +31,6 @@ class ListTableViewCell: UITableViewCell {
 		
 		movieArtImageView.layer.cornerRadius = 12
 		listNameLabel.text = collection.title
-		listCount.text = "\(collection.reviewIds.count)"
+		listCount.text = "\(collection.reviews.count)"
 	}
 }
