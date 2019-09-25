@@ -86,18 +86,48 @@ class FirebaseClient {
 		}
 	}
 	
+	func getReviews(from collection: Collection, completion: @escaping () -> Void) {
+		let myGroup = DispatchGroup()
+		
+		userReviews.removeAll()
+		collection.reviews.keys.forEach({
+			myGroup.enter()
+			reviewRef.child("\(currentUser.id.uuidString)/\($0)").observeSingleEvent(of: .value) { snapshot in
+				if let review = Review(snapshot: snapshot) {
+					self.userReviews.append(review)
+					myGroup.leave()
+				}
+			}
+		})
+
+		myGroup.notify(queue: .main) {
+			completion()
+		}
+	}
+	
 	//MARK: - Update
 	
-	func putReview(title: String, hasWatched: Bool, movieId: Int, collectionId: UUID, memorableQuotes: String?, sceneDescription: String?, actorNotes: String?, cinematographyNotes: String?, completion: @escaping () -> Void) {
-		guard let user = currentUser else { return }
-		var collection = userCollections?.first(where: {$0.id == collectionId})
-		let newReview = Review(title: title, movieId: movieId, memorableQuotes: memorableQuotes, sceneDescription: sceneDescription, actorNotes: actorNotes, cinematographyNotes: cinematographyNotes)
+	func putReview(collectionId: UUID, movieId: Int?, title: String?, memorableQuotes: String?, sceneDescription: String?, actorNotes: String?, cinematographyNotes: String?, completion: @escaping () -> Void) {
+		let newReview = Review(movieId: movieId, title: title, memorableQuotes: memorableQuotes, sceneDescription: sceneDescription, actorNotes: actorNotes, cinematographyNotes: cinematographyNotes)
 		
-		collection?.reviewIds.append(newReview.id.uuidString)
-		
-		collectionRef.child("\(user.id.uuidString)/\(collectionId)").setValue(collection?.toDictionary())
-		reviewRef.child("\(user.id.uuidString)/\(newReview)")
-		completion()
+		reviewRef.child("\(currentUser.id.uuidString)/\(newReview.id.uuidString)").setValue(newReview.toDictionary()) { (error, _) in
+			if let error = error {
+				NSLog("Error creating/updating a review: \(error)")
+			} else {
+				let collectionReviewsRef = self.collectionRef.child("\(self.currentUser.id.uuidString)/\(collectionId)/reviews")
+				collectionReviewsRef.child(newReview.id.uuidString).setValue(movieId ?? 0) { (error, _) in
+					if let error = error {
+						NSLog("Error appending review to collection: \(error)")
+					}
+				}
+				if let collectionIndex = self.userCollections.firstIndex(where: {$0.id == collectionId}) {
+					self.userCollections[collectionIndex].reviews[collectionId.uuidString] = movieId ?? 0
+					self.userReviews.append(newReview)
+				}
+				
+				completion()
+			}
+		}
 	}
 		
 	//MARK: - Delete
