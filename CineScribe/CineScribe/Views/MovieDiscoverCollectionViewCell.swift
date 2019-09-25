@@ -15,7 +15,7 @@ class MovieDiscoverCollectionViewCell: UICollectionViewCell {
 	@IBOutlet weak var movieImageView: UIImageView!
 	@IBOutlet weak var movieTitleContainerView: UIView!
 	@IBOutlet weak var movieTitleLabel: UILabel!
-	
+
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		commonInit()
@@ -43,5 +43,4 @@ class MovieDiscoverCollectionViewCell: UICollectionViewCell {
 		myContentView.clipsToBounds = true
 		movieTitleContainerView.backgroundColor = .secondarySystemBackground
 	}
-
 }
