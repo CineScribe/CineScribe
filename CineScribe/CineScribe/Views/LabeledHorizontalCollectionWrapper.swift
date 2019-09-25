@@ -8,13 +8,17 @@
 
 import UIKit
 
+protocol LabeledHorizontalCollectionWrapperDelegate {
+	func labeledCollectionShowDetail(_ collection: LabeledHorizontalCollectionWrapper, for movie: Movie)
+}
+
 class LabeledHorizontalCollectionWrapper: UIView {
 
 	@IBOutlet var contentView: UIView!
 	@IBOutlet weak var moviesDiscoverCollectionView: UICollectionView!
 	@IBOutlet weak var collectionViewTitle: UILabel!
 
-	let imageData = ImageData()
+	let imageData = ImageData.shared
 
 	var movies: [Movie] = [] {
 		didSet {
@@ -25,6 +29,8 @@ class LabeledHorizontalCollectionWrapper: UIView {
 	}
 
 	var movie: Movie?
+
+	var delegate: LabeledHorizontalCollectionWrapperDelegate?
 
 	var title: String {
 		get { return collectionViewTitle.text ?? "" }
@@ -71,7 +77,7 @@ extension LabeledHorizontalCollectionWrapper: UICollectionViewDelegate, UICollec
 		discoverCell.movieTitleLabel.text = movie.title
 		discoverCell.tag = indexPath.item
 
-		imageData.fetchPosterImage(for: movie) { (error, image) in
+		imageData.fetchPosterImage(for: movie, imageStyle: .poster) { (error, image) in
 			if let error = error {
 				NSLog("Error getting character image: \(error)")
 			}
@@ -89,7 +95,7 @@ extension LabeledHorizontalCollectionWrapper: UICollectionViewDelegate, UICollec
 	}
 
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//		let movie = movies[indexPath.item]
-		
+		let movie = movies[indexPath.item]
+		delegate?.labeledCollectionShowDetail(self, for: movie)
 	}
 }

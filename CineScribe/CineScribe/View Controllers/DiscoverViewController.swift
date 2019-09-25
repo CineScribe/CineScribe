@@ -44,6 +44,8 @@ class DiscoverViewController: UIViewController {
 			}
 		}
 
+		nowPlayingCollectionView.delegate = self
+
 		upcomingCollectionView.title = "Upcoming"
 		searchStackView.addArrangedSubview(upcomingCollectionView)
 		movieController.fetchUpcomingMovies { (results) in
@@ -54,6 +56,7 @@ class DiscoverViewController: UIViewController {
 				NSLog("Error getting 'Upcoming Movies' from results: \(error)")
 			}
 		}
+		upcomingCollectionView.delegate = self
 
 		topRatedCollectionView.title = "Top Rated"
 		searchStackView.addArrangedSubview(topRatedCollectionView)
@@ -65,6 +68,8 @@ class DiscoverViewController: UIViewController {
 				NSLog("Error getting 'Top-Rated Movies' from results: \(error)")
 			}
 		}
+
+		topRatedCollectionView.delegate = self
     }
     
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -73,4 +78,16 @@ class DiscoverViewController: UIViewController {
 			movieSearchBar.delegate = searchVC
 		}
 	}
+}
+
+extension DiscoverViewController: LabeledHorizontalCollectionWrapperDelegate {
+	func labeledCollectionShowDetail(_ collection: LabeledHorizontalCollectionWrapper, for movie: Movie) {
+		let storyboard = UIStoryboard(name: "MovieDetail", bundle: nil)
+		guard let movieDetailVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController else { fatalError("Storyboard setup incorrectly") }
+		movieDetailVC.movie = movie
+		navigationController?.pushViewController(movieDetailVC, animated: true)
+		navigationController?.navigationBar.tintColor = .systemPink
+	}
+
+
 }
