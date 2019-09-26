@@ -77,7 +77,7 @@ extension LabeledHorizontalCollectionWrapper: UICollectionViewDelegate, UICollec
 		discoverCell.movieTitleLabel.text = movie.title
 		discoverCell.tag = indexPath.item
 
-		imageData.fetchPosterImage(for: movie, imageStyle: .poster) { (error, image) in
+		imageData.fetchImage(for: movie, imageStyle: .poster) { (error, image) in
 			if let error = error {
 				NSLog("Error getting character image: \(error)")
 			}

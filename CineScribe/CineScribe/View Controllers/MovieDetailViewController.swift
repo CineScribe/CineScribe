@@ -22,6 +22,8 @@ class MovieDetailViewController: UIViewController {
 	@IBOutlet weak var castButton: UIButton!
 
 	let imageData = ImageData.shared
+	let impactGenerator = UIImpactFeedbackGenerator()
+	let selectionGenerator = UISelectionFeedbackGenerator()
 	let layer = CAGradientLayer()
 	var movie: Movie? {
 		didSet {
@@ -36,6 +38,7 @@ class MovieDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//		feedback.prepare()
 		setUI()
 		updateViews()
 		title = ""
@@ -50,7 +53,19 @@ class MovieDetailViewController: UIViewController {
 		present(optionController, animated: true, completion: nil)
 	}
 
+	@IBAction func backButtonTapped(_ sender: UIButton) {
+		navigationController?.popViewController(animated: true)
+	}
 
+
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "ShowCastModalSegue" {
+			guard let castTableVC = segue.destination as? CastTableViewController else { return }
+			if let movieToSend = movie {
+				castTableVC.movie = movieToSend
+			}
+		}
+	}
 
 
 
@@ -60,15 +75,20 @@ class MovieDetailViewController: UIViewController {
 		fadeView.layer.insertSublayer(layer, at: 0)
 		layer.frame = fadeView.bounds
 		layer.colors = [UIColor.systemBackground.withAlphaComponent(0.0).cgColor, UIColor.systemBackground.cgColor]
-		posterImageView.layer.cornerRadius = 8
+		posterImageView.layer.cornerRadius = 6
+		posterImageView.layer.shadowColor = UIColor(red: 0.12, green: 0.12, blue: 0.12, alpha: 1.00).cgColor
+		posterImageView.layer.shadowRadius = 16
+		posterImageView.layer.shadowOpacity = 0.8
+		posterImageView.layer.shadowOffset = .zero
+		
 		if newNoteButton.isHighlighted || newNoteButton.isSelected {
 			newNoteButton.backgroundColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
 		} else {
-			newNoteButton.backgroundColor = nil
+			newNoteButton.backgroundColor = .secondarySystemBackground
 		}
 		newNoteButton.layer.cornerRadius = newNoteButton.frame.height / 2
 		castButton.layer.cornerRadius = castButton.frame.height / 2
-		castButton.backgroundColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
+		castButton.backgroundColor = .secondarySystemBackground
 	}
 
 	private func updateViews() {
@@ -78,7 +98,7 @@ class MovieDetailViewController: UIViewController {
 		overviewLabel.text = movie.overview
 		dateLabel.text = movie.releaseDate
 
-		imageData.fetchPosterImage(for: movie, imageStyle: .poster) { (error, posterImage) in
+		imageData.fetchImage(for: movie, imageStyle: .poster) { (error, posterImage) in
 			if let error = error {
 				NSLog("Error getting poster image: \(error)")
 			}
@@ -87,7 +107,7 @@ class MovieDetailViewController: UIViewController {
 			self.posterImageView.image = image
 		}
 
-		imageData.fetchPosterImage(for: movie, imageStyle: .backdrop) { (error, backdropImage) in
+		imageData.fetchImage(for: movie, imageStyle: .backdrop) { (error, backdropImage) in
 			if let error = error {
 				NSLog("Error getting backdrop image: \(error)")
 			}
