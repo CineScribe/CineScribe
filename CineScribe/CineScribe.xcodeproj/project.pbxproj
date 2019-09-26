@@ -38,6 +38,8 @@
 		37F40E7F233BF04700630F90 /* CastTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F40E7E233BF04700630F90 /* CastTableViewController.swift */; };
 		37F40E81233BF22B00630F90 /* CastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F40E80233BF22B00630F90 /* CastTableViewCell.swift */; };
 		37F40E83233D52D800630F90 /* DevInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F40E82233D52D800630F90 /* DevInfoViewController.swift */; };
+		37F40E85233D5AF200630F90 /* NoteMovieSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F40E84233D5AF200630F90 /* NoteMovieSearchTableViewController.swift */; };
+		37F40E87233D5B1000630F90 /* NoteMovieSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F40E86233D5B1000630F90 /* NoteMovieSearchTableViewCell.swift */; };
 		5FF4545D4CE7CA5E8E13BDC3 /* Pods_CineScribe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3913FE1A12FB521BF003354A /* Pods_CineScribe.framework */; };
 		B5150FAF233C1534002269C9 /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5150FAE233C1534002269C9 /* ReviewsViewController.swift */; };
 		B5150FC0233C1B67002269C9 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5150FBF233C1B67002269C9 /* ImageData.swift */; };
@@ -84,6 +86,8 @@
 		37F40E7E233BF04700630F90 /* CastTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastTableViewController.swift; sourceTree = "<group>"; };
 		37F40E80233BF22B00630F90 /* CastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastTableViewCell.swift; sourceTree = "<group>"; };
 		37F40E82233D52D800630F90 /* DevInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevInfoViewController.swift; sourceTree = "<group>"; };
+		37F40E84233D5AF200630F90 /* NoteMovieSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteMovieSearchTableViewController.swift; sourceTree = "<group>"; };
+		37F40E86233D5B1000630F90 /* NoteMovieSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteMovieSearchTableViewCell.swift; sourceTree = "<group>"; };
 		3913FE1A12FB521BF003354A /* Pods_CineScribe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CineScribe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5150FAE233C1534002269C9 /* ReviewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
 		B5150FBF233C1B67002269C9 /* ImageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 				37CD8D93233B31C300EFE198 /* MovieDetailViewController.swift */,
 				37F40E7E233BF04700630F90 /* CastTableViewController.swift */,
 				37F40E82233D52D800630F90 /* DevInfoViewController.swift */,
+				37F40E84233D5AF200630F90 /* NoteMovieSearchTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 				37AF5072233A74AE00E18CA0 /* MovieDiscoverCollectionViewCell.swift */,
 				37AF5073233A74AE00E18CA0 /* MovieDiscoverCollectionViewCell.xib */,
 				37F40E80233BF22B00630F90 /* CastTableViewCell.swift */,
+				37F40E86233D5B1000630F90 /* NoteMovieSearchTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -375,6 +381,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37F40E87233D5B1000630F90 /* NoteMovieSearchTableViewCell.swift in Sources */,
 				37C7DA9B23397D9A0081D771 /* ReviewCell.swift in Sources */,
 				B5150FAF233C1534002269C9 /* ReviewsViewController.swift in Sources */,
 				37C7DA8D233940430081D771 /* movieDatabaseApiKey.swift in Sources */,
@@ -385,6 +392,7 @@
 				374B05892339134E0089FB4E /* AppDelegate.swift in Sources */,
 				37F40E7F233BF04700630F90 /* CastTableViewController.swift in Sources */,
 				B56D6F5F233AD8A900524A9C /* Review.swift in Sources */,
+				37F40E85233D5AF200630F90 /* NoteMovieSearchTableViewController.swift in Sources */,
 				37F40E83233D52D800630F90 /* DevInfoViewController.swift in Sources */,
 				374B058B2339134E0089FB4E /* SceneDelegate.swift in Sources */,
 				B56D6F5B2339BBFD00524A9C /* Extensions.swift in Sources */,
@@ -546,7 +554,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = D6VB3396MT;
 				INFOPLIST_FILE = "$(SRCROOT)/CineScribe/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -565,7 +573,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = D6VB3396MT;
 				INFOPLIST_FILE = "$(SRCROOT)/CineScribe/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
