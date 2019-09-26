@@ -86,8 +86,6 @@ extension DiscoverViewController: LabeledHorizontalCollectionWrapperDelegate {
 		guard let movieDetailVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController else { fatalError("Storyboard setup incorrectly") }
 		movieDetailVC.movie = movie
 		navigationController?.pushViewController(movieDetailVC, animated: true)
-		navigationController?.navigationBar.tintColor = .systemPink
+		navigationController?.navigationBar.isHidden = true
 	}
-
-
 }
