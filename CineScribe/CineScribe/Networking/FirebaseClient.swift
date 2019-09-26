@@ -109,21 +109,27 @@ class FirebaseClient {
 	
 	//MARK: - Update
 	
-	func putReview(collectionId: UUID, title: String, movieId: Int?, memorableQuotes: String?, sceneDescription: String?, actorNotes: String?, cinematographyNotes: String?, completion: @escaping () -> Void) {
-		let newReview = Review(title: title, movieId: movieId, memorableQuotes: memorableQuotes, sceneDescription: sceneDescription, actorNotes: actorNotes, cinematographyNotes: cinematographyNotes)
+	func putReview(collectionId: UUID, reviewId: UUID?, title: String, movie: Movie?, memorableQuotes: String?, sceneDescription: String?, actorNotes: String?, cinematographyNotes: String?, completion: @escaping () -> Void) {
+		var newReview: Review
+		
+		if let reviewId = reviewId {
+			newReview = Review(id: reviewId, title: title, movie: movie, memorableQuotes: memorableQuotes, sceneDescription: sceneDescription, actorNotes: actorNotes, cinematographyNotes: cinematographyNotes)
+		} else {
+			newReview = Review(title: title, movie: movie, memorableQuotes: memorableQuotes, sceneDescription: sceneDescription, actorNotes: actorNotes, cinematographyNotes: cinematographyNotes)
+		}
 		
 		reviewRef.child("\(currentUser.id.uuidString)/\(newReview.id.uuidString)").setValue(newReview.toDictionary()) { (error, _) in
 			if let error = error {
 				NSLog("Error creating/updating a review: \(error)")
 			} else {
 				let collectionReviewsRef = self.collectionRef.child("\(self.currentUser.id.uuidString)/\(collectionId)/reviews")
-				collectionReviewsRef.child(newReview.id.uuidString).setValue(movieId ?? 0) { (error, _) in
+				collectionReviewsRef.child(newReview.id.uuidString).setValue(movie?.id ?? 0) { (error, _) in
 					if let error = error {
 						NSLog("Error appending review to collection: \(error)")
 					}
 				}
 				if let collectionIndex = self.userCollections.firstIndex(where: {$0.id == collectionId}) {
-					self.userCollections[collectionIndex].reviews[collectionId.uuidString] = movieId ?? 0
+					self.userCollections[collectionIndex].reviews[collectionId.uuidString] = movie?.id ?? 0
 					self.userReviews.append(newReview)
 				}
 				

@@ -8,8 +8,18 @@
 
 import UIKit
 
-class ManageReviewViewController: UIViewController {
+protocol ManageReviewVCDelegate {
+	func setMovieToReview(movieId id: Int)
+}
 
+enum ManageReviewType {
+	case new
+	case newWithMovie(Movie)
+	case existing(Review)
+}
+
+class ManageReviewViewController: UIViewController {
+	
 	//MARK: - IBOutlets
 	
 	@IBOutlet weak var titleBtn: UIButton!
@@ -26,13 +36,35 @@ class ManageReviewViewController: UIViewController {
 	@IBOutlet weak var movieBtn: UIBarButtonItem!
 	
 	//MARK: - Properties
-
+	
 	private var textBtns = [UIButton]()
 	private var textViews = [UITextView]()
 	var firebaseClient: FirebaseClient?
 	var currentcollectionId: UUID?
-	var currentReview: Review?
-	var currentMovieId: Int?
+	var reviewType = ManageReviewType.new
+	private var movieId: Int {
+		switch reviewType {
+		case .newWithMovie(let movie):
+			return movie.id
+		case .existing(let review):
+			if let id = review.movieId { return id }
+			fallthrough
+		default:
+			return 0
+		}
+	}
+	private var movie: Movie? {
+		if case let ManageReviewType.newWithMovie(movie) = reviewType {
+			return movie
+		}
+		return nil
+	}
+	private var review: Review? {
+		if case let ManageReviewType.existing(review) = reviewType {
+			return review
+		}
+		return nil
+	}
 	
 	//MARK: - Life Cycle
 	
@@ -49,10 +81,17 @@ class ManageReviewViewController: UIViewController {
 	
 	@IBAction func saveBtnTapped(_ sender: Any) {
 		guard let collectionId = currentcollectionId, let title = titleTextField.optionalText else { return }
-		firebaseClient?.putReview(collectionId: collectionId, title: title, movieId: currentMovieId, memorableQuotes: quotesTextView.text, sceneDescription: sceneNotesTextView.text, actorNotes: actorNotesTextView.text, cinematographyNotes: cinemaNotesTextView.text, completion: {
+		
+		firebaseClient?.putReview(collectionId: collectionId, reviewId: review?.id, title: title, movie: movie, memorableQuotes: quotesTextView.text, sceneDescription: sceneNotesTextView.text, actorNotes: actorNotesTextView.text, cinematographyNotes: cinemaNotesTextView.text, completion: {
 			print("Review Saved!")
 			self.dismiss(animated: true, completion: nil)
 		})
+	}
+	
+	@IBAction func movieBtnTapped(_ sender: Any) {
+		let searchVC = UIStoryboard(name: "Search", bundle: nil).instantiateInitialViewController() as! DiscoverViewController
+		
+		present(searchVC, animated: true, completion: nil)
 	}
 	
 	@IBAction func collapsableBtnTapped(_ sender: UIButton) {
@@ -76,7 +115,6 @@ class ManageReviewViewController: UIViewController {
 	
 	private func setupViews() {
 		titleTextField.tag = 0
-		titleTextField.isHidden = currentReview == nil ? true : false
 		
 		for index in 0..<textBtns.count {
 			textBtns[index].tag = index
@@ -87,7 +125,7 @@ class ManageReviewViewController: UIViewController {
 		}
 		
 		for index in 0..<textViews.count {
-			if currentReview == nil {
+			if review == nil {
 				textViews[index].isHidden = true
 				textViews[index].text = ""
 			}
@@ -97,13 +135,24 @@ class ManageReviewViewController: UIViewController {
 			textViews[index].layer.masksToBounds = true
 		}
 		
-		if let review = currentReview {
+		titleTextField.isHidden = review == nil ? true : false
+		
+		switch reviewType {
+		case .newWithMovie(let movie):
+			if movie.id > 0 {
+				navigationItem.rightBarButtonItem?.title = "Open Movie"
+			} else {
+				navigationItem.rightBarButtonItem = nil
+			}
+		case .existing(let review):
 			title = "Review"
 			titleTextField.text = review.title
 			quotesTextView.text = review.memorableQuotes
 			sceneNotesTextView.text = review.sceneDescription
 			actorNotesTextView.text = review.actorNotes
 			cinemaNotesTextView.text = review.cinematographyNotes
+		default:
+			break
 		}
 	}
 }

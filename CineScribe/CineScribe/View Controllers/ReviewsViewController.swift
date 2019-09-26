@@ -38,8 +38,9 @@ class ReviewsViewController: UIViewController {
 			manageReviewVC.firebaseClient = firebaseClient
 			manageReviewVC.currentcollectionId = currentCollection?.id
 			
-			if let indexPath = notesCollectionView.indexPathsForSelectedItems?.first {
-				manageReviewVC.currentReview = firebaseClient?.userReviews[indexPath.item]
+			if let indexPath = notesCollectionView.indexPathsForSelectedItems?.first,
+				let review = firebaseClient?.userReviews[indexPath.item]{
+				manageReviewVC.reviewType = ManageReviewType.existing(review)
 			}
 		}
 	}
