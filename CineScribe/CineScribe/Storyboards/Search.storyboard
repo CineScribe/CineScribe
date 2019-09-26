@@ -75,40 +75,39 @@
         <scene sceneID="Pg3-fT-ybQ">
             <objects>
                 <tableViewController id="mQL-fU-dof" customClass="SearchTableViewController" customModule="CineScribe" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tzi-5C-XUe">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tzi-5C-XUe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="701"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MovieSearchCell" id="6CD-mT-66u" customClass="SearchTableViewCell" customModule="CineScribe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6CD-mT-66u" id="33c-Pz-YPg">
-                                    <rect key="frame" x="0.0" y="0.0" width="382.5" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="382.5" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cqO-em-VJR">
-                                            <rect key="frame" x="20" y="10" width="362.5" height="40"/>
+                                            <rect key="frame" x="20" y="20" width="362.5" height="60"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="F9A-Om-SLS">
-                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="7z0-9R-zXz"/>
-                                                        <constraint firstAttribute="height" constant="40" id="emR-W7-HDA"/>
-                                                        <constraint firstAttribute="width" secondItem="F9A-Om-SLS" secondAttribute="height" multiplier="1:1" id="pnc-5n-zIe"/>
+                                                        <constraint firstAttribute="height" constant="60" id="emR-W7-HDA"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyB-iA-VaN">
-                                                    <rect key="frame" x="48" y="0.0" width="266.5" height="40"/>
+                                                    <rect key="frame" x="48" y="0.0" width="266.5" height="60"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zgg-FG-yJh">
-                                                    <rect key="frame" x="322.5" y="0.0" width="40" height="40"/>
+                                                    <rect key="frame" x="322.5" y="0.0" width="40" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="gGj-xH-aof"/>
-                                                        <constraint firstAttribute="height" constant="40" id="nnc-zW-CcY"/>
+                                                        <constraint firstAttribute="height" constant="60" id="nnc-zW-CcY"/>
                                                     </constraints>
                                                     <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <state key="normal" image="plus.circle" catalog="system">
