@@ -85,44 +85,10 @@ class CastTableViewController: UITableViewController {
 		cell.tag = indexPath.row
 
 		if segControl.selectedSegmentIndex == 0 {
-			let castMember = cast[indexPath.row]
-
-			cell.nameLabel.text = castMember.name
-			cell.roleLabel.text = castMember.character
-
-			imageData.fetchImage(for: castMember) { (error, image) in
-				if let error = error {
-					NSLog("Error fetching image for Cast Member: \(error)")
-					return
-				}
-
-				guard let image = image else { fatalError("Could not unwrap image for Cast Member") }
-				if cell.tag == indexPath.row {
-					cell.castImageView.image = image
-				}
-			}
+			cell.castMember = cast[indexPath.row]
 		} else {
-
-			let crewMember = crew[indexPath.row]
-
-			cell.nameLabel.text = crewMember.name
-			cell.roleLabel.text = crewMember.job
-
-			imageData.fetchImage(for: crewMember) { (error, image) in
-				if let error = error {
-					NSLog("Error fetching image for Cast Member: \(error)")
-					return
-				}
-
-				guard let image = image else { fatalError("Could not unwrap image for Crew Member") }
-				if cell.tag == indexPath.row {
-					cell.castImageView.image = image
-				}
-			}
+			cell.castMember = crew[indexPath.row]
 		}
-
-
         return cell
     }
-
 }
