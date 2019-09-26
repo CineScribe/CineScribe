@@ -52,9 +52,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bJE-L4-Utc"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Search Movies" id="OhO-gS-0a9"/>
+                    <navigationItem key="navigationItem" title="Search Movies" id="OhO-gS-0a9">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="gCe-jo-TK5">
+                            <connections>
+                                <action selector="cancelTapped:" destination="guR-ty-NDV" id="oKj-8m-Xdw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="cancelButton" destination="gCe-jo-TK5" id="k3t-8a-s9C"/>
                         <outlet property="movieSearchBar" destination="Tdf-U5-Pnp" id="Wxo-Lg-Pit"/>
                         <outlet property="searchScrollView" destination="8P9-eQ-rfF" id="8Qa-sK-GAW"/>
                         <outlet property="searchStackView" destination="lb3-xZ-uPm" id="ySi-CS-WTS"/>

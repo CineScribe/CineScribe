@@ -10,6 +10,7 @@ import UIKit
 
 protocol SearchTableViewControllerDelegate: AnyObject {
 	func searchTableViewController(_ searchTableViewController: SearchTableViewController, hasResults: Bool)
+	func searchTableViewControllerBeganEditing(_ searchTableViewController: SearchTableViewController, beganEditing: Bool)
 }
 
 class SearchTableViewController: UITableViewController {
@@ -68,6 +69,10 @@ class SearchTableViewController: UITableViewController {
 }
 
 extension SearchTableViewController: UISearchBarDelegate {
+
+	func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+		delegate?.searchTableViewControllerBeganEditing(self, beganEditing: true)
+	}
 
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 		guard let searchQuery = searchBar.text,

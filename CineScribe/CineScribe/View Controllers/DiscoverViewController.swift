@@ -14,6 +14,7 @@ class DiscoverViewController: UIViewController {
 	@IBOutlet var searchStackView: UIStackView!
 	@IBOutlet weak var searchScrollView: UIScrollView!
 	@IBOutlet weak var tableViewContainer: UIView!
+	@IBOutlet weak var cancelButton: UIBarButtonItem!
 
 	let movieController = MovieController.shared
 
@@ -23,6 +24,7 @@ class DiscoverViewController: UIViewController {
 
 	override func viewDidLoad() {
         super.viewDidLoad()
+		cancelButton.isEnabled = false
 
 		searchScrollView.addSubview(searchStackView)
 		searchStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -71,6 +73,14 @@ class DiscoverViewController: UIViewController {
 
 		topRatedCollectionView.delegate = self
     }
+
+	@IBAction func cancelTapped(_ sender: UIBarButtonItem) {
+		tableViewContainer.isHidden = true
+		movieSearchBar.text = ""
+		movieSearchBar.resignFirstResponder()
+		cancelButton.isEnabled = false
+	}
+
     
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if let searchVC = segue.destination as? SearchTableViewController {
@@ -91,11 +101,22 @@ extension DiscoverViewController: LabeledHorizontalCollectionWrapperDelegate {
 }
 
 extension DiscoverViewController: SearchTableViewControllerDelegate {
+	func searchTableViewControllerBeganEditing(_ searchTableViewController: SearchTableViewController, beganEditing: Bool) {
+		if beganEditing == true {
+			cancelButton.isEnabled = true
+		} else {
+			cancelButton.isEnabled = false
+		}
+	}
+
+
 	func searchTableViewController(_ searchTableViewController: SearchTableViewController, hasResults: Bool) {
 		if hasResults {
 			tableViewContainer.isHidden = false
+			cancelButton.isEnabled = true
 		} else {
 			tableViewContainer.isHidden = true
+			cancelButton.isEnabled = false
 		}
 	}
 }
