@@ -16,11 +16,14 @@ class CastTableViewCell: UITableViewCell {
 	@IBOutlet weak var nameLabel: UILabel!
 	@IBOutlet weak var roleLabel: UILabel!
 
-
+	override func prepareForReuse() {
+		super.prepareForReuse()
+		castImageView.image = #imageLiteral(resourceName: "placeholder")
+	}
 
 	override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+		castImageView.layer.cornerRadius = 4
     }
 
 
