@@ -40,16 +40,16 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MfQ-I4-GxD">
-                                                    <rect key="frame" x="40" y="354.5" width="334" height="20.5"/>
+                                                    <rect key="frame" x="40" y="354.5" width="334" height="23.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03g-me-I5k">
-                                                            <rect key="frame" x="0.0" y="0.0" width="318" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="318" height="23.5"/>
                                                             <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apO-y7-avG">
-                                                            <rect key="frame" x="326" y="0.0" width="8" height="20.5"/>
+                                                            <rect key="frame" x="326" y="0.0" width="8" height="23.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -170,6 +170,7 @@
                                         <connections>
                                             <outlet property="movieArtImageView" destination="9oU-l5-shN" id="gYK-AB-H09"/>
                                             <outlet property="noteTitleLabel" destination="lcj-wz-DDs" id="tzs-AF-QS5"/>
+                                            <segue destination="wEu-so-1ru" kind="show" id="hNy-Mo-frl"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -202,10 +203,12 @@
         <!--ManageReview-->
         <scene sceneID="k21-5y-cOm">
             <objects>
-                <viewControllerPlaceholder storyboardName="ManageReview" id="wEu-so-1ru" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tlj-UJ-Cn0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="ManageReview" id="wEu-so-1ru" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="8GO-L8-Pv6"/>
+                </viewControllerPlaceholder>
             </objects>
-            <point key="canvasLocation" x="3275" y="-120"/>
+            <point key="canvasLocation" x="3356" y="131"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="DTd-5b-CQO">
@@ -279,4 +282,7 @@
         <image name="folder.badge.plus" catalog="system" width="64" height="44"/>
         <image name="it_movie" width="2000" height="3000"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="6dj-dc-KVw"/>
+    </inferredMetricsTieBreakers>
 </document>

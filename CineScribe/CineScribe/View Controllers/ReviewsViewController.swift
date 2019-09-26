@@ -37,6 +37,10 @@ class ReviewsViewController: UIViewController {
 			let manageReviewVC = navController.viewControllers.first as? ManageReviewViewController {
 			manageReviewVC.firebaseClient = firebaseClient
 			manageReviewVC.currentcollectionId = currentCollection?.id
+			
+			if let indexPath = notesCollectionView.indexPathsForSelectedItems?.first {
+				manageReviewVC.currentReview = firebaseClient?.userReviews[indexPath.item]
+			}
 		}
 	}
 	

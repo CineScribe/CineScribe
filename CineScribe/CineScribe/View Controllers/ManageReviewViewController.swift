@@ -27,10 +27,11 @@ class ManageReviewViewController: UIViewController {
 	
 	//MARK: - Properties
 
-	var textBtns = [UIButton]()
-	var textViews = [UITextView]()
+	private var textBtns = [UIButton]()
+	private var textViews = [UITextView]()
 	var firebaseClient: FirebaseClient?
 	var currentcollectionId: UUID?
+	var currentReview: Review?
 	var currentMovieId: Int?
 	
 	//MARK: - Life Cycle
@@ -75,7 +76,7 @@ class ManageReviewViewController: UIViewController {
 	
 	private func setupViews() {
 		titleTextField.tag = 0
-		titleTextField.isHidden = true
+		titleTextField.isHidden = currentReview == nil ? true : false
 		
 		for index in 0..<textBtns.count {
 			textBtns[index].tag = index
@@ -86,12 +87,23 @@ class ManageReviewViewController: UIViewController {
 		}
 		
 		for index in 0..<textViews.count {
-			textViews[index].isHidden = true
-			textViews[index].text = ""
+			if currentReview == nil {
+				textViews[index].isHidden = true
+				textViews[index].text = ""
+			}
 			textViews[index].layer.borderWidth = 2
 			textViews[index].layer.borderColor = UIColor.lightGray.cgColor
 			textViews[index].layer.cornerRadius = 10
 			textViews[index].layer.masksToBounds = true
+		}
+		
+		if let review = currentReview {
+			title = "Review"
+			titleTextField.text = review.title
+			quotesTextView.text = review.memorableQuotes
+			sceneNotesTextView.text = review.sceneDescription
+			actorNotesTextView.text = review.actorNotes
+			cinemaNotesTextView.text = review.cinematographyNotes
 		}
 	}
 }
