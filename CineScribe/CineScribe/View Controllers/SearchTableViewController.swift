@@ -56,16 +56,19 @@ class SearchTableViewController: UITableViewController {
     }
 
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+		if segue.identifier == "ShowMovieDetailFromSearchCell" {
+			guard let navController = segue.destination as? UINavigationController,
+				let detailVC = navController.children.first as? MovieDetailViewController,
+				let indexPath = tableView.indexPathForSelectedRow else { return }
+			let movie = searchedMovies[indexPath.row]
+			detailVC.movie = movie
+		}
     }
-    */
-
 }
 
 extension SearchTableViewController: UISearchBarDelegate {
