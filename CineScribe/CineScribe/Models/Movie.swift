@@ -20,6 +20,7 @@ struct Movie: Codable {
     let id: Int
     let title: String
     let overview: String
+	let tagline: String?
 	let credits: MovieCreditResponse?
 	let genres: [MovieGenre]?
 	let releaseDate: String
