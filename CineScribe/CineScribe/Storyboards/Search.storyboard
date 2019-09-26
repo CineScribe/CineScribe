@@ -6,6 +6,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nunito-Bold.ttf">
+            <string>Nunito-Bold</string>
+        </array>
+        <array key="Nunito-Regular.ttf">
+            <string>Nunito-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Search Movies-->
         <scene sceneID="ILi-z2-iit">
@@ -24,11 +32,7 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="xtm-nS-Cmc"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="otA-ui-Etn"/>
                             </scrollView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xrK-P8-xcc">
-                                <rect key="frame" x="0.0" y="196" width="414" height="700"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            </containerView>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cq0-CO-Fzd">
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cq0-CO-Fzd">
                                 <rect key="frame" x="0.0" y="195" width="414" height="701"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
@@ -47,12 +51,6 @@
                             <constraint firstItem="Tdf-U5-Pnp" firstAttribute="leading" secondItem="bJE-L4-Utc" secondAttribute="leading" id="k4j-Eh-WR3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bJE-L4-Utc"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="xrK-P8-xcc"/>
-                                <exclude reference="cq0-CO-Fzd"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Search Movies" id="OhO-gS-0a9"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -60,6 +58,7 @@
                         <outlet property="movieSearchBar" destination="Tdf-U5-Pnp" id="Wxo-Lg-Pit"/>
                         <outlet property="searchScrollView" destination="8P9-eQ-rfF" id="8Qa-sK-GAW"/>
                         <outlet property="searchStackView" destination="lb3-xZ-uPm" id="ySi-CS-WTS"/>
+                        <outlet property="tableViewContainer" destination="cq0-CO-Fzd" id="3Sm-og-uWX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YCp-za-AoE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -74,7 +73,7 @@
         <!--Search Table View Controller-->
         <scene sceneID="Pg3-fT-ybQ">
             <objects>
-                <tableViewController id="mQL-fU-dof" customClass="SearchTableViewController" customModule="CineScribe" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SearchTableViewController" id="mQL-fU-dof" customClass="SearchTableViewController" customModule="CineScribe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tzi-5C-XUe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="701"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -97,12 +96,26 @@
                                                         <constraint firstAttribute="height" constant="60" id="emR-W7-HDA"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyB-iA-VaN">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gK1-tb-t9e">
                                                     <rect key="frame" x="48" y="0.0" width="266.5" height="60"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zyB-iA-VaN">
+                                                            <rect key="frame" x="0.0" y="0.0" width="266.5" height="39.5"/>
+                                                            <fontDescription key="fontDescription" name="Nunito-Bold" family="Nunito" pointSize="18"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tagline" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.65000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="bhx-sO-lMN">
+                                                            <rect key="frame" x="0.0" y="39.5" width="266.5" height="20.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20.5" id="0fp-FR-slM"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="17"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zgg-FG-yJh">
                                                     <rect key="frame" x="322.5" y="0.0" width="40" height="60"/>
                                                     <constraints>
@@ -123,6 +136,12 @@
                                         <constraint firstItem="cqO-em-VJR" firstAttribute="centerY" secondItem="33c-Pz-YPg" secondAttribute="centerY" id="w3Z-DO-7MI"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="addButton" destination="Zgg-FG-yJh" id="RMi-u7-QYT"/>
+                                    <outlet property="movieArtImageView" destination="F9A-Om-SLS" id="XUU-s8-Tdx"/>
+                                    <outlet property="taglineLabel" destination="bhx-sO-lMN" id="hIs-U2-WIw"/>
+                                    <outlet property="titleLabel" destination="zyB-iA-VaN" id="1q9-kY-sar"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
