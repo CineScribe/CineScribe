@@ -26,11 +26,11 @@ struct Movie: Codable {
     let posterPath: String?
 	let backdropPath: String?
 
-	var casts: [MovieCast]? {
+	var casts: [MovieCastOrCrewMember]? {
 		return credits?.cast
 	}
 
-	var crews: [MovieCrew]? {
+	var crews: [MovieCastOrCrewMember]? {
 		return credits?.crew
 	}
 
@@ -45,30 +45,18 @@ struct Movie: Codable {
 
 // MARK: - Credits
 struct MovieCreditResponse: Codable {
-	let cast: [MovieCast]
-	let crew: [MovieCrew]
+	let cast: [MovieCastOrCrewMember]
+	let crew: [MovieCastOrCrewMember]
 }
 
-struct MovieCast: Codable {
-	let character: String
-	let name: String
-
-	let profilePath: String?
-	var profileURL: URL? {
-		guard let profilePath = profilePath else {
-			return nil
-		}
-		return URL(string: "https://image.tmdb.org/t/p/w500\(profilePath)")!
-	}
-}
-
-struct MovieCrew: Codable {
+struct MovieCastOrCrewMember: Codable {
 	let id: Int
-	let job: String
 	let name: String
-	let department: String
-
 	let profilePath: String?
+
+	let character: String?
+	let job: String?
+
 	var profileURL: URL? {
 		guard let profilePath = profilePath else {
 			return nil

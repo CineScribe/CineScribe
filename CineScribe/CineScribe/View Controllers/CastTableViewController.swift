@@ -16,8 +16,8 @@ class CastTableViewController: UITableViewController {
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var segControl: UISegmentedControl!
 
-	var cast: [MovieCast] = []
-	var crew: [MovieCrew] = []
+	var cast: [MovieCastOrCrewMember] = []
+	var crew: [MovieCastOrCrewMember] = []
 
 	var movie: Movie? {
 		didSet {
