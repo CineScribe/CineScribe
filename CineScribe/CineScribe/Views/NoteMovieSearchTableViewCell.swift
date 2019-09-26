@@ -10,15 +10,46 @@ import UIKit
 
 class NoteMovieSearchTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
+	@IBOutlet weak var movieImageView: UIImageView!
+	@IBOutlet weak var titleLabel: UILabel!
+
+	override func prepareForReuse() {
+		super.prepareForReuse()
+		movieImageView.image = #imageLiteral(resourceName: "placeholder")
+	}
+
+	let imageData = ImageData.shared
+	var movie: Movie? {
+		didSet {
+			updateViews()
+		}
+	}
+
+	override func setSelected(_ selected: Bool, animated: Bool) {
+		super.setSelected(selected, animated: animated)
+		accessoryType = selected ? .checkmark : .none
+	}
+	
+	override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+		movieImageView.layer.cornerRadius = 1
+		movieImageView.image = #imageLiteral(resourceName: "placeholder")
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+	private func updateViews() {
+		guard let movie = movie else { return }
+		titleLabel.text = movie.title
 
-        // Configure the view for the selected state
-    }
+		let rowTag = tag
+		imageData.fetchImage(for: movie, imageStyle: .poster) { (error, image) in
+			if let error = error {
+				NSLog("Error fetching poster image for movie search while creating a note: \(error)")
+			}
 
+			guard let image = image else { fatalError("Could not unwrap image for movie search when creating a note") }
+			if self.tag == rowTag {
+				self.movieImageView.image = image
+			}
+		}
+	}
 }
