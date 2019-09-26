@@ -108,9 +108,7 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
                                 <connections>
-                                    <action selector="newNoteButtonTapped:" destination="jIz-f2-GYw" eventType="touchDown" id="XKG-e9-b2h"/>
                                     <action selector="newNoteButtonTapped:" destination="jIz-f2-GYw" eventType="touchUpInside" id="avP-HU-qh7"/>
-                                    <action selector="newNoteButtonTapped:" destination="jIz-f2-GYw" eventType="touchUpOutside" id="fNX-zc-9sd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roI-50-8xs">
