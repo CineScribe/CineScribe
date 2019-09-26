@@ -17,12 +17,22 @@ struct MoviesResponse: Codable {
 }
 
 struct Movie: Codable {
-    let id: Int?
+    let id: Int
     let title: String
     let overview: String
+	let credits: MovieCreditResponse?
+	let genres: [MovieGenre]?
 	let releaseDate: String
     let posterPath: String?
 	let backdropPath: String?
+
+	var casts: [MovieCast]? {
+		return credits?.cast
+	}
+
+	var crews: [MovieCrew]? {
+		return credits?.crew
+	}
 
 	var posterURL: URL {
 		return URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
@@ -42,8 +52,8 @@ struct MovieCreditResponse: Codable {
 struct MovieCast: Codable {
 	let character: String
 	let name: String
-	let profilePath: String?
 
+	let profilePath: String?
 	var profileURL: URL? {
 		guard let profilePath = profilePath else {
 			return nil
@@ -57,12 +67,17 @@ struct MovieCrew: Codable {
 	let job: String
 	let name: String
 	let department: String
-	let profilePath: String?
 
+	let profilePath: String?
 	var profileURL: URL? {
 		guard let profilePath = profilePath else {
 			return nil
 		}
 		return URL(string: "https://image.tmdb.org/t/p/w500\(profilePath)")!
 	}
+}
+
+// MARK: - Genre
+struct MovieGenre: Codable {
+	let name: String
 }
