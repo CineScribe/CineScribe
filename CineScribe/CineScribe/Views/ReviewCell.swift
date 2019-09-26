@@ -1,5 +1,5 @@
 //
-//  NoteCollectionViewCell.swift
+//  ReviewCell.swift
 //  CineScribe
 //
 //  Created by Marlon Raskin on 9/23/19.
@@ -8,16 +8,27 @@
 
 import UIKit
 
-class NoteCollectionViewCell: UICollectionViewCell {
+class ReviewCell: UICollectionViewCell {
 
 	// MARK: - Outlets & Properties
 	@IBOutlet weak var movieArtImageView: UIView!
 	@IBOutlet weak var noteTitleLabel: UILabel!
-
-	override func awakeFromNib() {
-		super.awakeFromNib()
-		movieArtImageView.layer.cornerRadius = 12
+	
+	var review: Review? {
+		didSet {
+			setUI()
+		}
 	}
 
-    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+		setUI()
+    }
+
+	func setUI() {
+		guard let review = review else { return }
+		
+		movieArtImageView.layer.cornerRadius = 12
+		noteTitleLabel.text = review.title
+	}
 }
