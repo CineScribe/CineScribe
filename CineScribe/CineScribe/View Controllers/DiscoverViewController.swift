@@ -13,9 +13,10 @@ class DiscoverViewController: UIViewController {
 	@IBOutlet weak var movieSearchBar: UISearchBar!
 	@IBOutlet var searchStackView: UIStackView!
 	@IBOutlet weak var searchScrollView: UIScrollView!
-	//	private var searchVC: SearchTableViewController?
+	@IBOutlet weak var tableViewContainer: UIView!
+	@IBOutlet weak var cancelButton: UIBarButtonItem!
 
-	let movieController = MovieController()
+	let movieController = MovieController.shared
 
 	let nowPlayingCollectionView = LabeledHorizontalCollectionWrapper()
 	let upcomingCollectionView = LabeledHorizontalCollectionWrapper()
@@ -23,6 +24,7 @@ class DiscoverViewController: UIViewController {
 
 	override func viewDidLoad() {
         super.viewDidLoad()
+		cancelButton.isEnabled = false
 
 		searchScrollView.addSubview(searchStackView)
 		searchStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -71,11 +73,19 @@ class DiscoverViewController: UIViewController {
 
 		topRatedCollectionView.delegate = self
     }
+
+	@IBAction func cancelTapped(_ sender: UIBarButtonItem) {
+		tableViewContainer.isHidden = true
+		movieSearchBar.text = ""
+		movieSearchBar.resignFirstResponder()
+		cancelButton.isEnabled = false
+	}
+
     
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if let searchVC = segue.destination as? SearchTableViewController {
-//			self.searchVC = searchVC
 			movieSearchBar.delegate = searchVC
+			searchVC.delegate = self
 		}
 	}
 }
@@ -86,6 +96,27 @@ extension DiscoverViewController: LabeledHorizontalCollectionWrapperDelegate {
 		guard let movieDetailVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController else { fatalError("Storyboard setup incorrectly") }
 		movieDetailVC.movie = movie
 		navigationController?.pushViewController(movieDetailVC, animated: true)
-		navigationController?.navigationBar.isHidden = true
+//		navigationController?.navigationBar.isHidden = true
+	}
+}
+
+extension DiscoverViewController: SearchTableViewControllerDelegate {
+	func searchTableViewControllerBeganEditing(_ searchTableViewController: SearchTableViewController, beganEditing: Bool) {
+		if beganEditing == true {
+			cancelButton.isEnabled = true
+		} else {
+			cancelButton.isEnabled = false
+		}
+	}
+
+
+	func searchTableViewController(_ searchTableViewController: SearchTableViewController, hasResults: Bool) {
+		if hasResults {
+			tableViewContainer.isHidden = false
+			cancelButton.isEnabled = true
+		} else {
+			tableViewContainer.isHidden = true
+			cancelButton.isEnabled = false
+		}
 	}
 }
