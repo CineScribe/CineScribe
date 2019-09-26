@@ -8,33 +8,51 @@
 
 import UIKit
 
+protocol SearchTableViewControllerDelegate: AnyObject {
+	func searchTableViewController(_ searchTableViewController: SearchTableViewController, hasResults: Bool)
+}
+
 class SearchTableViewController: UITableViewController {
+
+	var searchedMovies: [Movie] = [] {
+		didSet {
+			DispatchQueue.main.async {
+				if self.searchedMovies.count > 0 {
+					self.delegate?.searchTableViewController(self, hasResults: true)
+				} else {
+					self.delegate?.searchTableViewController(self, hasResults: false)
+				}
+				self.tableView.reloadData()
+			}
+		}
+	}
+
+	let movieController = MovieController.shared
+	weak var delegate: SearchTableViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+		tableView.tableFooterView = UIView()
+		tableView.separatorStyle = .none
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+		return searchedMovies.count
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieSearchCell", for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
+
+		cell.tag = indexPath.row
+
+		let movie = searchedMovies[indexPath.row]
+		cell.movie = movie
 
         return cell
     }
-    */
 
 
     /*
@@ -50,5 +68,19 @@ class SearchTableViewController: UITableViewController {
 }
 
 extension SearchTableViewController: UISearchBarDelegate {
-	
+
+	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+		guard let searchQuery = searchBar.text,
+			!searchQuery.isEmpty else { return }
+
+		movieController.searchDatabse(for: searchQuery) { (results) in
+			do {
+				let searchedResults = try results.get()
+				self.searchedMovies = searchedResults
+			} catch {
+				NSLog("Error fetching results for search query: \(error)")
+			}
+		}
+		searchBar.endEditing(true)
+	}
 }

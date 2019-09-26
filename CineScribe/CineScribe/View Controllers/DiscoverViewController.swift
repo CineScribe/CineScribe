@@ -13,9 +13,9 @@ class DiscoverViewController: UIViewController {
 	@IBOutlet weak var movieSearchBar: UISearchBar!
 	@IBOutlet var searchStackView: UIStackView!
 	@IBOutlet weak var searchScrollView: UIScrollView!
-	//	private var searchVC: SearchTableViewController?
+	@IBOutlet weak var tableViewContainer: UIView!
 
-	let movieController = MovieController()
+	let movieController = MovieController.shared
 
 	let nowPlayingCollectionView = LabeledHorizontalCollectionWrapper()
 	let upcomingCollectionView = LabeledHorizontalCollectionWrapper()
@@ -74,8 +74,8 @@ class DiscoverViewController: UIViewController {
     
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if let searchVC = segue.destination as? SearchTableViewController {
-//			self.searchVC = searchVC
 			movieSearchBar.delegate = searchVC
+			searchVC.delegate = self
 		}
 	}
 }
@@ -87,5 +87,15 @@ extension DiscoverViewController: LabeledHorizontalCollectionWrapperDelegate {
 		movieDetailVC.movie = movie
 		navigationController?.pushViewController(movieDetailVC, animated: true)
 		navigationController?.navigationBar.isHidden = true
+	}
+}
+
+extension DiscoverViewController: SearchTableViewControllerDelegate {
+	func searchTableViewController(_ searchTableViewController: SearchTableViewController, hasResults: Bool) {
+		if hasResults {
+			tableViewContainer.isHidden = false
+		} else {
+			tableViewContainer.isHidden = true
+		}
 	}
 }
