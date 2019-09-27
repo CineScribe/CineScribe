@@ -35,7 +35,7 @@ class DiscoverViewController: UIViewController {
     }
     
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if let searchVC = segue.destination as? SearchTableViewController {
+		if let searchVC = segue.destination as? DiscoverySearchTableViewController {
 			movieSearchBar.delegate = searchVC
 			searchVC.delegate = self
 		}
@@ -124,8 +124,8 @@ extension DiscoverViewController: LabeledHorizontalCollectionWrapperDelegate {
 
 //MARK: - Search TableView Delegate
 
-extension DiscoverViewController: SearchTableViewControllerDelegate {
-	func searchTableViewControllerBeganEditing(_ searchTableViewController: SearchTableViewController, beganEditing: Bool) {
+extension DiscoverViewController: DiscoverySearchTableViewControllerDelegate {
+	func searchTableViewControllerBeganEditing(_ searchTableViewController: DiscoverySearchTableViewController, beganEditing: Bool) {
 		if beganEditing == true {
 			cancelButton.isEnabled = true
 		} else {
@@ -134,7 +134,7 @@ extension DiscoverViewController: SearchTableViewControllerDelegate {
 	}
 
 
-	func searchTableViewController(_ searchTableViewController: SearchTableViewController, hasResults: Bool) {
+	func searchTableViewController(_ searchTableViewController: DiscoverySearchTableViewController, hasResults: Bool) {
 		if hasResults {
 			tableViewContainer.isHidden = false
 			cancelButton.isEnabled = true
