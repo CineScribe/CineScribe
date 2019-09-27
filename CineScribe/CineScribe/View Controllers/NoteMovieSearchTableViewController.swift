@@ -37,6 +37,10 @@ class NoteMovieSearchTableViewController: UIViewController {
 		movieSearchBar.delegate = self
     }
     
+	@IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
+		dismiss(animated: true, completion: nil)
+	}
+
 	@IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
 		guard let indexPath = moviesTableView.indexPathForSelectedRow else { return }
 		let movie = searchResults[indexPath.row]

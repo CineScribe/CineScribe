@@ -256,6 +256,11 @@
                         <viewLayoutGuide key="safeArea" id="dE5-dN-0lf"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Movie To Note" id="PB9-vV-vNE">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="m4C-ed-NWR">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="bQk-cr-9zh" id="nf1-wD-4Zc"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title=" " style="plain" id="wI1-Pr-RcI"/>
                             <barButtonItem style="plain" systemItem="save" id="vU3-aW-iM3">
