@@ -30,8 +30,7 @@ final class ImageData {
 				return movie.backdropURL.absoluteString
 			}
 		}()
-
-//		let posterUrlString = movie.posterURL.absoluteString
+		
 		if let image = imageCache.object(forKey: imageUrlString as NSString) as? UIImage {
 			completion(nil, image)
 			return
@@ -56,6 +55,33 @@ final class ImageData {
 			DispatchQueue.main.async {
 				if let image = UIImage(data: data) {
 					self.imageCache.setObject(image, forKey: imageUrlString as NSString)
+					completion(nil, image)
+				}
+			}
+		}.resume()
+	}
+
+
+	public func fetchImgae(with url: URL, completion: @escaping (Error?, UIImage?) -> Void) {
+
+		let urlString = url.absoluteString
+
+		if let image = imageCache.object(forKey: urlString as NSString) as? UIImage {
+			completion(nil, image)
+			return
+		}
+
+		URLSession.shared.dataTask(with: url) { (data, _, error) in
+			if let error = error {
+				completion(error, nil)
+				return
+			}
+
+			guard let data = data else { fatalError("Can't unwrap data for image") }
+
+			DispatchQueue.main.async {
+				if let image = UIImage(data: data) {
+					self.imageCache.setObject(image, forKey: urlString as NSString)
 					completion(nil, image)
 				}
 			}
