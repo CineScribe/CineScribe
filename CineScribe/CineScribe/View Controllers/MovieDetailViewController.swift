@@ -21,7 +21,8 @@ class MovieDetailViewController: UIViewController {
 	 @IBOutlet private weak var dateLabel: UILabel!
 	 @IBOutlet private weak var newNoteButton: UIButton!
 	 @IBOutlet private weak var castButton: UIButton!
-     @IBOutlet var swipeBackGestureRecognizer: UIScreenEdgePanGestureRecognizer!
+     @IBOutlet weak var chevronButton: UIButton!
+     @IBOutlet private var swipeBackGestureRecognizer: UIScreenEdgePanGestureRecognizer!
 
 	let imageData = ImageData.shared
 	let impactGenerator = UIImpactFeedbackGenerator()
@@ -115,6 +116,8 @@ class MovieDetailViewController: UIViewController {
 		newNoteButton.layer.cornerRadius = newNoteButton.frame.height / 2
 		castButton.layer.cornerRadius = castButton.frame.height / 2
 		castButton.backgroundColor = .secondarySystemBackground
+        chevronButton.backgroundColor = .secondarySystemBackground
+        chevronButton.layer.cornerRadius = chevronButton.frame.height / 2
         swipeBackGestureRecognizer.edges = .left
 	}
 

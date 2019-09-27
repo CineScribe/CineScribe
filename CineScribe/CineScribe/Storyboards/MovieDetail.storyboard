@@ -124,9 +124,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ay4-yE-Yth">
-                                <rect key="frame" x="30" y="50" width="11" height="22"/>
+                                <rect key="frame" x="20" y="50" width="38" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ay4-yE-Yth" secondAttribute="height" multiplier="1:1" id="a08-VU-Xe2"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="chevron.compact.left" catalog="system">
+                                <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                <state key="normal" image="chevron.left" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
                                 </state>
                                 <connections>
@@ -140,7 +144,7 @@
                         <constraints>
                             <constraint firstItem="27Z-h2-1wp" firstAttribute="leading" secondItem="GIF-oL-hKQ" secondAttribute="leading" constant="20" id="84s-qs-nLY"/>
                             <constraint firstItem="1uw-Mf-TQV" firstAttribute="trailing" secondItem="GIF-oL-hKQ" secondAttribute="trailing" id="8y5-bA-pue"/>
-                            <constraint firstItem="ay4-yE-Yth" firstAttribute="leading" secondItem="cje-iG-x0W" secondAttribute="leading" constant="30" id="FFk-re-0xf"/>
+                            <constraint firstItem="ay4-yE-Yth" firstAttribute="leading" secondItem="cje-iG-x0W" secondAttribute="leading" constant="20" id="FFk-re-0xf"/>
                             <constraint firstItem="JoL-8B-KIX" firstAttribute="top" secondItem="cje-iG-x0W" secondAttribute="top" id="Fs3-GC-sVn"/>
                             <constraint firstItem="ay4-yE-Yth" firstAttribute="top" secondItem="cje-iG-x0W" secondAttribute="top" constant="50" id="GHb-tC-T0C"/>
                             <constraint firstItem="roI-50-8xs" firstAttribute="top" secondItem="fwc-Vi-HJe" secondAttribute="bottom" constant="54.5" id="RE3-CX-x7q"/>
@@ -166,6 +170,7 @@
                     <connections>
                         <outlet property="backdropImageView" destination="JoL-8B-KIX" id="oFq-yE-cxB"/>
                         <outlet property="castButton" destination="roI-50-8xs" id="hrw-sp-s3f"/>
+                        <outlet property="chevronButton" destination="ay4-yE-Yth" id="zmZ-Bv-jyR"/>
                         <outlet property="dateLabel" destination="wAg-Q5-KDi" id="Cbo-33-wTY"/>
                         <outlet property="fadeView" destination="1uw-Mf-TQV" id="y8C-Un-YXA"/>
                         <outlet property="newNoteButton" destination="EXz-j0-Jj7" id="dIQ-NH-kyP"/>
@@ -435,7 +440,7 @@
     </scenes>
     <resources>
         <image name="calendar" catalog="system" width="64" height="54"/>
-        <image name="chevron.compact.left" catalog="system" width="30" height="64"/>
+        <image name="chevron.left" catalog="system" width="46" height="64"/>
         <image name="pencil" catalog="system" width="64" height="58"/>
     </resources>
 </document>

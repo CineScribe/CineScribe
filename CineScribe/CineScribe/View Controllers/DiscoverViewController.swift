@@ -136,11 +136,15 @@ extension DiscoverViewController: SearchTableViewControllerDelegate {
 
 	func searchTableViewController(_ searchTableViewController: SearchTableViewController, hasResults: Bool) {
 		if hasResults {
-			tableViewContainer.isHidden = false
-			cancelButton.isEnabled = true
+            UIView.animate(withDuration: 0.6, delay: 0.0, options: [.curveEaseInOut], animations: {
+                self.tableViewContainer.isHidden = false
+                self.cancelButton.isEnabled = true
+            }, completion: nil)
 		} else {
-			tableViewContainer.isHidden = true
-			cancelButton.isEnabled = false
+            UIView.animate(withDuration: 0.6, delay: 0.0, options: [.curveEaseInOut], animations: {
+                self.tableViewContainer.isHidden = true
+                self.cancelButton.isEnabled = false
+            }, completion: nil)
 		}
 	}
 }
