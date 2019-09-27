@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ManageReviewVCDelegate {
-	func setMovieToReview(movieId id: Int)
+	func setMovieToReview(movie: Movie)
 }
 
 enum ManageReviewType {
@@ -39,6 +39,7 @@ class ManageReviewViewController: UIViewController {
 	
 	private var textBtns = [UIButton]()
 	private var textViews = [UITextView]()
+	var reviewDelegate: ManageReviewVCDelegate?
 	var firebaseClient: FirebaseClient?
 	var currentcollectionId: UUID?
 	var reviewType = ManageReviewType.new
@@ -71,10 +72,18 @@ class ManageReviewViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		reviewDelegate = self
+		
 		textBtns = [titleBtn, quotesBtn, sceneNotesBtn, actorNotesBtn, cinemaNotesBtn]
 		textViews = [quotesTextView, sceneNotesTextView, actorNotesTextView, cinemaNotesTextView]
 		
 		setupViews()
+	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if let navController = segue.destination as? UINavigationController, let movieSearchVC = navController.children.first as? ReviewMovieSearchTableViewController {
+			movieSearchVC.reviewDelegate = reviewDelegate
+		}
 	}
 	
 	//MARK: - IBActions
@@ -154,5 +163,11 @@ class ManageReviewViewController: UIViewController {
 		default:
 			break
 		}
+	}
+}
+
+extension ManageReviewViewController: ManageReviewVCDelegate {
+	func setMovieToReview(movie: Movie) {
+		reviewType = .newWithMovie(movie)
 	}
 }

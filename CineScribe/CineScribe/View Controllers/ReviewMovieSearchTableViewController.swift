@@ -8,42 +8,49 @@
 
 import UIKit
 
-protocol NoteMovieSearchTableViewControllerDelegate: AnyObject {
-	func noteMovieSearchTableViewController(_ noteMovieSearchTableViewController: ReviewMovieSearchTableViewController, selected movie: Movie)
-}
-
 class ReviewMovieSearchTableViewController: UIViewController {
+	
+	//MARK: - IBOutlets
 	
 	@IBOutlet weak var moviesTableView: UITableView!
 	@IBOutlet weak var movieSearchBar: UISearchBar!
-
-	let movieController = MovieController.shared
-
-	var delegate: NoteMovieSearchTableViewControllerDelegate?
-
-	var searchResults: [Movie] = [] {
+	
+	//MARK: - Properties
+	
+	private let movieController = MovieController.shared
+	var reviewDelegate: ManageReviewVCDelegate?
+	private var searchResults: [Movie] = [] {
 		didSet {
 			DispatchQueue.main.async {
 				self.moviesTableView.reloadData()
 			}
 		}
 	}
-
+	
+	//MARK: - Life Cycle
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		moviesTableView.tableFooterView = UIView()
-		moviesTableView.delegate = self
 		moviesTableView.dataSource = self
 		movieSearchBar.delegate = self
     }
-    
+	
+	//MARK: - IBActions
+	
 	@IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
 		guard let indexPath = moviesTableView.indexPathForSelectedRow else { return }
 		let movie = searchResults[indexPath.row]
-		delegate?.noteMovieSearchTableViewController(self, selected: movie)
+		reviewDelegate?.setMovieToReview(movie: movie)
+		dismiss(animated: true, completion: nil)
 	}
+	
+	//MARK: - Helpers
+	
 
 }
+
+// MARK: - SearchBar Delegate
 
 extension ReviewMovieSearchTableViewController: UISearchBarDelegate {
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -61,7 +68,9 @@ extension ReviewMovieSearchTableViewController: UISearchBarDelegate {
 	}
 }
 
-extension ReviewMovieSearchTableViewController: UITableViewDelegate, UITableViewDataSource {
+// MARK: - TableView DataSource
+
+extension ReviewMovieSearchTableViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return searchResults.count
 	}
