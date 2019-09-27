@@ -13,6 +13,7 @@ struct Collection {
 	let id: UUID
 	let title: String
 	var reviews: [String:Int]
+	var imageUrl: URL?
 	
 	init(id: UUID = UUID(), title: String, reviewIds: [String:Int] = [:]) {
 		self.id = id
@@ -31,12 +32,17 @@ struct Collection {
 		self.id = UUID(uuidString: snapshot.key) ?? UUID()
 		self.title = title
 		self.reviews = reviewIds ?? [:]
+		
+		if let imageUrlString = value["imageUrl"] as? String {
+			self.imageUrl = URL(string: imageUrlString)
+		}
 	}
 	
 	func toDictionary() -> Any {
 		return [
 			"title": title,
-			"reviews": reviews
+			"reviews": reviews,
+			"imageUrl": imageUrl as Any
 		]
 	}
 }

@@ -113,9 +113,9 @@ class FirebaseClient {
 		var newReview: Review
 		
 		if let reviewId = reviewId {
-			newReview = Review(id: reviewId, title: title, movie: movie, memorableQuotes: memorableQuotes, sceneDescription: sceneDescription, actorNotes: actorNotes, cinematographyNotes: cinematographyNotes)
+			newReview = Review(id: reviewId, title: title, collectionId: collectionId, movie: movie, memorableQuotes: memorableQuotes, sceneDescription: sceneDescription, actorNotes: actorNotes, cinematographyNotes: cinematographyNotes)
 		} else {
-			newReview = Review(title: title, movie: movie, memorableQuotes: memorableQuotes, sceneDescription: sceneDescription, actorNotes: actorNotes, cinematographyNotes: cinematographyNotes)
+			newReview = Review(title: title, collectionId: collectionId, movie: movie, memorableQuotes: memorableQuotes, sceneDescription: sceneDescription, actorNotes: actorNotes, cinematographyNotes: cinematographyNotes)
 		}
 		
 		reviewRef.child("\(currentUser.id.uuidString)/\(newReview.id.uuidString)").setValue(newReview.toDictionary()) { (error, _) in
@@ -152,13 +152,13 @@ class FirebaseClient {
 	
 }
 
-#warning("Remove firebase model")
 /*
 {
 	"collections": {
 		"<userUUID>": {
 			"<collectionUUID>": {
 				"title": "<collectionName>",
+				"imageUrl": "<moviePosterUrl>"
 				"reviews": {
 					"<reviewId>": "<movieDbId>",
 					"<reviewId>": "<movieDbId>"
@@ -171,6 +171,7 @@ class FirebaseClient {
 			"<reviewId>": {
 				"movieDbId": "<movieDbId>",
 				"title": "Plot",
+				"imageUrl": "<moviePosterUrl>"
 				"collectionId": "<collectionUUID>"
 			}
 		}
