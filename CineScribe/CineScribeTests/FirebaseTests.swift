@@ -7,8 +7,7 @@
 //
 
 import XCTest
-import CineScribe
-import Firebase
+@testable import CineScribe
 
 class FirebaseTests: XCTestCase {
 	

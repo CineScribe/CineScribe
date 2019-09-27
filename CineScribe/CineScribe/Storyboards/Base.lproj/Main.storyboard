@@ -32,7 +32,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="it_movie" translatesAutoresizingMaskIntoConstraints="NO" id="Nva-2E-ivz">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Nva-2E-ivz">
                                                     <rect key="frame" x="32" y="31" width="350" height="311.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="350" id="5oi-55-oS9"/>
@@ -132,7 +132,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="T0p-iH-htl">
                                                             <rect key="frame" x="0.0" y="0.0" width="170" height="172"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="it_movie" translatesAutoresizingMaskIntoConstraints="NO" id="D2T-8c-DA2">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="D2T-8c-DA2">
                                                                     <rect key="frame" x="0.0" y="0.0" width="170" height="140"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="170" id="LPl-TV-PBO"/>
@@ -151,7 +151,7 @@
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="T0p-iH-htl" firstAttribute="leading" secondItem="9oU-l5-shN" secondAttribute="leading" id="5kB-Lr-Djv"/>
                                                         <constraint firstAttribute="trailing" secondItem="T0p-iH-htl" secondAttribute="trailing" id="OkE-pw-GGn"/>
@@ -168,7 +168,7 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
-                                            <outlet property="movieArtImageView" destination="9oU-l5-shN" id="gYK-AB-H09"/>
+                                            <outlet property="movieArtImageView" destination="D2T-8c-DA2" id="XBl-yL-GBT"/>
                                             <outlet property="noteTitleLabel" destination="lcj-wz-DDs" id="tzs-AF-QS5"/>
                                             <segue destination="wEu-so-1ru" kind="show" id="hNy-Mo-frl"/>
                                         </connections>
@@ -203,10 +203,10 @@
         <!--ManageReview-->
         <scene sceneID="k21-5y-cOm">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tlj-UJ-Cn0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="ManageReview" id="wEu-so-1ru" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="8GO-L8-Pv6"/>
                 </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tlj-UJ-Cn0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3356" y="131"/>
         </scene>
@@ -219,8 +219,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="selectedImageTintColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" systemColor="systemIndigoColor" red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="cnH-z9-M8I" kind="relationship" relationship="viewControllers" id="3KY-67-XxM"/>
@@ -257,13 +257,13 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cnH-z9-M8I" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Lists" image="folder" catalog="system" id="uRq-9g-hy0">
-                        <color key="badgeColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="badgeColor" systemColor="systemIndigoColor" red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="MFB-SF-mSZ">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" systemColor="systemIndigoColor" red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -280,7 +280,7 @@
         <image name="doc.plaintext" catalog="system" width="56" height="64"/>
         <image name="folder" catalog="system" width="64" height="48"/>
         <image name="folder.badge.plus" catalog="system" width="64" height="44"/>
-        <image name="it_movie" width="2000" height="3000"/>
+        <image name="list-placeholder" width="3762" height="5643"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6dj-dc-KVw"/>

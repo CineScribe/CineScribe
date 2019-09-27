@@ -62,7 +62,7 @@ final class ImageData {
 	}
 
 
-	public func fetchImgae(with url: URL, completion: @escaping (Error?, UIImage?) -> Void) {
+	public func fetchImage(with url: URL, completion: @escaping (Error?, UIImage?) -> Void) {
 
 		let urlString = url.absoluteString
 

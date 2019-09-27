@@ -13,8 +13,9 @@ struct Review {
     let id: UUID
     let dateCreated: Date
     let title: String
+	let collectionId: String?
 	let movieId: Int?
-	let movieImageUrl: URL?
+	var movieImageUrl: URL?
     let memorableQuotes: String?
     let sceneDescription: String?
     let actorNotes: String?
@@ -24,6 +25,7 @@ struct Review {
 		self.id = id
 		self.title = title
 		self.dateCreated = dateCreated
+		self.collectionId = collectionId?.uuidString
 		self.movieId = movie?.id
 		self.movieImageUrl = movie?.posterURL
 		self.memorableQuotes = memorableQuotes
@@ -44,18 +46,22 @@ struct Review {
 		self.id = UUID(uuidString: snapshot.key) ?? UUID()
 		self.dateCreated = dateCreated
 		self.title = title
+		self.collectionId = value["collectionId"] as? String
 		self.movieId = value["movieId"] as? Int
-		self.movieImageUrl = value["movieImageUrl"] as? URL
 		self.memorableQuotes = value["memorableQuotes"] as? String
 		self.sceneDescription = value["sceneDescription"] as? String
 		self.actorNotes = value["actorNotes"] as? String
 		self.cinematographyNotes = value["cinematographyNotes"] as? String
+		
+		guard let movieImageUrlString = value["movieImageUrl"] as? String else { return }
+		self.movieImageUrl = URL(string: movieImageUrlString)
 	}
 	
 	func toDictionary() -> Any {
 		return [
 			"dateCreated": dateCreated.transformIsoToString,
 			"title": title,
+			"collectionId": collectionId as Any,
 			"movieId": movieId as Any,
 			"movieImageUrl": movieImageUrl?.absoluteString as Any,
 			"memorableQuotes": memorableQuotes as Any,

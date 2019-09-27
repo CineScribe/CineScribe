@@ -39,7 +39,9 @@
 		37F40E83233D52D800630F90 /* DevInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F40E82233D52D800630F90 /* DevInfoViewController.swift */; };
 		37F40E85233D5AF200630F90 /* NoteMovieSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F40E84233D5AF200630F90 /* NoteMovieSearchTableViewController.swift */; };
 		37F40E87233D5B1000630F90 /* NoteMovieSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F40E86233D5B1000630F90 /* NoteMovieSearchTableViewCell.swift */; };
-		5FF4545D4CE7CA5E8E13BDC3 /* Pods_CineScribe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3913FE1A12FB521BF003354A /* Pods_CineScribe.framework */; };
+		4DE7CBEB9358B4CBC26ED848 /* Pods_CineScribeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19552815AC7A34890E7FCC3B /* Pods_CineScribeTests.framework */; };
+		5FF4545D4CE7CA5E8E13BDC3 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		83C23D0AA82AEC6C39D94EB2 /* Pods_CineScribe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC044AD910CA3C45EBBA45F7 /* Pods_CineScribe.framework */; };
 		B5150FAF233C1534002269C9 /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5150FAE233C1534002269C9 /* ReviewsViewController.swift */; };
 		B5150FC0233C1B67002269C9 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5150FBF233C1B67002269C9 /* ImageData.swift */; };
 		B5150FC8233D2A28002269C9 /* FirebaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5150FC7233D2A28002269C9 /* FirebaseTests.swift */; };
@@ -65,6 +67,8 @@
 
 /* Begin PBXFileReference section */
 		11B7C0A24823808F00BF0FEF /* Pods-CineScribe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CineScribe.release.xcconfig"; path = "Pods/Target Support Files/Pods-CineScribe/Pods-CineScribe.release.xcconfig"; sourceTree = "<group>"; };
+		19552815AC7A34890E7FCC3B /* Pods_CineScribeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CineScribeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		31DBEA811A9245FF2047846A /* Pods-CineScribeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CineScribeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CineScribeTests/Pods-CineScribeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		374B05852339134E0089FB4E /* CineScribe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CineScribe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		374B05882339134E0089FB4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; usesTabs = 0; };
 		374B058A2339134E0089FB4E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,7 +103,7 @@
 		37F40E82233D52D800630F90 /* DevInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevInfoViewController.swift; sourceTree = "<group>"; };
 		37F40E84233D5AF200630F90 /* NoteMovieSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteMovieSearchTableViewController.swift; sourceTree = "<group>"; };
 		37F40E86233D5B1000630F90 /* NoteMovieSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteMovieSearchTableViewCell.swift; sourceTree = "<group>"; };
-		3913FE1A12FB521BF003354A /* Pods_CineScribe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CineScribe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A2C88E7CA9EC3EDCCBFC392 /* Pods-CineScribeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CineScribeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CineScribeTests/Pods-CineScribeTests.release.xcconfig"; sourceTree = "<group>"; };
 		B5150FAE233C1534002269C9 /* ReviewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
 		B5150FBF233C1B67002269C9 /* ImageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		B5150FC5233D2A28002269C9 /* CineScribeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CineScribeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +118,7 @@
 		B56D6F5C233A7C9A00524A9C /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		B56D6F5E233AD8A900524A9C /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		CB64B24A8D9C2404E1783B99 /* Pods-CineScribe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CineScribe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CineScribe/Pods-CineScribe.debug.xcconfig"; sourceTree = "<group>"; };
+		EC044AD910CA3C45EBBA45F7 /* Pods_CineScribe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CineScribe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +126,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FF4545D4CE7CA5E8E13BDC3 /* Pods_CineScribe.framework in Frameworks */,
+				5FF4545D4CE7CA5E8E13BDC3 /* BuildFile in Frameworks */,
+				83C23D0AA82AEC6C39D94EB2 /* Pods_CineScribe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DE7CBEB9358B4CBC26ED848 /* Pods_CineScribeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +273,8 @@
 			children = (
 				CB64B24A8D9C2404E1783B99 /* Pods-CineScribe.debug.xcconfig */,
 				11B7C0A24823808F00BF0FEF /* Pods-CineScribe.release.xcconfig */,
+				31DBEA811A9245FF2047846A /* Pods-CineScribeTests.debug.xcconfig */,
+				9A2C88E7CA9EC3EDCCBFC392 /* Pods-CineScribeTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -273,7 +282,8 @@
 		B1E67E54114BEE4B7565F2BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3913FE1A12FB521BF003354A /* Pods_CineScribe.framework */,
+				19552815AC7A34890E7FCC3B /* Pods_CineScribeTests.framework */,
+				EC044AD910CA3C45EBBA45F7 /* Pods_CineScribe.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -322,9 +332,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B5150FCE233D2A28002269C9 /* Build configuration list for PBXNativeTarget "CineScribeTests" */;
 			buildPhases = (
+				E56BE060254036A3A2201AA9 /* [CP] Check Pods Manifest.lock */,
 				B5150FC1233D2A28002269C9 /* Sources */,
 				B5150FC2233D2A28002269C9 /* Frameworks */,
 				B5150FC3233D2A28002269C9 /* Resources */,
+				3088BC841003084AC75FCB00 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -439,6 +451,23 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
 		};
+		3088BC841003084AC75FCB00 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CineScribeTests/Pods-CineScribeTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CineScribeTests/Pods-CineScribeTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CineScribeTests/Pods-CineScribeTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B8FAF381F17EC7F00251C1C0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -451,6 +480,28 @@
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-CineScribe-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E56BE060254036A3A2201AA9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CineScribeTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -695,12 +746,12 @@
 		};
 		B5150FCC233D2A28002269C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31DBEA811A9245FF2047846A /* Pods-CineScribeTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = PD94K2S3RY;
-				HEADER_SEARCH_PATHS = "${PODS_ROOT}/Firebase/Core/Sources";
 				INFOPLIST_FILE = CineScribeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -717,12 +768,12 @@
 		};
 		B5150FCD233D2A28002269C9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A2C88E7CA9EC3EDCCBFC392 /* Pods-CineScribeTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = PD94K2S3RY;
-				HEADER_SEARCH_PATHS = "${PODS_ROOT}/Firebase/Core/Sources";
 				INFOPLIST_FILE = CineScribeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
