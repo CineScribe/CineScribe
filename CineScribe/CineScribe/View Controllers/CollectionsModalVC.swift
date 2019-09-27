@@ -17,6 +17,7 @@ class CollectionsModalVC: UITableViewController {
 	
 	var firebaseClient = FirebaseClient()
 	var movie: Movie?
+	var isNewReview = false
 	
 	//MARK: - Life Cycle
 	
@@ -31,10 +32,17 @@ class CollectionsModalVC: UITableViewController {
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if let reviewsModalVC = segue.destination as? ReviewsModalVC, let indexPath = tableView.indexPathForSelectedRow {
+		guard let indexPath = tableView.indexPathForSelectedRow else { return }
+		if let reviewsModalVC = segue.destination as? ReviewsModalVC {
 			reviewsModalVC.firebaseClient = firebaseClient
 			reviewsModalVC.currentCollection = firebaseClient.userCollections[indexPath.row]
 			reviewsModalVC.movie = movie
+		} else if let navController = segue.destination as? UINavigationController, let manageReviewVC = navController.children.first as? ManageReviewViewController {
+			manageReviewVC.firebaseClient = firebaseClient
+			manageReviewVC.currentcollectionId = firebaseClient.userCollections[indexPath.row].id
+			
+			guard let movie = movie else { return }
+			manageReviewVC.reviewType = .newWithMovie(movie)
 		}
 	}
 	
@@ -56,5 +64,13 @@ class CollectionsModalVC: UITableViewController {
 		cell.textLabel?.text = firebaseClient.userCollections[indexPath.row].title
 		
 		return cell
+	}
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		if isNewReview {
+			performSegue(withIdentifier: "SegueToManageReview", sender: nil)
+		} else {
+			performSegue(withIdentifier: "SegueToReviewsModal", sender: nil)
+		}
 	}
 }

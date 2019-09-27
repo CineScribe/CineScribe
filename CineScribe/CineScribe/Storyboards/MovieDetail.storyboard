@@ -342,9 +342,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="f7a-aV-eF6" kind="show" id="YCK-8F-AZY"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -353,6 +350,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Collections" id="OYB-wa-afD"/>
+                    <connections>
+                        <segue destination="f7a-aV-eF6" kind="show" identifier="SegueToReviewsModal" id="3vv-QX-BdL"/>
+                        <segue destination="ALo-aq-4K2" kind="show" identifier="SegueToManageReview" id="d2x-P3-U2q"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xt0-EZ-qlb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -398,7 +399,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mk4-cA-fJ7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Tqj-pc-JkQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3639" y="-147"/>
+            <point key="canvasLocation" x="3857" y="-147"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="b06-d6-vc3">
@@ -418,6 +419,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8VD-kD-tyL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1815.9420289855075" y="-147.32142857142856"/>
+        </scene>
+        <!--ManageReview-->
+        <scene sceneID="RPf-Zb-XZ5">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ManageReview" id="ALo-aq-4K2" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hAB-Y2-5Ta"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5ke-0C-7sM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3318" y="-258"/>
         </scene>
     </scenes>
     <resources>
