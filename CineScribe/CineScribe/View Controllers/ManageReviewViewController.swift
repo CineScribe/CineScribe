@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ManageReviewVCDelegate {
-	func setMovieToReview(movieId id: Int)
+	func setMovieToReview(movie: Movie)
 }
 
 enum ManageReviewType {
@@ -39,6 +39,7 @@ class ManageReviewViewController: UIViewController {
 	
 	private var textBtns = [UIButton]()
 	private var textViews = [UITextView]()
+	var reviewDelegate: ManageReviewVCDelegate?
 	var firebaseClient: FirebaseClient?
 	var currentcollectionId: UUID?
 	var reviewType = ManageReviewType.new
@@ -71,13 +72,21 @@ class ManageReviewViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		reviewDelegate = self
+		
 		textBtns = [titleBtn, quotesBtn, sceneNotesBtn, actorNotesBtn, cinemaNotesBtn]
 		textViews = [quotesTextView, sceneNotesTextView, actorNotesTextView, cinemaNotesTextView]
 		
 		setupViews()
 	}
 	
-	// MARK: - IBActions
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if let navController = segue.destination as? UINavigationController, let movieSearchVC = navController.children.first as? ReviewMovieSearchTableViewController {
+			movieSearchVC.reviewDelegate = reviewDelegate
+		}
+	}
+	
+	//MARK: - IBActions
 	
 	@IBAction func saveBtnTapped(_ sender: Any) {
 		guard let collectionId = currentcollectionId, let title = titleTextField.optionalText else { return }
@@ -135,7 +144,7 @@ class ManageReviewViewController: UIViewController {
 			textViews[index].layer.masksToBounds = true
 		}
 		
-		titleTextField.isHidden = review == nil ? true : false
+		titleTextField.becomeFirstResponder()
 		
 		switch reviewType {
 		case .newWithMovie(let movie):
@@ -154,5 +163,12 @@ class ManageReviewViewController: UIViewController {
 		default:
 			break
 		}
+	}
+}
+
+extension ManageReviewViewController: ManageReviewVCDelegate {
+	func setMovieToReview(movie: Movie) {
+		reviewType = .newWithMovie(movie)
+		navigationItem.rightBarButtonItems = nil
 	}
 }

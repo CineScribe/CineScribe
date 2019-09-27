@@ -43,10 +43,10 @@ class NoteMovieSearchTableViewCell: UITableViewCell {
 		let rowTag = tag
 		imageData.fetchImage(for: movie, imageStyle: .poster) { error, image in
 			if let error = error {
-				NSLog("Error fetching poster image for movie search while creating a note: \(error)")
+				NSLog("Error fetching poster image for movie search while creating a review: \(error)")
 			}
 
-			guard let image = image else { fatalError("Could not unwrap image for movie search when creating a note") }
+			guard let image = image else { fatalError("Could not unwrap image for movie search when creating a review") }
 			if self.tag == rowTag {
 				self.movieImageView.image = image
 			}

@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol SearchTableViewControllerDelegate: AnyObject {
-	func searchTableViewController(_ searchTableViewController: SearchTableViewController, hasResults: Bool)
-	func searchTableViewControllerBeganEditing(_ searchTableViewController: SearchTableViewController, beganEditing: Bool)
+protocol DiscoverySearchTableViewControllerDelegate: AnyObject {
+	func searchTableViewController(_ searchTableViewController: DiscoverySearchTableViewController, hasResults: Bool)
+	func searchTableViewControllerBeganEditing(_ searchTableViewController: DiscoverySearchTableViewController, beganEditing: Bool)
 }
 
-class SearchTableViewController: UITableViewController {
+class DiscoverySearchTableViewController: UITableViewController {
 	
 	// MARK: - IBOutlets
 	
@@ -34,7 +34,7 @@ class SearchTableViewController: UITableViewController {
 	}
 
 	let movieController = MovieController.shared
-	weak var delegate: SearchTableViewControllerDelegate?
+	weak var delegate: DiscoverySearchTableViewControllerDelegate?
 	
 	// MARK: - Life Cycle
 	
@@ -83,7 +83,7 @@ class SearchTableViewController: UITableViewController {
 
     // MARK: - SearchBar Delegate
 
-extension SearchTableViewController: UISearchBarDelegate {
+extension DiscoverySearchTableViewController: UISearchBarDelegate {
 
 	func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
 		delegate?.searchTableViewControllerBeganEditing(self, beganEditing: true)
