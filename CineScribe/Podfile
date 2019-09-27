@@ -5,6 +5,7 @@
 target 'CineScribe' do
 	pod 'Firebase/Database'
 	pod 'SwiftLint'
+end
 
 target 'CineScribeTests' do
 	pod 'Firebase/Database'

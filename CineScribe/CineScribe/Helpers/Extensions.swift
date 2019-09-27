@@ -24,7 +24,7 @@ extension String {
 }
 
 extension UIAlertController {
-	open override func viewDidLayoutSubviews() {
+	override open func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		self.view.tintColor = .systemIndigo
 	}

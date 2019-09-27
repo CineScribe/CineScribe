@@ -54,10 +54,18 @@ class ReviewsModalVC: UITableViewController {
 		return cell
 	}
 	
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		guard let collectionId = currentCollection?.id, let review = reviewsWithNoMovie?[indexPath.row] else { return }
-		firebaseClient?.putReview(collectionId: collectionId, reviewId: review.id, title: review.title, movie: movie, memorableQuotes: review.memorableQuotes, sceneDescription: review.sceneDescription, actorNotes: review.actorNotes, cinematographyNotes: review.cinematographyNotes, completion: {
-			self.performSegue(withIdentifier: "unwindToMovieDetailVC", sender: nil)
-		})
-	}
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let collectionId = currentCollection?.id, let review = reviewsWithNoMovie?[indexPath.row] else { return }
+        firebaseClient?.putReview(collectionId: collectionId,
+                                  reviewId: review.id,
+                                  title: review.title,
+                                  movie: movie,
+                                  memorableQuotes: review.memorableQuotes,
+                                  sceneDescription: review.sceneDescription,
+                                  actorNotes: review.actorNotes,
+                                  cinematographyNotes: review.cinematographyNotes,
+                                  completion: {
+            self.performSegue(withIdentifier: "unwindToMovieDetailVC", sender: nil)
+        })
+    }
 }

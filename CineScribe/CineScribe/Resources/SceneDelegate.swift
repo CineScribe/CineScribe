@@ -4,7 +4,7 @@
 //
 //  Created by Marlon Raskin on 9/23/19.
 //  Copyright © 2019 Marlon Raskin. All rights reserved.
-//
+//  swiftlint:disable unused_optional_binding
 
 import UIKit
 

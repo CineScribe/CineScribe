@@ -124,9 +124,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ay4-yE-Yth">
-                                <rect key="frame" x="30" y="50" width="11" height="22"/>
+                                <rect key="frame" x="20" y="50" width="38" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ay4-yE-Yth" secondAttribute="height" multiplier="1:1" id="a08-VU-Xe2"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="chevron.compact.left" catalog="system">
+                                <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                <state key="normal" image="chevron.left" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
                                 </state>
                                 <connections>
@@ -136,10 +140,11 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="27Z-h2-1wp" firstAttribute="leading" secondItem="GIF-oL-hKQ" secondAttribute="leading" constant="20" id="84s-qs-nLY"/>
                             <constraint firstItem="1uw-Mf-TQV" firstAttribute="trailing" secondItem="GIF-oL-hKQ" secondAttribute="trailing" id="8y5-bA-pue"/>
-                            <constraint firstItem="ay4-yE-Yth" firstAttribute="leading" secondItem="cje-iG-x0W" secondAttribute="leading" constant="30" id="FFk-re-0xf"/>
+                            <constraint firstItem="ay4-yE-Yth" firstAttribute="leading" secondItem="cje-iG-x0W" secondAttribute="leading" constant="20" id="FFk-re-0xf"/>
                             <constraint firstItem="JoL-8B-KIX" firstAttribute="top" secondItem="cje-iG-x0W" secondAttribute="top" id="Fs3-GC-sVn"/>
                             <constraint firstItem="ay4-yE-Yth" firstAttribute="top" secondItem="cje-iG-x0W" secondAttribute="top" constant="50" id="GHb-tC-T0C"/>
                             <constraint firstItem="roI-50-8xs" firstAttribute="top" secondItem="fwc-Vi-HJe" secondAttribute="bottom" constant="54.5" id="RE3-CX-x7q"/>
@@ -156,23 +161,33 @@
                             <constraint firstItem="fwc-Vi-HJe" firstAttribute="leading" secondItem="GIF-oL-hKQ" secondAttribute="leading" constant="20" id="sWJ-eL-ukG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GIF-oL-hKQ"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="jdo-Kp-fow" appends="YES" id="jOo-co-f99"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="u0a-8p-s97"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="backdropImageView" destination="JoL-8B-KIX" id="oFq-yE-cxB"/>
                         <outlet property="castButton" destination="roI-50-8xs" id="hrw-sp-s3f"/>
+                        <outlet property="chevronButton" destination="ay4-yE-Yth" id="zmZ-Bv-jyR"/>
                         <outlet property="dateLabel" destination="wAg-Q5-KDi" id="Cbo-33-wTY"/>
                         <outlet property="fadeView" destination="1uw-Mf-TQV" id="y8C-Un-YXA"/>
                         <outlet property="newNoteButton" destination="EXz-j0-Jj7" id="dIQ-NH-kyP"/>
                         <outlet property="overviewLabel" destination="cwS-zE-d77" id="jq3-Hx-S4F"/>
                         <outlet property="posterImageView" destination="27Z-h2-1wp" id="6HR-cD-Dz9"/>
                         <outlet property="releaseDateLabel" destination="OSO-Bi-Jvo" id="M1F-WJ-5SQ"/>
+                        <outlet property="swipeBackGestureRecognizer" destination="jdo-Kp-fow" id="Qks-wa-Pfh"/>
                         <outlet property="titleLabel" destination="afh-9k-zM7" id="Ig9-3B-fAn"/>
                         <segue destination="11e-c3-HP4" kind="presentation" identifier="CollectionsModalVC" id="H56-ch-ClJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IBH-x2-1iy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="jdo-Kp-fow">
+                    <connections>
+                        <action selector="swipeBack:" destination="jIz-f2-GYw" id="coW-G7-FWw"/>
+                    </connections>
+                </screenEdgePanGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1013.0434782608696" y="167.41071428571428"/>
         </scene>
@@ -436,7 +451,7 @@
     </scenes>
     <resources>
         <image name="calendar" catalog="system" width="64" height="54"/>
-        <image name="chevron.compact.left" catalog="system" width="30" height="64"/>
+        <image name="chevron.left" catalog="system" width="46" height="64"/>
         <image name="pencil" catalog="system" width="64" height="58"/>
     </resources>
 </document>

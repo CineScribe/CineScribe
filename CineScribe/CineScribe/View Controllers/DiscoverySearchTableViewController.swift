@@ -19,8 +19,8 @@ class DiscoverySearchTableViewController: UITableViewController {
 	
 	
 	// MARK: - Properties
-	
-	var searchedMovies: [Movie] = [] {
+
+		var searchedMovies: [Movie] = [] {
 		didSet {
 			DispatchQueue.main.async {
 				if !self.searchedMovies.isEmpty {
@@ -42,6 +42,10 @@ class DiscoverySearchTableViewController: UITableViewController {
         super.viewDidLoad()
 		tableView.tableFooterView = UIView()
 		tableView.separatorStyle = .none
+        let blurEffect = UIBlurEffect(style: .systemMaterial)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.view.frame
+        self.tableView.backgroundView = blurEffectView
     }
 
     // MARK: - Navigation
