@@ -150,8 +150,8 @@ class FirebaseClient {
     }
 	
 	private func updateCollection(for collectionId: UUID, review: Review) {
-		let userCollectionRef = self.collectionRef.child(self.currentUser.id.uuidString)
-		let collectionReviewsRef = userCollectionRef.child("\(collectionId)/reviews")
+		let userCollectionRef = self.collectionRef.child("\(self.currentUser.id.uuidString)/\(collectionId)")
+		let collectionReviewsRef = userCollectionRef.child("reviews")
 		
 		userCollectionRef.child("imageUrl").setValue(review.movieImageUrl?.absoluteString) { error, _ in
 			if let error = error {

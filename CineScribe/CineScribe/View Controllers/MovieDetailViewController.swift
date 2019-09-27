@@ -28,6 +28,7 @@ class MovieDetailViewController: UIViewController {
 	let impactGenerator = UIImpactFeedbackGenerator()
 	let selectionGenerator = UISelectionFeedbackGenerator()
 	let layer = CAGradientLayer()
+	private var isNewReview = false
 	var movie: Movie? {
 		didSet {
 			updateViews()
@@ -63,11 +64,13 @@ class MovieDetailViewController: UIViewController {
 	}
 
 	@IBAction func newNoteButtonTapped(_ sender: UIButton) {
-		let optionController = UIAlertController(title: "Choose if you'd like to create a new note from this movie or add to existing note", message: nil, preferredStyle: .actionSheet)
-		let newNoteAction = UIAlertAction(title: "Create New Note", style: .default) { _ in
+		let optionController = UIAlertController(title: "Choose if you'd like to create a new review from this movie or add to existing review", message: nil, preferredStyle: .actionSheet)
+		let newNoteAction = UIAlertAction(title: "Create New Review", style: .default) { (_) in
+			self.isNewReview = true
 			self.performSegue(withIdentifier: "CollectionsModalVC", sender: nil)
 		}
-		let addToExistingAction = UIAlertAction(title: "Add To Existing Note", style: .default) { _ in
+		let addToExistingAction = UIAlertAction(title: "Add To Existing Review", style: .default) { (_) in
+			self.isNewReview = false
 			self.performSegue(withIdentifier: "CollectionsModalVC", sender: nil)
 		}
 		let cancelActions = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -92,6 +95,7 @@ class MovieDetailViewController: UIViewController {
 		if let navController = segue.destination as? UINavigationController,
 			let collectionsModalVC = navController.children.first as? CollectionsModalVC {
 			collectionsModalVC.movie = movie
+			collectionsModalVC.isNewReview = isNewReview
 		}
 	}
 

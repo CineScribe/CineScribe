@@ -8,52 +8,57 @@
 
 import UIKit
 
-protocol NoteMovieSearchTableViewControllerDelegate: AnyObject {
-	func noteMovieSearchTableViewController(_ noteMovieSearchTableViewController: ReviewMovieSearchTableViewController, selected movie: Movie)
-}
-
 class ReviewMovieSearchTableViewController: UIViewController {
 	
-	 @IBOutlet private weak var moviesTableView: UITableView!
-	 @IBOutlet private weak var movieSearchBar: UISearchBar!
-
-	let movieController = MovieController.shared
-
-	weak var delegate: NoteMovieSearchTableViewControllerDelegate?
-
-	var searchResults: [Movie] = [] {
+	//MARK: - IBOutlets
+	
+	@IBOutlet weak var moviesTableView: UITableView!
+	@IBOutlet weak var movieSearchBar: UISearchBar!
+	
+	//MARK: - Properties
+	
+	private let movieController = MovieController.shared
+	var reviewDelegate: ManageReviewVCDelegate?
+	private var searchResults: [Movie] = [] {
 		didSet {
 			DispatchQueue.main.async {
 				self.moviesTableView.reloadData()
 			}
 		}
 	}
-
+	
+	//MARK: - Life Cycle
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		moviesTableView.tableFooterView = UIView()
-		moviesTableView.delegate = self
 		moviesTableView.dataSource = self
 		movieSearchBar.delegate = self
+		
+		movieSearchBar.becomeFirstResponder()
     }
-    
-	@IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
-		dismiss(animated: true, completion: nil)
-	}
-
+	
+	//MARK: - IBActions
+	
 	@IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
 		guard let indexPath = moviesTableView.indexPathForSelectedRow else { return }
 		let movie = searchResults[indexPath.row]
-		delegate?.noteMovieSearchTableViewController(self, selected: movie)
+		reviewDelegate?.setMovieToReview(movie: movie)
+		dismiss(animated: true, completion: nil)
 	}
+	
+	//MARK: - Helpers
+	
 
 }
+
+// MARK: - SearchBar Delegate
 
 extension ReviewMovieSearchTableViewController: UISearchBarDelegate {
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 		guard let searchQuery = movieSearchBar.text else { return }
 
-		movieController.searchDatabse(for: searchQuery) { results in
+		movieController.searchDatabse(for: searchQuery) { (results) in
 			do {
 				let movies = try results.get()
 				self.searchResults = movies
@@ -65,7 +70,9 @@ extension ReviewMovieSearchTableViewController: UISearchBarDelegate {
 	}
 }
 
-extension ReviewMovieSearchTableViewController: UITableViewDelegate, UITableViewDataSource {
+// MARK: - TableView DataSource
+
+extension ReviewMovieSearchTableViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return searchResults.count
 	}
