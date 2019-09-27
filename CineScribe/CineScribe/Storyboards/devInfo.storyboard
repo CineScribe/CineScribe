@@ -41,7 +41,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jeff" translatesAutoresizingMaskIntoConstraints="NO" id="Rmo-58-K4I">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Jeff" translatesAutoresizingMaskIntoConstraints="NO" id="Rmo-58-K4I">
                                                         <rect key="frame" x="0.0" y="28.5" width="180" height="180"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="Rmo-58-K4I" secondAttribute="height" multiplier="1:1" id="T34-dz-kso"/>
@@ -113,7 +113,6 @@
         <!--Dev / Info-->
         <scene sceneID="LQv-mF-4lb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="C9r-A8-q21" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rkK-19-ch4" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Dev / Info" image="circle.bottomthird.split" catalog="system" id="wgM-CI-SLN"/>
                     <toolbarItems/>
@@ -128,13 +127,14 @@
                         <segue destination="6YB-1S-Zch" kind="relationship" relationship="rootViewController" id="Ky9-Rj-ZQB"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C9r-A8-q21" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-39.130434782608695" y="132.58928571428572"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Jeff" width="400" height="400"/>
         <image name="circle.bottomthird.split" catalog="system" width="64" height="62"/>
-        <image name="jeff" width="400" height="400"/>
         <image name="marlon" width="1024" height="1024"/>
         <image name="tmdbLogo" width="408" height="161"/>
     </resources>

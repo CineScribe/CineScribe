@@ -20,22 +20,22 @@ enum ManageReviewType {
 
 class ManageReviewViewController: UIViewController {
 	
-	//MARK: - IBOutlets
+	// MARK: - IBOutlets
 	
-	@IBOutlet weak var titleBtn: UIButton!
-	@IBOutlet weak var quotesBtn: UIButton!
-	@IBOutlet weak var sceneNotesBtn: UIButton!
-	@IBOutlet weak var actorNotesBtn: UIButton!
-	@IBOutlet weak var cinemaNotesBtn: UIButton!
-	@IBOutlet weak var titleTextField: UITextField!
-	@IBOutlet weak var quotesTextView: UITextView!
-	@IBOutlet weak var sceneNotesTextView: UITextView!
-	@IBOutlet weak var actorNotesTextView: UITextView!
-	@IBOutlet weak var cinemaNotesTextView: UITextView!
-	@IBOutlet weak var saveBtn: UIBarButtonItem!
-	@IBOutlet weak var movieBtn: UIBarButtonItem!
+	 @IBOutlet private weak var titleBtn: UIButton!
+	 @IBOutlet private weak var quotesBtn: UIButton!
+	 @IBOutlet private weak var sceneNotesBtn: UIButton!
+	 @IBOutlet private weak var actorNotesBtn: UIButton!
+	 @IBOutlet private weak var cinemaNotesBtn: UIButton!
+	 @IBOutlet private weak var titleTextField: UITextField!
+	 @IBOutlet private weak var quotesTextView: UITextView!
+	 @IBOutlet private weak var sceneNotesTextView: UITextView!
+	 @IBOutlet private weak var actorNotesTextView: UITextView!
+	 @IBOutlet private weak var cinemaNotesTextView: UITextView!
+	 @IBOutlet private weak var saveBtn: UIBarButtonItem!
+	 @IBOutlet private weak var movieBtn: UIBarButtonItem!
 	
-	//MARK: - Properties
+	// MARK: - Properties
 	
 	private var textBtns = [UIButton]()
 	private var textViews = [UITextView]()
@@ -48,7 +48,9 @@ class ManageReviewViewController: UIViewController {
 		case .newWithMovie(let movie):
 			return movie.id
 		case .existing(let review):
-			if let id = review.movieId { return id }
+			if let id = review.movieId {
+                return id
+            }
 			fallthrough
 		default:
 			return 0
@@ -67,7 +69,7 @@ class ManageReviewViewController: UIViewController {
 		return nil
 	}
 	
-	//MARK: - Life Cycle
+	// MARK: - Life Cycle
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -88,17 +90,25 @@ class ManageReviewViewController: UIViewController {
 	
 	//MARK: - IBActions
 	
-	@IBAction func saveBtnTapped(_ sender: Any) {
-		guard let collectionId = currentcollectionId, let title = titleTextField.optionalText else { return }
-		
-		firebaseClient?.putReview(collectionId: collectionId, reviewId: review?.id, title: title, movie: movie, memorableQuotes: quotesTextView.text, sceneDescription: sceneNotesTextView.text, actorNotes: actorNotesTextView.text, cinematographyNotes: cinemaNotesTextView.text, completion: {
-			print("Review Saved!")
-			self.dismiss(animated: true, completion: nil)
-		})
-	}
+    @IBAction func saveBtnTapped(_ sender: Any) {
+        guard let collectionId = currentcollectionId, let title = titleTextField.optionalText else { return }
+
+        firebaseClient?.putReview(collectionId: collectionId,
+                                  reviewId: review?.id,
+                                  title: title,
+                                  movie: movie,
+                                  memorableQuotes: quotesTextView.text,
+                                  sceneDescription: sceneNotesTextView.text,
+                                  actorNotes: actorNotesTextView.text,
+                                  cinematographyNotes: cinemaNotesTextView.text,
+                                  completion: {
+            print("Review Saved!")
+            self.dismiss(animated: true, completion: nil)
+        })
+    }
 	
 	@IBAction func movieBtnTapped(_ sender: Any) {
-		let searchVC = UIStoryboard(name: "Search", bundle: nil).instantiateInitialViewController() as! DiscoverViewController
+        guard let searchVC = UIStoryboard(name: "Search", bundle: nil).instantiateInitialViewController() as? DiscoverViewController else { return }
 		
 		present(searchVC, animated: true, completion: nil)
 	}
@@ -120,7 +130,7 @@ class ManageReviewViewController: UIViewController {
 		}
 	}
 	
-	//MARK: - Helpers
+	// MARK: - Helpers
 	
 	private func setupViews() {
 		titleTextField.tag = 0

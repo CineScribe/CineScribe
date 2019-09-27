@@ -10,16 +10,16 @@ import UIKit
 
 class ReviewsViewController: UIViewController {
 
-	//MARK: - IBOutlets
+	// MARK: - IBOutlets
 	
-	@IBOutlet weak var notesCollectionView: UICollectionView!
+	 @IBOutlet private weak var notesCollectionView: UICollectionView!
 	
-	//MARK: - Properties
+	// MARK: - Properties
 	
 	var firebaseClient: FirebaseClient?
 	var currentCollection: Collection?
 	
-	//MARK: - Life Cycle
+	// MARK: - Life Cycle
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -29,6 +29,7 @@ class ReviewsViewController: UIViewController {
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 		fetchReviews()
 	}
 	
@@ -39,16 +40,16 @@ class ReviewsViewController: UIViewController {
 			manageReviewVC.currentcollectionId = currentCollection?.id
 			
 			if let indexPath = notesCollectionView.indexPathsForSelectedItems?.first,
-				let review = firebaseClient?.userReviews[indexPath.item]{
+				let review = firebaseClient?.userReviews[indexPath.item] {
 				manageReviewVC.reviewType = ManageReviewType.existing(review)
 			}
 		}
 	}
 	
-	//MARK: - IBActions
+	// MARK: - IBActions
 	
 	
-	//MARK: - Helpers
+	// MARK: - Helpers
 	
 	private func fetchReviews() {
 		guard let collection = currentCollection else { return }

@@ -8,18 +8,21 @@
 
 import UIKit
 
+
 class MovieDetailViewController: UIViewController {
 
 	// MARK: - Properties & Outlets
-	@IBOutlet weak var backdropImageView: UIImageView!
-	@IBOutlet weak var posterImageView: UIImageView!
-	@IBOutlet weak var fadeView: UIView!
-	@IBOutlet weak var titleLabel: UILabel!
-	@IBOutlet weak var releaseDateLabel: UILabel!
-	@IBOutlet weak var overviewLabel: UILabel!
-	@IBOutlet weak var dateLabel: UILabel!
-	@IBOutlet weak var newNoteButton: UIButton!
-	@IBOutlet weak var castButton: UIButton!
+	 @IBOutlet private weak var backdropImageView: UIImageView!
+	 @IBOutlet private weak var posterImageView: UIImageView!
+	 @IBOutlet private weak var fadeView: UIView!
+	 @IBOutlet private weak var titleLabel: UILabel!
+	 @IBOutlet private weak var releaseDateLabel: UILabel!
+	 @IBOutlet private weak var overviewLabel: UILabel!
+	 @IBOutlet private weak var dateLabel: UILabel!
+	 @IBOutlet private weak var newNoteButton: UIButton!
+	 @IBOutlet private weak var castButton: UIButton!
+     @IBOutlet private weak var chevronButton: UIButton!
+     @IBOutlet private var swipeBackGestureRecognizer: UIScreenEdgePanGestureRecognizer!
 
 	let imageData = ImageData.shared
 	let impactGenerator = UIImpactFeedbackGenerator()
@@ -32,19 +35,32 @@ class MovieDetailViewController: UIViewController {
 		}
 	}
 
-	override func viewWillLayoutSubviews() {
-		super.viewWillLayoutSubviews()
-		setUI()
-	}
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 		setUI()
 		updateViews()
 		title = ""
+		posterImageView.image = UIImage(named: "poster-placeholder")
+		backdropImageView.image = UIImage(named: "backdrop-placeholder")
     }
 	
-	@IBAction func unwindToMovieDetailVC(_ unwindSegue: UIStoryboardSegue) {
+    @IBAction func swipeBack(_ sender: UIScreenEdgePanGestureRecognizer) {
+        if swipeBackGestureRecognizer.state == .began {
+            navigationController?.popToRootViewController(animated: true)
+        }
+    }
+
+    @IBAction func unwindToMovieDetailVC(_ unwindSegue: UIStoryboardSegue) {
 	}
 
 	@IBAction func newNoteButtonTapped(_ sender: UIButton) {
@@ -84,7 +100,6 @@ class MovieDetailViewController: UIViewController {
 	}
 
 
-
 	// MARK: - Functions
 	private func setUI() {
 		fadeView.backgroundColor = .clear
@@ -105,6 +120,9 @@ class MovieDetailViewController: UIViewController {
 		newNoteButton.layer.cornerRadius = newNoteButton.frame.height / 2
 		castButton.layer.cornerRadius = castButton.frame.height / 2
 		castButton.backgroundColor = .secondarySystemBackground
+        chevronButton.backgroundColor = .secondarySystemBackground
+        chevronButton.layer.cornerRadius = chevronButton.frame.height / 2
+        swipeBackGestureRecognizer.edges = .left
 	}
 
 	private func updateViews() {
@@ -114,7 +132,8 @@ class MovieDetailViewController: UIViewController {
 		overviewLabel.text = movie.overview
 		dateLabel.text = movie.releaseDate
 
-		imageData.fetchImage(for: movie, imageStyle: .poster) { (error, posterImage) in
+
+		imageData.fetchImage(for: movie, imageStyle: .poster) { error, posterImage in
 			if let error = error {
 				NSLog("Error getting poster image: \(error)")
 			}
@@ -123,7 +142,7 @@ class MovieDetailViewController: UIViewController {
 			self.posterImageView.image = image
 		}
 
-		imageData.fetchImage(for: movie, imageStyle: .backdrop) { (error, backdropImage) in
+		imageData.fetchImage(for: movie, imageStyle: .backdrop) { error, backdropImage in
 			if let error = error {
 				NSLog("Error getting backdrop image: \(error)")
 			}

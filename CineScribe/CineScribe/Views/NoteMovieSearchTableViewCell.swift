@@ -10,8 +10,8 @@ import UIKit
 
 class NoteMovieSearchTableViewCell: UITableViewCell {
 
-	@IBOutlet weak var movieImageView: UIImageView!
-	@IBOutlet weak var titleLabel: UILabel!
+	 @IBOutlet private weak var movieImageView: UIImageView!
+	 @IBOutlet private weak var titleLabel: UILabel!
 
 	override func prepareForReuse() {
 		super.prepareForReuse()
@@ -41,7 +41,7 @@ class NoteMovieSearchTableViewCell: UITableViewCell {
 		titleLabel.text = movie.title
 
 		let rowTag = tag
-		imageData.fetchImage(for: movie, imageStyle: .poster) { (error, image) in
+		imageData.fetchImage(for: movie, imageStyle: .poster) { error, image in
 			if let error = error {
 				NSLog("Error fetching poster image for movie search while creating a review: \(error)")
 			}

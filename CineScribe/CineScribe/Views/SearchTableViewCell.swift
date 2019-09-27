@@ -18,9 +18,9 @@ class SearchTableViewCell: UITableViewCell {
 		}
 	}
 
-	@IBOutlet weak var movieArtImageView: UIImageView!
-	@IBOutlet weak var titleLabel: UILabel!
-	@IBOutlet weak var overViewLabel: UILabel!
+	 @IBOutlet private weak var movieArtImageView: UIImageView!
+	 @IBOutlet private weak var titleLabel: UILabel!
+	 @IBOutlet private weak var overViewLabel: UILabel!
 
 	override func prepareForReuse() {
 		super.prepareForReuse()
@@ -30,6 +30,7 @@ class SearchTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 		movieArtImageView.layer.cornerRadius = 1
+		movieArtImageView.image = UIImage(named: "placeholder")
     }
 
 	private func updateViews() {
@@ -38,7 +39,7 @@ class SearchTableViewCell: UITableViewCell {
 		overViewLabel.text = movie.overview
 
 		let rowTag = tag
-		imageData.fetchImage(for: movie, imageStyle: .poster) { (error, image) in
+		imageData.fetchImage(for: movie, imageStyle: .poster) { error, image in
 			if let error = error {
 				NSLog("Error fetching Poster Image for movie in Search Cell: \(error)")
 				return

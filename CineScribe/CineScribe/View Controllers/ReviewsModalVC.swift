@@ -10,17 +10,17 @@ import UIKit
 
 class ReviewsModalVC: UITableViewController {
 
-	//MARK: - IBOutlets
+	// MARK: - IBOutlets
 	
 	
-	//MARK: - Properties
+	// MARK: - Properties
 	
 	var firebaseClient: FirebaseClient?
 	var currentCollection: Collection?
 	var movie: Movie?
 	private var reviewsWithNoMovie: [Review]?
 	
-	//MARK: - Life Cycle
+	// MARK: - Life Cycle
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -29,15 +29,15 @@ class ReviewsModalVC: UITableViewController {
 		
 		guard let collection = currentCollection else { return }
 		firebaseClient?.getReviews(from: collection, completion: {
-			self.reviewsWithNoMovie = self.firebaseClient?.userReviews.filter({$0.movieId ?? 0 <= 0})
+			self.reviewsWithNoMovie = self.firebaseClient?.userReviews.filter({ $0.movieId ?? 0 <= 0 })
 			self.tableView.reloadData()
 		})
 	}
 	
-	//MARK: - IBActions
+	// MARK: - IBActions
 	
 	
-	//MARK: - Helpers
+	// MARK: - Helpers
 	
 	
 	// MARK: - Table view data source
@@ -54,10 +54,18 @@ class ReviewsModalVC: UITableViewController {
 		return cell
 	}
 	
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		guard let collectionId = currentCollection?.id, let review = reviewsWithNoMovie?[indexPath.row] else { return }
-		firebaseClient?.putReview(collectionId: collectionId, reviewId: review.id, title: review.title, movie: movie, memorableQuotes: review.memorableQuotes, sceneDescription: review.sceneDescription, actorNotes: review.actorNotes, cinematographyNotes: review.cinematographyNotes, completion: {
-			self.performSegue(withIdentifier: "unwindToMovieDetailVC", sender: nil)
-		})
-	}
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let collectionId = currentCollection?.id, let review = reviewsWithNoMovie?[indexPath.row] else { return }
+        firebaseClient?.putReview(collectionId: collectionId,
+                                  reviewId: review.id,
+                                  title: review.title,
+                                  movie: movie,
+                                  memorableQuotes: review.memorableQuotes,
+                                  sceneDescription: review.sceneDescription,
+                                  actorNotes: review.actorNotes,
+                                  cinematographyNotes: review.cinematographyNotes,
+                                  completion: {
+            self.performSegue(withIdentifier: "unwindToMovieDetailVC", sender: nil)
+        })
+    }
 }

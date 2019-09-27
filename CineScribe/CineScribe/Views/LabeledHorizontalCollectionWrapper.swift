@@ -4,19 +4,19 @@
 //
 //  Created by Marlon Raskin on 9/24/19.
 //  Copyright © 2019 Marlon Raskin. All rights reserved.
-//
+//  swiftlint:disable private_outlet
 
 import UIKit
 
-protocol LabeledHorizontalCollectionWrapperDelegate {
+protocol LabeledHorizontalCollectionWrapperDelegate: AnyObject {
 	func labeledCollectionShowDetail(_ collection: LabeledHorizontalCollectionWrapper, for movie: Movie)
 }
 
 class LabeledHorizontalCollectionWrapper: UIView {
 
 	@IBOutlet var contentView: UIView!
-	@IBOutlet weak var moviesDiscoverCollectionView: UICollectionView!
-	@IBOutlet weak var collectionViewTitle: UILabel!
+	 @IBOutlet private weak var moviesDiscoverCollectionView: UICollectionView!
+	 @IBOutlet private weak var collectionViewTitle: UILabel!
 
 	let imageData = ImageData.shared
 
@@ -30,7 +30,7 @@ class LabeledHorizontalCollectionWrapper: UIView {
 
 	var movie: Movie?
 
-	var delegate: LabeledHorizontalCollectionWrapperDelegate?
+	weak var delegate: LabeledHorizontalCollectionWrapperDelegate?
 
 	var title: String {
 		get { return collectionViewTitle.text ?? "" }
@@ -77,7 +77,7 @@ extension LabeledHorizontalCollectionWrapper: UICollectionViewDelegate, UICollec
 		discoverCell.movieTitleLabel.text = movie.title
 		discoverCell.tag = indexPath.item
 
-		imageData.fetchImage(for: movie, imageStyle: .poster) { (error, image) in
+		imageData.fetchImage(for: movie, imageStyle: .poster) { error, image in
 			if let error = error {
 				NSLog("Error getting character image: \(error)")
 			}

@@ -85,7 +85,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tzi-5C-XUe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="701"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MovieSearchCell" id="6CD-mT-66u" customClass="SearchTableViewCell" customModule="CineScribe" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="100"/>
@@ -116,13 +116,21 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tagline" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.65000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="bhx-sO-lMN">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tagline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="bhx-sO-lMN">
                                                             <rect key="frame" x="0.0" y="30" width="314.5" height="30"/>
                                                             <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="16"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="bhx-sO-lMN" secondAttribute="trailing" id="6Zz-47-CZs"/>
+                                                        <constraint firstItem="bhx-sO-lMN" firstAttribute="leading" secondItem="gK1-tb-t9e" secondAttribute="leading" id="863-RA-hWu"/>
+                                                        <constraint firstItem="zyB-iA-VaN" firstAttribute="top" secondItem="gK1-tb-t9e" secondAttribute="top" id="SEk-OH-liC"/>
+                                                        <constraint firstAttribute="bottom" secondItem="bhx-sO-lMN" secondAttribute="bottom" id="U9K-ce-bqo"/>
+                                                        <constraint firstAttribute="trailing" secondItem="zyB-iA-VaN" secondAttribute="trailing" id="pHq-mj-rih"/>
+                                                        <constraint firstItem="zyB-iA-VaN" firstAttribute="leading" secondItem="gK1-tb-t9e" secondAttribute="leading" id="qPW-CB-ktv"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                         </stackView>
@@ -133,6 +141,7 @@
                                         <constraint firstItem="cqO-em-VJR" firstAttribute="centerY" secondItem="33c-Pz-YPg" secondAttribute="centerY" id="w3Z-DO-7MI"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="movieArtImageView" destination="F9A-Om-SLS" id="XUU-s8-Tdx"/>
                                     <outlet property="overViewLabel" destination="bhx-sO-lMN" id="hIs-U2-WIw"/>

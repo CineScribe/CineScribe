@@ -44,7 +44,7 @@ final class ImageData {
 			}
 		}()
 
-		URLSession.shared.dataTask(with: imageURL) { (data, _, error) in
+		URLSession.shared.dataTask(with: imageURL) { data, _, error in
 			if let error = error {
 				completion(error, nil)
 				return
@@ -71,7 +71,7 @@ final class ImageData {
 			return
 		}
 
-		URLSession.shared.dataTask(with: url) { (data, _, error) in
+		URLSession.shared.dataTask(with: url) { data, _, error in
 			if let error = error {
 				completion(error, nil)
 				return
@@ -98,7 +98,7 @@ final class ImageData {
 			return
 		}
 
-		URLSession.shared.dataTask(with: url) { (data, _, error) in
+		URLSession.shared.dataTask(with: url) { data, _, error in
 			if let error = error {
 				completion(error, nil)
 				return

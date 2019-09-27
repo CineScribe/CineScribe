@@ -15,15 +15,15 @@ protocol DiscoverySearchTableViewControllerDelegate: AnyObject {
 
 class DiscoverySearchTableViewController: UITableViewController {
 	
-	//MARK: - IBOutlets
+	// MARK: - IBOutlets
 	
 	
-	//MARK: - Properties
-	
-	var searchedMovies: [Movie] = [] {
+	// MARK: - Properties
+
+		var searchedMovies: [Movie] = [] {
 		didSet {
 			DispatchQueue.main.async {
-				if self.searchedMovies.count > 0 {
+				if !self.searchedMovies.isEmpty {
 					self.delegate?.searchTableViewController(self, hasResults: true)
 				} else {
 					self.delegate?.searchTableViewController(self, hasResults: false)
@@ -36,12 +36,16 @@ class DiscoverySearchTableViewController: UITableViewController {
 	let movieController = MovieController.shared
 	weak var delegate: DiscoverySearchTableViewControllerDelegate?
 	
-	//MARK: - Life Cycle
+	// MARK: - Life Cycle
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		tableView.tableFooterView = UIView()
 		tableView.separatorStyle = .none
+        let blurEffect = UIBlurEffect(style: .systemMaterial)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.view.frame
+        self.tableView.backgroundView = blurEffectView
     }
 
     // MARK: - Navigation
@@ -56,10 +60,10 @@ class DiscoverySearchTableViewController: UITableViewController {
 		}
     }
 	
-	//MARK: - IBActions
+	// MARK: - IBActions
 	
 	
-	//MARK: - Helpers
+	// MARK: - Helpers
 	
 	
 	// MARK: - Table view data source
@@ -81,7 +85,7 @@ class DiscoverySearchTableViewController: UITableViewController {
     }
 }
 
-//MARK: - SearchBar Delegate
+    // MARK: - SearchBar Delegate
 
 extension DiscoverySearchTableViewController: UISearchBarDelegate {
 
@@ -93,7 +97,7 @@ extension DiscoverySearchTableViewController: UISearchBarDelegate {
 		guard let searchQuery = searchBar.text,
 			!searchQuery.isEmpty else { return }
 
-		movieController.searchDatabse(for: searchQuery) { (results) in
+		movieController.searchDatabse(for: searchQuery) { results in
 			do {
 				let searchedResults = try results.get()
 				self.searchedMovies = searchedResults

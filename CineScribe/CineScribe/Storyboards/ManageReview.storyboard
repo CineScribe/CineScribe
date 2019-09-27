@@ -155,12 +155,12 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="New Review" id="yin-R1-gax">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="save" id="Hpu-0z-EjD">
+                        <barButtonItem key="leftBarButtonItem" systemItem="save" id="Hpu-0z-EjD">
                             <connections>
                                 <action selector="saveBtnTapped:" destination="fNS-3d-cdu" id="g5e-ls-gT6"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Choose Movie" style="plain" id="rSM-7c-ing">
+                        <barButtonItem key="rightBarButtonItem" title="Choose Movie" id="rSM-7c-ing">
                             <connections>
                                 <segue destination="iDA-0d-t3A" kind="presentation" id="Faz-yI-EOC"/>
                             </connections>
@@ -257,8 +257,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add Movie To Review" id="PB9-vV-vNE">
                         <rightBarButtonItems>
-                            <barButtonItem title=" " style="plain" id="wI1-Pr-RcI"/>
-                            <barButtonItem style="plain" systemItem="save" id="vU3-aW-iM3">
+                            <barButtonItem title=" " id="wI1-Pr-RcI"/>
+                            <barButtonItem systemItem="save" id="vU3-aW-iM3">
                                 <connections>
                                     <action selector="saveButtonTapped:" destination="bQk-cr-9zh" id="Oif-c1-xZs"/>
                                 </connections>

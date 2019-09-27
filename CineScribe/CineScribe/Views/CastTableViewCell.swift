@@ -18,9 +18,9 @@ class CastTableViewCell: UITableViewCell {
 		}
 	}
 
-	@IBOutlet weak var castImageView: UIImageView!
-	@IBOutlet weak var nameLabel: UILabel!
-	@IBOutlet weak var roleLabel: UILabel!
+	 @IBOutlet private weak var castImageView: UIImageView!
+	 @IBOutlet private weak var nameLabel: UILabel!
+	 @IBOutlet private weak var roleLabel: UILabel!
 
 	override func prepareForReuse() {
 		super.prepareForReuse()
@@ -30,6 +30,7 @@ class CastTableViewCell: UITableViewCell {
 	override func awakeFromNib() {
         super.awakeFromNib()
 		castImageView.layer.cornerRadius = 4
+		castImageView.image = #imageLiteral(resourceName: "placeholder")
     }
 
 	private func updateViews() {
@@ -39,7 +40,7 @@ class CastTableViewCell: UITableViewCell {
 		roleLabel.text = castMember.character ?? castMember.job ?? "No record"
 
 		let rowTag = tag
-		imageData.fetchImage(for: castMember) { (error, image) in
+		imageData.fetchImage(for: castMember) { error, image in
 			if let error = error {
 				NSLog("Error fetching image for Cast Member: \(error)")
 				return
@@ -51,6 +52,4 @@ class CastTableViewCell: UITableViewCell {
 			}
 		}
 	}
-
-
 }
