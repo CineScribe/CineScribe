@@ -17,7 +17,7 @@ class FirebaseClient {
 	private let collectionRef: DatabaseReference
 	var userCollections = [Collection]()
 	var userReviews = [Review]()
-	
+
 	#warning("Remove hard-coded user")
 	private var currentUser = User(id: UUID(uuidString: "DDF188EF-D391-489B-B254-5B58629E99F6")!, username: "Santana", password: "12345")
 	
@@ -27,7 +27,7 @@ class FirebaseClient {
 		collectionRef = rootRef.child("collections")
 	}
 	
-	//MARK: - Create
+	// MARK: - Create
 	
 	func createUser(username: String, password: String, completion: @escaping () -> Void) {
 		guard userRef.child(username).childByAutoId().key == nil else { return }
@@ -40,7 +40,7 @@ class FirebaseClient {
 	
 	func createCollection(title: String, completion: @escaping () -> Void) {
 		let newCollection = Collection(title: title)
-		collectionRef.child(currentUser.id.uuidString).child(newCollection.id.uuidString).setValue(newCollection.toDictionary()) { (error, _) in
+		collectionRef.child(currentUser.id.uuidString).child(newCollection.id.uuidString).setValue(newCollection.toDictionary()) { error, _ in
 			if let error = error {
 				NSLog("Error creating collection: \(error)")
 			} else {
@@ -49,10 +49,10 @@ class FirebaseClient {
 		}
 	}
 	
-	//MARK: - Read
+	// MARK: - Read
 	
 	func loginUser(username: String, password: String, completion: @escaping () -> Void) {
-		userRef.child(username).observeSingleEvent(of: .value) { snapshot in
+		userRef.child(username).observeSingleEvent(of: .value) { _ in
 //			let user = User(snapshot: snapshot)
 //			self.currentUser = user
 //			completion()
@@ -107,7 +107,7 @@ class FirebaseClient {
 		}
 	}
 	
-	//MARK: - Update
+	// MARK: - Update
 	
 	func putReview(collectionId: UUID, reviewId: UUID?, title: String, movie: Movie?, memorableQuotes: String?, sceneDescription: String?, actorNotes: String?, cinematographyNotes: String?, completion: @escaping () -> Void) {
 		var newReview: Review
@@ -118,17 +118,17 @@ class FirebaseClient {
 			newReview = Review(title: title, movie: movie, memorableQuotes: memorableQuotes, sceneDescription: sceneDescription, actorNotes: actorNotes, cinematographyNotes: cinematographyNotes)
 		}
 		
-		reviewRef.child("\(currentUser.id.uuidString)/\(newReview.id.uuidString)").setValue(newReview.toDictionary()) { (error, _) in
+		reviewRef.child("\(currentUser.id.uuidString)/\(newReview.id.uuidString)").setValue(newReview.toDictionary()) { error, _ in
 			if let error = error {
 				NSLog("Error creating/updating a review: \(error)")
 			} else {
 				let collectionReviewsRef = self.collectionRef.child("\(self.currentUser.id.uuidString)/\(collectionId)/reviews")
-				collectionReviewsRef.child(newReview.id.uuidString).setValue(movie?.id ?? 0) { (error, _) in
+				collectionReviewsRef.child(newReview.id.uuidString).setValue(movie?.id ?? 0) { error, _ in
 					if let error = error {
 						NSLog("Error appending review to collection: \(error)")
 					}
 				}
-				if let collectionIndex = self.userCollections.firstIndex(where: {$0.id == collectionId}) {
+				if let collectionIndex = self.userCollections.firstIndex(where: { $0.id == collectionId}) {
 					self.userCollections[collectionIndex].reviews[collectionId.uuidString] = movie?.id ?? 0
 					self.userReviews.append(newReview)
 				}
@@ -138,7 +138,7 @@ class FirebaseClient {
 		}
 	}
 		
-	//MARK: - Delete
+	// MARK: - Delete
 	
 	func delete(collection: Collection, completion: @escaping () -> Void) {
 	collectionRef.child("\(currentUser.id.uuidString)/\(collection.id.uuidString)").removeValue()

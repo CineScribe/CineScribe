@@ -264,8 +264,11 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="B1D-bF-uOv" secondAttribute="trailing" id="2jC-J2-4Yk"/>
+                                                        <constraint firstAttribute="bottom" secondItem="2VS-5u-Bsf" secondAttribute="bottom" id="JjY-jo-3z3"/>
+                                                        <constraint firstItem="2VS-5u-Bsf" firstAttribute="leading" secondItem="Yw0-b3-aGK" secondAttribute="leading" id="R3X-mj-Stu"/>
                                                         <constraint firstItem="B1D-bF-uOv" firstAttribute="top" secondItem="Yw0-b3-aGK" secondAttribute="top" id="aeW-qi-2oX"/>
                                                         <constraint firstItem="B1D-bF-uOv" firstAttribute="leading" secondItem="Yw0-b3-aGK" secondAttribute="leading" id="cFo-Fe-Ikv"/>
+                                                        <constraint firstAttribute="trailing" secondItem="2VS-5u-Bsf" secondAttribute="trailing" id="p4y-2O-x3X"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>

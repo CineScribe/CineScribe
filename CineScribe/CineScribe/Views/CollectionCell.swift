@@ -11,9 +11,9 @@ import UIKit
 class CollectionCell: UITableViewCell {
 
 	// MARK: - Outlets & Properties
-	@IBOutlet weak var movieArtImageView: UIImageView!
-	@IBOutlet weak var listNameLabel: UILabel!
-	@IBOutlet weak var listCount: UILabel!
+	 @IBOutlet private weak var movieArtImageView: UIImageView!
+	 @IBOutlet private weak var listNameLabel: UILabel!
+	 @IBOutlet private weak var listCount: UILabel!
 	
 	var collection: Collection? {
 		didSet {

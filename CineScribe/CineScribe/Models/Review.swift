@@ -20,7 +20,7 @@ struct Review {
     let actorNotes: String?
     let cinematographyNotes: String?
 	
-	init(id: UUID = UUID(), dateCreated: Date = Date(), title: String, movie: Movie?, memorableQuotes: String?, sceneDescription: String?, actorNotes: String?, cinematographyNotes: String?) {
+	init(title: String, movie: Movie?, memorableQuotes: String?, sceneDescription: String?, actorNotes: String?, cinematographyNotes: String?, dateCreated: Date = Date(), id: UUID = UUID()) {
 		self.id = id
 		self.title = title
 		self.dateCreated = dateCreated

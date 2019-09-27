@@ -8,18 +8,19 @@
 
 import UIKit
 
+
 class MovieDetailViewController: UIViewController {
 
 	// MARK: - Properties & Outlets
-	@IBOutlet weak var backdropImageView: UIImageView!
-	@IBOutlet weak var posterImageView: UIImageView!
-	@IBOutlet weak var fadeView: UIView!
-	@IBOutlet weak var titleLabel: UILabel!
-	@IBOutlet weak var releaseDateLabel: UILabel!
-	@IBOutlet weak var overviewLabel: UILabel!
-	@IBOutlet weak var dateLabel: UILabel!
-	@IBOutlet weak var newNoteButton: UIButton!
-	@IBOutlet weak var castButton: UIButton!
+	 @IBOutlet private weak var backdropImageView: UIImageView!
+	 @IBOutlet private weak var posterImageView: UIImageView!
+	 @IBOutlet private weak var fadeView: UIView!
+	 @IBOutlet private weak var titleLabel: UILabel!
+	 @IBOutlet private weak var releaseDateLabel: UILabel!
+	 @IBOutlet private weak var overviewLabel: UILabel!
+	 @IBOutlet private weak var dateLabel: UILabel!
+	 @IBOutlet private weak var newNoteButton: UIButton!
+	 @IBOutlet private weak var castButton: UIButton!
 
 	let imageData = ImageData.shared
 	let impactGenerator = UIImpactFeedbackGenerator()
@@ -50,10 +51,10 @@ class MovieDetailViewController: UIViewController {
 
 	@IBAction func newNoteButtonTapped(_ sender: UIButton) {
 		let optionController = UIAlertController(title: "Choose if you'd like to create a new note from this movie or add to existing note", message: nil, preferredStyle: .actionSheet)
-		let newNoteAction = UIAlertAction(title: "Create New Note", style: .default) { (_) in
+		let newNoteAction = UIAlertAction(title: "Create New Note", style: .default) { _ in
 			self.performSegue(withIdentifier: "CollectionsModalVC", sender: nil)
 		}
-		let addToExistingAction = UIAlertAction(title: "Add To Existing Note", style: .default) { (_) in
+		let addToExistingAction = UIAlertAction(title: "Add To Existing Note", style: .default) { _ in
 			self.performSegue(withIdentifier: "CollectionsModalVC", sender: nil)
 		}
 		let cancelActions = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -80,7 +81,6 @@ class MovieDetailViewController: UIViewController {
 			collectionsModalVC.movie = movie
 		}
 	}
-
 
 
 	// MARK: - Functions
@@ -112,7 +112,8 @@ class MovieDetailViewController: UIViewController {
 		overviewLabel.text = movie.overview
 		dateLabel.text = movie.releaseDate
 
-		imageData.fetchImage(for: movie, imageStyle: .poster) { (error, posterImage) in
+
+		imageData.fetchImage(for: movie, imageStyle: .poster) { error, posterImage in
 			if let error = error {
 				NSLog("Error getting poster image: \(error)")
 			}
@@ -121,7 +122,7 @@ class MovieDetailViewController: UIViewController {
 			self.posterImageView.image = image
 		}
 
-		imageData.fetchImage(for: movie, imageStyle: .backdrop) { (error, backdropImage) in
+		imageData.fetchImage(for: movie, imageStyle: .backdrop) { error, backdropImage in
 			if let error = error {
 				NSLog("Error getting backdrop image: \(error)")
 			}

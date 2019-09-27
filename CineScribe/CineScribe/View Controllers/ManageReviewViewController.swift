@@ -20,22 +20,22 @@ enum ManageReviewType {
 
 class ManageReviewViewController: UIViewController {
 	
-	//MARK: - IBOutlets
+	// MARK: - IBOutlets
 	
-	@IBOutlet weak var titleBtn: UIButton!
-	@IBOutlet weak var quotesBtn: UIButton!
-	@IBOutlet weak var sceneNotesBtn: UIButton!
-	@IBOutlet weak var actorNotesBtn: UIButton!
-	@IBOutlet weak var cinemaNotesBtn: UIButton!
-	@IBOutlet weak var titleTextField: UITextField!
-	@IBOutlet weak var quotesTextView: UITextView!
-	@IBOutlet weak var sceneNotesTextView: UITextView!
-	@IBOutlet weak var actorNotesTextView: UITextView!
-	@IBOutlet weak var cinemaNotesTextView: UITextView!
-	@IBOutlet weak var saveBtn: UIBarButtonItem!
-	@IBOutlet weak var movieBtn: UIBarButtonItem!
+	 @IBOutlet private weak var titleBtn: UIButton!
+	 @IBOutlet private weak var quotesBtn: UIButton!
+	 @IBOutlet private weak var sceneNotesBtn: UIButton!
+	 @IBOutlet private weak var actorNotesBtn: UIButton!
+	 @IBOutlet private weak var cinemaNotesBtn: UIButton!
+	 @IBOutlet private weak var titleTextField: UITextField!
+	 @IBOutlet private weak var quotesTextView: UITextView!
+	 @IBOutlet private weak var sceneNotesTextView: UITextView!
+	 @IBOutlet private weak var actorNotesTextView: UITextView!
+	 @IBOutlet private weak var cinemaNotesTextView: UITextView!
+	 @IBOutlet private weak var saveBtn: UIBarButtonItem!
+	 @IBOutlet private weak var movieBtn: UIBarButtonItem!
 	
-	//MARK: - Properties
+	// MARK: - Properties
 	
 	private var textBtns = [UIButton]()
 	private var textViews = [UITextView]()
@@ -66,7 +66,7 @@ class ManageReviewViewController: UIViewController {
 		return nil
 	}
 	
-	//MARK: - Life Cycle
+	// MARK: - Life Cycle
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -77,7 +77,7 @@ class ManageReviewViewController: UIViewController {
 		setupViews()
 	}
 	
-	//MARK: - IBActions
+	// MARK: - IBActions
 	
 	@IBAction func saveBtnTapped(_ sender: Any) {
 		guard let collectionId = currentcollectionId, let title = titleTextField.optionalText else { return }
@@ -111,7 +111,7 @@ class ManageReviewViewController: UIViewController {
 		}
 	}
 	
-	//MARK: - Helpers
+	// MARK: - Helpers
 	
 	private func setupViews() {
 		titleTextField.tag = 0

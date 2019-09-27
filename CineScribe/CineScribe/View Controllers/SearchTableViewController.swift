@@ -15,15 +15,15 @@ protocol SearchTableViewControllerDelegate: AnyObject {
 
 class SearchTableViewController: UITableViewController {
 	
-	//MARK: - IBOutlets
+	// MARK: - IBOutlets
 	
 	
-	//MARK: - Properties
+	// MARK: - Properties
 	
 	var searchedMovies: [Movie] = [] {
 		didSet {
 			DispatchQueue.main.async {
-				if self.searchedMovies.count > 0 {
+				if !self.searchedMovies.isEmpty {
 					self.delegate?.searchTableViewController(self, hasResults: true)
 				} else {
 					self.delegate?.searchTableViewController(self, hasResults: false)
@@ -36,7 +36,7 @@ class SearchTableViewController: UITableViewController {
 	let movieController = MovieController.shared
 	weak var delegate: SearchTableViewControllerDelegate?
 	
-	//MARK: - Life Cycle
+	// MARK: - Life Cycle
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,10 +56,10 @@ class SearchTableViewController: UITableViewController {
 		}
     }
 	
-	//MARK: - IBActions
+	// MARK: - IBActions
 	
 	
-	//MARK: - Helpers
+	// MARK: - Helpers
 	
 	
 	// MARK: - Table view data source
@@ -81,7 +81,7 @@ class SearchTableViewController: UITableViewController {
     }
 }
 
-//MARK: - SearchBar Delegate
+    // MARK: - SearchBar Delegate
 
 extension SearchTableViewController: UISearchBarDelegate {
 
@@ -93,7 +93,7 @@ extension SearchTableViewController: UISearchBarDelegate {
 		guard let searchQuery = searchBar.text,
 			!searchQuery.isEmpty else { return }
 
-		movieController.searchDatabse(for: searchQuery) { (results) in
+		movieController.searchDatabse(for: searchQuery) { results in
 			do {
 				let searchedResults = try results.get()
 				self.searchedMovies = searchedResults

@@ -14,12 +14,12 @@ protocol NoteMovieSearchTableViewControllerDelegate: AnyObject {
 
 class NoteMovieSearchTableViewController: UIViewController {
 	
-	@IBOutlet weak var moviesTableView: UITableView!
-	@IBOutlet weak var movieSearchBar: UISearchBar!
+	 @IBOutlet private weak var moviesTableView: UITableView!
+	 @IBOutlet private weak var movieSearchBar: UISearchBar!
 
 	let movieController = MovieController.shared
 
-	var delegate: NoteMovieSearchTableViewControllerDelegate?
+	weak var delegate: NoteMovieSearchTableViewControllerDelegate?
 
 	var searchResults: [Movie] = [] {
 		didSet {
@@ -53,7 +53,7 @@ extension NoteMovieSearchTableViewController: UISearchBarDelegate {
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 		guard let searchQuery = movieSearchBar.text else { return }
 
-		movieController.searchDatabse(for: searchQuery) { (results) in
+		movieController.searchDatabse(for: searchQuery) { results in
 			do {
 				let movies = try results.get()
 				self.searchResults = movies

@@ -12,9 +12,9 @@ import Firebase
 struct Collection {
 	let id: UUID
 	let title: String
-	var reviews: [String:Int]
+	var reviews: [String: Int]
 	
-	init(id: UUID = UUID(), title: String, reviewIds: [String:Int] = [:]) {
+	init(id: UUID = UUID(), title: String, reviewIds: [String: Int] = [:]) {
 		self.id = id
 		self.title = title
 		self.reviews = reviewIds
@@ -26,7 +26,7 @@ struct Collection {
 			let title = value["title"] as? String else {
 				return nil
 		}
-		let reviewIds = value["reviews"] as? [String:Int]
+		let reviewIds = value["reviews"] as? [String: Int]
 		
 		self.id = UUID(uuidString: snapshot.key) ?? UUID()
 		self.title = title

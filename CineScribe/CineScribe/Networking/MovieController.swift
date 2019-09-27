@@ -36,7 +36,6 @@ class MovieController {
 	private let searchMovieBaseUrl = URL(string: "https://api.themoviedb.org/3/search/movie")!
 	private let apiQueryItem = URLQueryItem(name: "api_key", value: .movieDatabaseApiKey)
 
-
 	// MARK: - Fetch Movies Functions
 	func fetchNowPlayingMovies(completion: @escaping (Result<[Movie], NetworkError>) -> Void) {
 		var urlComponents = URLComponents(url: nowPlayingBaseUrl, resolvingAgainstBaseURL: true)
@@ -66,7 +65,7 @@ class MovieController {
 		var request = URLRequest(url: requestUrl)
 		request.httpMethod = HTTPMethod.get.rawValue
 
-		URLSession.shared.dataTask(with: request) { (data, response, error) in
+		URLSession.shared.dataTask(with: request) { data, _, error in
 			if let error = error {
 				NSLog("Error fetching data: \(error)")
 				completion(.failure(.otherError))
@@ -123,7 +122,7 @@ class MovieController {
 		var request = URLRequest(url: requestUrl)
 		request.httpMethod = HTTPMethod.get.rawValue
 
-		URLSession.shared.dataTask(with: request) { (data, _, error) in
+		URLSession.shared.dataTask(with: request) { data, _, error in
 			if let error = error {
 				NSLog("Error fetching data: \(error)")
 				completion(.failure(.otherError))

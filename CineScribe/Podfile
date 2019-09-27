@@ -7,5 +7,6 @@ target 'CineScribe' do
 
   # Pods for CineScribe
 	pod 'Firebase/Database'
+	pod 'SwiftLint'
 
 end

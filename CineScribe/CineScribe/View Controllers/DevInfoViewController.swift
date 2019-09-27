@@ -10,8 +10,8 @@ import UIKit
 
 class DevInfoViewController: UIViewController {
 
-	@IBOutlet weak var jeffImageView: UIImageView!
-	@IBOutlet weak var marlonImageView: UIImageView!
+	 @IBOutlet private weak var jeffImageView: UIImageView!
+	 @IBOutlet private weak var marlonImageView: UIImageView!
 
 
     override func viewDidLoad() {
