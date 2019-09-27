@@ -21,6 +21,7 @@ class MovieDetailViewController: UIViewController {
 	 @IBOutlet private weak var dateLabel: UILabel!
 	 @IBOutlet private weak var newNoteButton: UIButton!
 	 @IBOutlet private weak var castButton: UIButton!
+     @IBOutlet var swipeBackGestureRecognizer: UIScreenEdgePanGestureRecognizer!
 
 	let imageData = ImageData.shared
 	let impactGenerator = UIImpactFeedbackGenerator()
@@ -32,10 +33,15 @@ class MovieDetailViewController: UIViewController {
 		}
 	}
 
-	override func viewWillLayoutSubviews() {
-		super.viewWillLayoutSubviews()
-		setUI()
-	}
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +52,13 @@ class MovieDetailViewController: UIViewController {
 		backdropImageView.image = UIImage(named: "backdrop-placeholder")
     }
 	
-	@IBAction func unwindToMovieDetailVC(_ unwindSegue: UIStoryboardSegue) {
+    @IBAction func swipeBack(_ sender: UIScreenEdgePanGestureRecognizer) {
+        if swipeBackGestureRecognizer.state == .began {
+            navigationController?.popToRootViewController(animated: true)
+        }
+    }
+
+    @IBAction func unwindToMovieDetailVC(_ unwindSegue: UIStoryboardSegue) {
 	}
 
 	@IBAction func newNoteButtonTapped(_ sender: UIButton) {
@@ -103,6 +115,7 @@ class MovieDetailViewController: UIViewController {
 		newNoteButton.layer.cornerRadius = newNoteButton.frame.height / 2
 		castButton.layer.cornerRadius = castButton.frame.height / 2
 		castButton.backgroundColor = .secondarySystemBackground
+        swipeBackGestureRecognizer.edges = .left
 	}
 
 	private func updateViews() {

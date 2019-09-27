@@ -136,6 +136,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="27Z-h2-1wp" firstAttribute="leading" secondItem="GIF-oL-hKQ" secondAttribute="leading" constant="20" id="84s-qs-nLY"/>
                             <constraint firstItem="1uw-Mf-TQV" firstAttribute="trailing" secondItem="GIF-oL-hKQ" secondAttribute="trailing" id="8y5-bA-pue"/>
@@ -156,6 +157,9 @@
                             <constraint firstItem="fwc-Vi-HJe" firstAttribute="leading" secondItem="GIF-oL-hKQ" secondAttribute="leading" constant="20" id="sWJ-eL-ukG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GIF-oL-hKQ"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="jdo-Kp-fow" appends="YES" id="jOo-co-f99"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="u0a-8p-s97"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -168,11 +172,17 @@
                         <outlet property="overviewLabel" destination="cwS-zE-d77" id="jq3-Hx-S4F"/>
                         <outlet property="posterImageView" destination="27Z-h2-1wp" id="6HR-cD-Dz9"/>
                         <outlet property="releaseDateLabel" destination="OSO-Bi-Jvo" id="M1F-WJ-5SQ"/>
+                        <outlet property="swipeBackGestureRecognizer" destination="jdo-Kp-fow" id="Qks-wa-Pfh"/>
                         <outlet property="titleLabel" destination="afh-9k-zM7" id="Ig9-3B-fAn"/>
                         <segue destination="11e-c3-HP4" kind="presentation" identifier="CollectionsModalVC" id="H56-ch-ClJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IBH-x2-1iy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="jdo-Kp-fow">
+                    <connections>
+                        <action selector="swipeBack:" destination="jIz-f2-GYw" id="coW-G7-FWw"/>
+                    </connections>
+                </screenEdgePanGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1013.0434782608696" y="167.41071428571428"/>
         </scene>
