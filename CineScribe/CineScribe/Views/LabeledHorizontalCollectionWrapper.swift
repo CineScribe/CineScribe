@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol LabeledHorizontalCollectionWrapperDelegate {
+protocol LabeledHorizontalCollectionWrapperDelegate: AnyObject {
 	func labeledCollectionShowDetail(_ collection: LabeledHorizontalCollectionWrapper, for movie: Movie)
 }
 
@@ -30,7 +30,7 @@ class LabeledHorizontalCollectionWrapper: UIView {
 
 	var movie: Movie?
 
-	var delegate: LabeledHorizontalCollectionWrapperDelegate?
+	weak var delegate: LabeledHorizontalCollectionWrapperDelegate?
 
 	var title: String {
 		get { return collectionViewTitle.text ?? "" }
@@ -74,8 +74,19 @@ extension LabeledHorizontalCollectionWrapper: UICollectionViewDelegate, UICollec
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiscoverCell", for: indexPath)
 		guard let discoverCell = cell as? MovieDiscoverCollectionViewCell else { return cell }
 		let movie = movies[indexPath.item]
-		discoverCell.movie = movie
+		discoverCell.movieTitleLabel.text = movie.title
 		discoverCell.tag = indexPath.item
+
+		imageData.fetchImage(for: movie, imageStyle: .poster) { error, image in
+			if let error = error {
+				NSLog("Error getting character image: \(error)")
+			}
+
+			guard let image = image else { fatalError("Could not unwrap movie poster image") }
+			if cell.tag == indexPath.item {
+				discoverCell.movieImageView.image = image
+			}
+		}
 		return discoverCell
 	}
 
