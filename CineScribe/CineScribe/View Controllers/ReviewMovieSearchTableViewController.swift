@@ -34,6 +34,8 @@ class ReviewMovieSearchTableViewController: UIViewController {
 		moviesTableView.tableFooterView = UIView()
 		moviesTableView.dataSource = self
 		movieSearchBar.delegate = self
+		
+		movieSearchBar.becomeFirstResponder()
     }
 	
 	//MARK: - IBActions

@@ -144,7 +144,7 @@ class ManageReviewViewController: UIViewController {
 			textViews[index].layer.masksToBounds = true
 		}
 		
-		titleTextField.isHidden = review == nil ? true : false
+		titleTextField.becomeFirstResponder()
 		
 		switch reviewType {
 		case .newWithMovie(let movie):
