@@ -113,7 +113,6 @@
         <!--Dev / Info-->
         <scene sceneID="LQv-mF-4lb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="C9r-A8-q21" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rkK-19-ch4" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Dev / Info" image="circle.bottomthird.split" catalog="system" id="wgM-CI-SLN"/>
                     <toolbarItems/>
@@ -128,6 +127,7 @@
                         <segue destination="6YB-1S-Zch" kind="relationship" relationship="rootViewController" id="Ky9-Rj-ZQB"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C9r-A8-q21" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-39.130434782608695" y="132.58928571428572"/>
         </scene>

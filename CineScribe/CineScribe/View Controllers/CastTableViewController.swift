@@ -13,8 +13,8 @@ class CastTableViewController: UITableViewController {
 	let movieController = MovieController.shared
 	let imageData = ImageData.shared
 
-	@IBOutlet weak var titleLabel: UILabel!
-	@IBOutlet weak var segControl: UISegmentedControl!
+	 @IBOutlet private weak var titleLabel: UILabel!
+	 @IBOutlet private weak var segControl: UISegmentedControl!
 
 	var cast: [MovieCastOrCrewMember] = []
 	var crew: [MovieCastOrCrewMember] = []
@@ -37,7 +37,7 @@ class CastTableViewController: UITableViewController {
 	func loadCast() {
 		guard let movie = movie else { return }
 		titleLabel.text = movie.title
-		movieController.getCredits(with: movie.id) { (results) in
+		movieController.getCredits(with: movie.id) { results in
 			do {
 				let creditResult = try results.get()
 				DispatchQueue.main.async {

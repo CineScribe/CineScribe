@@ -10,15 +10,15 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-	//MARK: - IBOutlets
+	// MARK: - IBOutlets
 	
-	@IBOutlet weak var listTableView: UITableView!
+	 @IBOutlet private weak var listTableView: UITableView!
 	
-	//MARK: - Properties
+	// MARK: - Properties
 	
 	let firebaseClient = FirebaseClient()
 	
-	//MARK: - Life Cycle
+	// MARK: - Life Cycle
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -37,11 +37,11 @@ class MainViewController: UIViewController {
 		}
 	}
 	
-	//MARK: - IBActions
+	// MARK: - IBActions
 	
 	@IBAction func createListButtonTapped(_ sender: UIBarButtonItem) {
 		let alert = UIAlertController(title: "Enter a title for your new list", message: nil, preferredStyle: .alert)
-		alert.addTextField { (textField) in
+		alert.addTextField { textField in
 			textField.placeholder = "List Name"
 		}
 		
@@ -53,17 +53,17 @@ class MainViewController: UIViewController {
 			}
 		}
 
-		[addAction, cancelAction].forEach{ alert.addAction($0) }
+		[addAction, cancelAction].forEach { alert.addAction($0) }
 
 		present(alert, animated: true, completion: nil)
 	}
 	
-	//MARK: - Helpers
+	// MARK: - Helpers
 
 
 }
 
-//MARK: - TableView Datasource
+// MARK: - TableView Datasource
 
 extension MainViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

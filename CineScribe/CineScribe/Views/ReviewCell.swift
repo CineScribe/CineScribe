@@ -12,7 +12,7 @@ class ReviewCell: UICollectionViewCell {
 
 	// MARK: - Outlets & Properties
 	@IBOutlet weak var movieArtImageView: UIImageView!
-	@IBOutlet weak var noteTitleLabel: UILabel!
+	 @IBOutlet private weak var noteTitleLabel: UILabel!
 	
 	var review: Review? {
 		didSet {

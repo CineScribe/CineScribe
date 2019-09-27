@@ -10,24 +10,48 @@ import UIKit
 
 class MovieDiscoverCollectionViewCell: UICollectionViewCell {
 
+	 @IBOutlet var myContentView: UIView!
+	 @IBOutlet private weak var movieImageView: UIImageView!
+	 @IBOutlet private weak var movieTitleContainerView: UIView!
+	 @IBOutlet private weak var movieTitleLabel: UILabel!
 
-	@IBOutlet var myContentView: UIView!
-	@IBOutlet weak var movieImageView: UIImageView!
-	@IBOutlet weak var movieTitleContainerView: UIView!
-	@IBOutlet weak var movieTitleLabel: UILabel!
+    let imageData = ImageData.shared
+
+    var movie: Movie? {
+        didSet {
+            updateViews()
+        }
+    }
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		commonInit()
+        updateViews()
 	}
 
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
 		commonInit()
+        updateViews()
 	}
 
-	func setStyle() {
+	func updateViews() {
+        guard let movie = movie else { return }
 
+        movieTitleLabel.text = movie.title
+
+        let itemTag = tag
+        imageData.fetchImage(for: movie, imageStyle: .poster) { error, image in
+            if let error = error {
+                NSLog("Error getting character image: \(error)")
+                return
+            }
+
+            guard let image = image else { fatalError("Could not unwrap movie poster image") }
+            if self.tag == itemTag {
+                self.movieImageView.image = image
+            }
+        }
 	}
 
 	private func commonInit() {

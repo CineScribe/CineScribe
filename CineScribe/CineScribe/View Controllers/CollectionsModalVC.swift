@@ -10,15 +10,15 @@ import UIKit
 
 class CollectionsModalVC: UITableViewController {
 
-	//MARK: - IBOutlets
+	// MARK: - IBOutlets
 	
 	
-	//MARK: - Properties
+	// MARK: - Properties
 	
 	var firebaseClient = FirebaseClient()
 	var movie: Movie?
 	
-	//MARK: - Life Cycle
+	// MARK: - Life Cycle
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -38,10 +38,10 @@ class CollectionsModalVC: UITableViewController {
 		}
 	}
 	
-	//MARK: - IBActions
+	// MARK: - IBActions
 	
 	
-	//MARK: - Helpers
+	// MARK: - Helpers
 	
 	
 	// MARK: - Table view data source
