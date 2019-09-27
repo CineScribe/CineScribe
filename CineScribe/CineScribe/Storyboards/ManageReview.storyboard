@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hA0-Gt-a1G">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nunito-Bold.ttf">
+            <string>Nunito-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--New Review-->
+        <scene sceneID="F2d-cI-yK9">
+            <objects>
+                <viewController storyboardIdentifier="ManageReviewViewController" automaticallyAdjustsScrollViewInsets="NO" id="fNS-3d-cdu" customClass="ManageReviewViewController" customModule="CineScribe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0EK-yB-9b2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FM6-zt-0Dq">
+                                <rect key="frame" x="20.5" y="88" width="373" height="653"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XVR-hh-dZM">
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="30"/>
+                                        <state key="normal" title="+ Title:">
+                                            <color key="titleColor" systemColor="systemIndigoColor" red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="collapsableBtnTapped:" destination="fNS-3d-cdu" eventType="touchUpInside" id="KZa-dH-oLb"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JuK-ef-ZGl">
+                                        <rect key="frame" x="0.0" y="40" width="373" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7t7-IT-vs9">
+                                        <rect key="frame" x="0.0" y="84" width="373" height="2"/>
+                                        <color key="backgroundColor" systemColor="separatorColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="Nvp-9l-6ZS"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tbd-NX-LGw">
+                                        <rect key="frame" x="0.0" y="96" width="373" height="30"/>
+                                        <state key="normal" title="+ Memorable Quotes:">
+                                            <color key="titleColor" systemColor="systemIndigoColor" red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="collapsableBtnTapped:" destination="fNS-3d-cdu" eventType="touchUpInside" id="3N9-q1-jIW"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hdx-Uh-RyP">
+                                        <rect key="frame" x="0.0" y="136" width="373" height="80"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nmB-Zf-LBx">
+                                        <rect key="frame" x="0.0" y="226" width="373" height="2"/>
+                                        <color key="backgroundColor" systemColor="separatorColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="UtQ-6a-idR"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sne-cN-Qdy">
+                                        <rect key="frame" x="0.0" y="238" width="373" height="30"/>
+                                        <state key="normal" title="+ Scene Notes:">
+                                            <color key="titleColor" systemColor="systemIndigoColor" red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="collapsableBtnTapped:" destination="fNS-3d-cdu" eventType="touchUpInside" id="hwf-js-RFy"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HPG-aK-Jwg">
+                                        <rect key="frame" x="0.0" y="278" width="373" height="79.5"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YHd-bY-hb7">
+                                        <rect key="frame" x="0.0" y="367.5" width="373" height="2"/>
+                                        <color key="backgroundColor" systemColor="separatorColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="04r-Yf-RnM"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lm-Qr-gfs">
+                                        <rect key="frame" x="0.0" y="379.5" width="373" height="30"/>
+                                        <state key="normal" title="+ Actor Notes:">
+                                            <color key="titleColor" systemColor="systemIndigoColor" red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="collapsableBtnTapped:" destination="fNS-3d-cdu" eventType="touchUpInside" id="0TD-Wy-2L2"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Uoi-iD-pro">
+                                        <rect key="frame" x="0.0" y="419.5" width="373" height="80"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BcP-su-P4t">
+                                        <rect key="frame" x="0.0" y="509.5" width="373" height="2"/>
+                                        <color key="backgroundColor" systemColor="separatorColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="1kg-vw-lla"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEy-AH-sVd">
+                                        <rect key="frame" x="0.0" y="521.5" width="373" height="30"/>
+                                        <state key="normal" title="+ Cinematogrophy Notes:">
+                                            <color key="titleColor" systemColor="systemIndigoColor" red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="collapsableBtnTapped:" destination="fNS-3d-cdu" eventType="touchUpInside" id="aVV-nZ-Feb"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sWu-gO-ezu">
+                                        <rect key="frame" x="0.0" y="561.5" width="373" height="79.5"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RhD-Nr-8F8">
+                                        <rect key="frame" x="0.0" y="651" width="373" height="2"/>
+                                        <color key="backgroundColor" systemColor="separatorColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="rJQ-Ea-y0l"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Uoi-iD-pro" firstAttribute="height" secondItem="hLD-54-BSp" secondAttribute="height" multiplier="0.11" id="2j8-JK-kEI"/>
+                            <constraint firstItem="FM6-zt-0Dq" firstAttribute="top" secondItem="hLD-54-BSp" secondAttribute="top" id="Lfl-xa-mCd"/>
+                            <constraint firstItem="hdx-Uh-RyP" firstAttribute="height" secondItem="hLD-54-BSp" secondAttribute="height" multiplier="0.11" id="N4z-gX-iFK"/>
+                            <constraint firstItem="FM6-zt-0Dq" firstAttribute="height" relation="lessThanOrEqual" secondItem="hLD-54-BSp" secondAttribute="height" id="STj-Bk-zeD"/>
+                            <constraint firstItem="sWu-gO-ezu" firstAttribute="height" secondItem="hLD-54-BSp" secondAttribute="height" multiplier="0.11" id="TS1-TX-ugs"/>
+                            <constraint firstItem="FM6-zt-0Dq" firstAttribute="height" relation="greaterThanOrEqual" secondItem="hLD-54-BSp" secondAttribute="height" multiplier="0.5" id="XYj-Ag-Qmp"/>
+                            <constraint firstItem="FM6-zt-0Dq" firstAttribute="centerX" secondItem="hLD-54-BSp" secondAttribute="centerX" id="lPH-IV-2tL"/>
+                            <constraint firstItem="HPG-aK-Jwg" firstAttribute="height" secondItem="hLD-54-BSp" secondAttribute="height" multiplier="0.11" id="oe5-o7-l2v"/>
+                            <constraint firstItem="FM6-zt-0Dq" firstAttribute="width" secondItem="hLD-54-BSp" secondAttribute="width" multiplier="0.9" id="u9t-HY-82R"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hLD-54-BSp"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="New Review" id="yin-R1-gax">
+                        <barButtonItem key="leftBarButtonItem" systemItem="save" id="Hpu-0z-EjD">
+                            <connections>
+                                <action selector="saveBtnTapped:" destination="fNS-3d-cdu" id="g5e-ls-gT6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Choose Movie" id="rSM-7c-ing">
+                            <connections>
+                                <segue destination="iDA-0d-t3A" kind="presentation" id="Faz-yI-EOC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="actorNotesBtn" destination="1lm-Qr-gfs" id="egV-t1-zMV"/>
+                        <outlet property="actorNotesTextView" destination="Uoi-iD-pro" id="czl-Wo-0X3"/>
+                        <outlet property="cinemaNotesBtn" destination="MEy-AH-sVd" id="gt6-oj-tDN"/>
+                        <outlet property="cinemaNotesTextView" destination="sWu-gO-ezu" id="0eD-T9-aaq"/>
+                        <outlet property="movieBtn" destination="rSM-7c-ing" id="fN5-zV-EHj"/>
+                        <outlet property="quotesBtn" destination="Tbd-NX-LGw" id="Nqu-fs-Hwm"/>
+                        <outlet property="quotesTextView" destination="hdx-Uh-RyP" id="YLH-gE-53P"/>
+                        <outlet property="saveBtn" destination="Hpu-0z-EjD" id="Aot-qa-ARE"/>
+                        <outlet property="sceneNotesBtn" destination="sne-cN-Qdy" id="PBN-7I-yOO"/>
+                        <outlet property="sceneNotesTextView" destination="HPG-aK-Jwg" id="8TN-Qc-wxH"/>
+                        <outlet property="titleBtn" destination="XVR-hh-dZM" id="HBh-bs-TuS"/>
+                        <outlet property="titleTextField" destination="JuK-ef-ZGl" id="mpZ-zL-oy6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mwr-ZN-Edh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3113" y="141"/>
+        </scene>
+        <!--Add Movie To Review-->
+        <scene sceneID="5co-WF-3Pa">
+            <objects>
+                <viewController id="bQk-cr-9zh" customClass="ReviewMovieSearchTableViewController" customModule="CineScribe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OxW-xJ-gv4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search Movie..." translatesAutoresizingMaskIntoConstraints="NO" id="odo-ah-14J">
+                                <rect key="frame" x="0.0" y="56" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6l3-kA-mZV">
+                                <rect key="frame" x="0.0" y="112" width="414" height="730"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MovieCell" rowHeight="100" id="zwH-qv-IfC" customClass="NoteMovieSearchTableViewCell" customModule="CineScribe" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zwH-qv-IfC" id="bae-WG-1wV">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5k6-5Y-iV9">
+                                                    <rect key="frame" x="20" y="10" width="374" height="80"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6uH-QM-4vq">
+                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="80"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="80" id="gYP-Hn-BUR"/>
+                                                                <constraint firstAttribute="width" constant="60" id="uZg-Os-eeq"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tba-j1-72D">
+                                                            <rect key="frame" x="68" y="0.0" width="306" height="80"/>
+                                                            <fontDescription key="fontDescription" name="Nunito-Bold" family="Nunito" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="5k6-5Y-iV9" secondAttribute="trailing" constant="20" id="564-oj-3A3"/>
+                                                <constraint firstItem="5k6-5Y-iV9" firstAttribute="centerY" secondItem="bae-WG-1wV" secondAttribute="centerY" id="Rl9-ue-B86"/>
+                                                <constraint firstItem="5k6-5Y-iV9" firstAttribute="leading" secondItem="bae-WG-1wV" secondAttribute="leading" constant="20" id="fHa-FP-wzf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="tintColor" systemColor="systemIndigoColor" red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="movieImageView" destination="6uH-QM-4vq" id="Ufk-W7-xDa"/>
+                                            <outlet property="titleLabel" destination="tba-j1-72D" id="wPw-ea-QCz"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="6l3-kA-mZV" secondAttribute="bottom" id="2sF-Lh-qtL"/>
+                            <constraint firstItem="6l3-kA-mZV" firstAttribute="trailing" secondItem="dE5-dN-0lf" secondAttribute="trailing" id="IyK-hb-dsp"/>
+                            <constraint firstItem="odo-ah-14J" firstAttribute="trailing" secondItem="dE5-dN-0lf" secondAttribute="trailing" id="JXy-84-jiB"/>
+                            <constraint firstItem="odo-ah-14J" firstAttribute="leading" secondItem="dE5-dN-0lf" secondAttribute="leading" id="ewJ-c2-12w"/>
+                            <constraint firstItem="odo-ah-14J" firstAttribute="top" secondItem="dE5-dN-0lf" secondAttribute="top" id="hQ3-w8-yrM"/>
+                            <constraint firstItem="6l3-kA-mZV" firstAttribute="leading" secondItem="dE5-dN-0lf" secondAttribute="leading" id="nCb-EJ-pdg"/>
+                            <constraint firstItem="6l3-kA-mZV" firstAttribute="top" secondItem="odo-ah-14J" secondAttribute="bottom" id="yFh-Br-qXH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dE5-dN-0lf"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Movie To Review" id="PB9-vV-vNE">
+                        <rightBarButtonItems>
+                            <barButtonItem title=" " id="wI1-Pr-RcI"/>
+                            <barButtonItem systemItem="save" id="vU3-aW-iM3">
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="bQk-cr-9zh" id="Oif-c1-xZs"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="movieSearchBar" destination="odo-ah-14J" id="Zc9-Z6-cKX"/>
+                        <outlet property="moviesTableView" destination="6l3-kA-mZV" id="axs-hd-hbz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gyp-SS-WIP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4850.7246376811599" y="140.625"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9TQ-dB-KuC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hA0-Gt-a1G" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3z4-y3-f22">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fNS-3d-cdu" kind="relationship" relationship="rootViewController" id="kX0-co-6d5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vzL-1s-wop" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2234.7826086956525" y="140.625"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dc2-eT-IKd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iDA-0d-t3A" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qnM-vX-iqP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bQk-cr-9zh" kind="relationship" relationship="rootViewController" id="cIn-Lp-hvD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CrX-Pr-oGM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3964" y="141"/>
+        </scene>
+    </scenes>
+</document>

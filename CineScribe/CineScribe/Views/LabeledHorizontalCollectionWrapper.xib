@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nunito-SemiBold.ttf">
+            <string>Nunito-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LabeledHorizontalCollectionWrapper" customModule="CineScribe" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionViewTitle" destination="XC6-5n-lW2" id="2jU-Tp-BdN"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="Aih-1A-2f6"/>
+                <outlet property="moviesDiscoverCollectionView" destination="31l-pr-vqX" id="HcB-hp-uGa"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="449" height="290"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pvQ-E6-Omq">
+                    <rect key="frame" x="0.0" y="0.0" width="449" height="290"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="plH-We-zeO">
+                            <rect key="frame" x="0.0" y="0.0" width="449" height="40"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XC6-5n-lW2">
+                                    <rect key="frame" x="20" y="5.5" width="409" height="29"/>
+                                    <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="21"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="XC6-5n-lW2" firstAttribute="leading" secondItem="plH-We-zeO" secondAttribute="leading" constant="20" id="7y7-O6-14R"/>
+                                <constraint firstItem="XC6-5n-lW2" firstAttribute="centerY" secondItem="plH-We-zeO" secondAttribute="centerY" id="Fty-ol-vyu"/>
+                                <constraint firstAttribute="trailing" secondItem="XC6-5n-lW2" secondAttribute="trailing" constant="20" id="mRb-7N-Jyu"/>
+                                <constraint firstAttribute="height" constant="40" id="xfb-V2-VgJ"/>
+                            </constraints>
+                        </view>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="31l-pr-vqX">
+                            <rect key="frame" x="0.0" y="40" width="449" height="250"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="250" id="ooB-IY-Ja9"/>
+                            </constraints>
+                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8cO-IK-Zj6">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="plH-We-zeO" firstAttribute="leading" secondItem="pvQ-E6-Omq" secondAttribute="leading" id="PNu-WR-0Eg"/>
+                        <constraint firstItem="plH-We-zeO" firstAttribute="top" secondItem="pvQ-E6-Omq" secondAttribute="top" id="p7T-UX-FaV"/>
+                        <constraint firstAttribute="trailing" secondItem="plH-We-zeO" secondAttribute="trailing" id="p9f-FW-HBH"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="pvQ-E6-Omq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1gK-tK-NQc"/>
+                <constraint firstAttribute="bottom" secondItem="pvQ-E6-Omq" secondAttribute="bottom" id="5b5-3T-Ctk"/>
+                <constraint firstItem="pvQ-E6-Omq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="GV4-ro-DPA"/>
+                <constraint firstAttribute="trailing" secondItem="pvQ-E6-Omq" secondAttribute="trailing" id="u5N-e5-9u3"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="163.04347826086959" y="-42.1875"/>
+        </view>
+    </objects>
+</document>
