@@ -41,7 +41,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jeff" translatesAutoresizingMaskIntoConstraints="NO" id="Rmo-58-K4I">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Jeff" translatesAutoresizingMaskIntoConstraints="NO" id="Rmo-58-K4I">
                                                         <rect key="frame" x="0.0" y="28.5" width="180" height="180"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="Rmo-58-K4I" secondAttribute="height" multiplier="1:1" id="T34-dz-kso"/>
@@ -133,8 +133,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Jeff" width="400" height="400"/>
         <image name="circle.bottomthird.split" catalog="system" width="64" height="62"/>
-        <image name="jeff" width="400" height="400"/>
         <image name="marlon" width="1024" height="1024"/>
         <image name="tmdbLogo" width="408" height="161"/>
     </resources>

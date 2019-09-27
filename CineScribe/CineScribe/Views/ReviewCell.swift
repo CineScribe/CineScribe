@@ -13,8 +13,9 @@ class ReviewCell: UICollectionViewCell {
 	// MARK: - Outlets & Properties
 	 @IBOutlet private weak var movieArtImageView: UIImageView!
 	 @IBOutlet private weak var noteTitleLabel: UILabel!
-	
-	var review: Review? {
+     @IBOutlet private weak var containerForCell: UIView!
+
+    var review: Review? {
 		didSet {
 			setUI()
 		}
@@ -28,7 +29,8 @@ class ReviewCell: UICollectionViewCell {
 	func setUI() {
 		guard let review = review else { return }
 		
-		movieArtImageView.layer.cornerRadius = 12
+//		movieArtImageView.layer.cornerRadius = 12
+        containerForCell.layer.cornerRadius = 12
 		noteTitleLabel.text = review.title
 		
 		guard let imageUrl = review.movieImageUrl else { return }
