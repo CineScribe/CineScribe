@@ -4,7 +4,7 @@
 //
 //  Created by Jeffrey Santana on 9/23/19.
 //  Copyright © 2019 Marlon Raskin. All rights reserved.
-//
+//  swiftlint:disable function_parameter_count
 
 import Foundation
 import Firebase
@@ -109,24 +109,45 @@ class FirebaseClient {
 	
 	// MARK: - Update
 	
-	func putReview(collectionId: UUID, reviewId: UUID?, title: String, movie: Movie?, memorableQuotes: String?, sceneDescription: String?, actorNotes: String?, cinematographyNotes: String?, completion: @escaping () -> Void) {
-		var newReview: Review
-		
-		if let reviewId = reviewId {
-			newReview = Review(id: reviewId, title: title, collectionId: collectionId, movie: movie, memorableQuotes: memorableQuotes, sceneDescription: sceneDescription, actorNotes: actorNotes, cinematographyNotes: cinematographyNotes)
-		} else {
-			newReview = Review(title: title, collectionId: collectionId, movie: movie, memorableQuotes: memorableQuotes, sceneDescription: sceneDescription, actorNotes: actorNotes, cinematographyNotes: cinematographyNotes)
-		}
-		
-		reviewRef.child("\(currentUser.id.uuidString)/\(newReview.id.uuidString)").setValue(newReview.toDictionary()) { error, _ in
-			if let error = error {
-				NSLog("Error creating/updating a review: \(error)")
-			} else {
-				self.updateCollection(for: collectionId, review: newReview)
-				completion()
-			}
-		}
-	}
+    func putReview(collectionId: UUID,
+                   reviewId: UUID?,
+                   title: String,
+                   movie: Movie?,
+                   memorableQuotes: String?,
+                   sceneDescription: String?,
+                   actorNotes: String?,
+                   cinematographyNotes: String?,
+                   completion: @escaping () -> Void) {
+        var newReview: Review
+
+        if let reviewId = reviewId {
+            newReview = Review(title: title,
+                               collectionId: collectionId,
+                               movie: movie,
+                               memorableQuotes: memorableQuotes,
+                               sceneDescription: sceneDescription,
+                               actorNotes: actorNotes,
+                               cinematographyNotes: cinematographyNotes,
+                               id: reviewId)
+        } else {
+            newReview = Review(title: title,
+                               collectionId: collectionId,
+                               movie: movie,
+                               memorableQuotes: memorableQuotes,
+                               sceneDescription: sceneDescription,
+                               actorNotes: actorNotes,
+                               cinematographyNotes: cinematographyNotes)
+        }
+
+        reviewRef.child("\(currentUser.id.uuidString)/\(newReview.id.uuidString)").setValue(newReview.toDictionary()) { error, _ in
+            if let error = error {
+                NSLog("Error creating/updating a review: \(error)")
+            } else {
+                self.updateCollection(for: collectionId, review: newReview)
+                completion()
+            }
+        }
+    }
 	
 	private func updateCollection(for collectionId: UUID, review: Review) {
 		let userCollectionRef = self.collectionRef.child(self.currentUser.id.uuidString)

@@ -79,17 +79,25 @@ class ManageReviewViewController: UIViewController {
 	
 	// MARK: - IBActions
 	
-	@IBAction func saveBtnTapped(_ sender: Any) {
-		guard let collectionId = currentcollectionId, let title = titleTextField.optionalText else { return }
-		
-		firebaseClient?.putReview(collectionId: collectionId, reviewId: review?.id, title: title, movie: movie, memorableQuotes: quotesTextView.text, sceneDescription: sceneNotesTextView.text, actorNotes: actorNotesTextView.text, cinematographyNotes: cinemaNotesTextView.text, completion: {
-			print("Review Saved!")
-			self.dismiss(animated: true, completion: nil)
-		})
-	}
+    @IBAction func saveBtnTapped(_ sender: Any) {
+        guard let collectionId = currentcollectionId, let title = titleTextField.optionalText else { return }
+
+        firebaseClient?.putReview(collectionId: collectionId,
+                                  reviewId: review?.id,
+                                  title: title,
+                                  movie: movie,
+                                  memorableQuotes: quotesTextView.text,
+                                  sceneDescription: sceneNotesTextView.text,
+                                  actorNotes: actorNotesTextView.text,
+                                  cinematographyNotes: cinemaNotesTextView.text,
+                                  completion: {
+            print("Review Saved!")
+            self.dismiss(animated: true, completion: nil)
+        })
+    }
 	
 	@IBAction func movieBtnTapped(_ sender: Any) {
-		let searchVC = UIStoryboard(name: "Search", bundle: nil).instantiateInitialViewController() as! DiscoverViewController
+        guard let searchVC = UIStoryboard(name: "Search", bundle: nil).instantiateInitialViewController() as? DiscoverViewController else { return }
 		
 		present(searchVC, animated: true, completion: nil)
 	}
