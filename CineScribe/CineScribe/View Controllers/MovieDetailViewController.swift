@@ -41,6 +41,8 @@ class MovieDetailViewController: UIViewController {
 		setUI()
 		updateViews()
 		title = ""
+		posterImageView.image = UIImage(named: "poster-placeholder")
+		backdropImageView.image = UIImage(named: "backdrop-placeholder")
     }
 	
 	@IBAction func unwindToMovieDetailVC(_ unwindSegue: UIStoryboardSegue) {

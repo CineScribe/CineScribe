@@ -30,6 +30,7 @@ class SearchTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 		movieArtImageView.layer.cornerRadius = 1
+		movieArtImageView.image = UIImage(named: "placeholder")
     }
 
 	private func updateViews() {

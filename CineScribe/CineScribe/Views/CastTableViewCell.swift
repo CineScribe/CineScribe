@@ -30,6 +30,7 @@ class CastTableViewCell: UITableViewCell {
 	override func awakeFromNib() {
         super.awakeFromNib()
 		castImageView.layer.cornerRadius = 4
+		castImageView.image = #imageLiteral(resourceName: "placeholder")
     }
 
 	private func updateViews() {
