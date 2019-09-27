@@ -10,22 +10,43 @@ import UIKit
 
 class DiscoverViewController: UIViewController {
 
+	//MARK: - IBOutlets
+	
 	@IBOutlet weak var movieSearchBar: UISearchBar!
 	@IBOutlet var searchStackView: UIStackView!
 	@IBOutlet weak var searchScrollView: UIScrollView!
 	@IBOutlet weak var tableViewContainer: UIView!
 	@IBOutlet weak var cancelButton: UIBarButtonItem!
-
+	
+	//MARK: - Properties
+	
 	let movieController = MovieController.shared
-
-	let nowPlayingCollectionView = LabeledHorizontalCollectionWrapper()
-	let upcomingCollectionView = LabeledHorizontalCollectionWrapper()
-	let topRatedCollectionView = LabeledHorizontalCollectionWrapper()
-
+	
+	//MARK: - Life Cycle
+	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		cancelButton.isEnabled = false
 
+		setupViews()
+		setupNowPlaying()
+		setupUpcoming()
+		setupTopRated()
+    }
+    
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if let searchVC = segue.destination as? SearchTableViewController {
+			movieSearchBar.delegate = searchVC
+			searchVC.delegate = self
+		}
+	}
+	
+	//MARK: - IBActions
+	
+	
+	//MARK: - Helpers
+	
+	private func setupViews() {
 		searchScrollView.addSubview(searchStackView)
 		searchStackView.translatesAutoresizingMaskIntoConstraints = false
 		searchStackView.leadingAnchor.constraint(equalTo: searchScrollView.leadingAnchor).isActive = true
@@ -33,44 +54,52 @@ class DiscoverViewController: UIViewController {
 		searchStackView.trailingAnchor.constraint(equalTo: searchScrollView.trailingAnchor).isActive = true
 		searchStackView.bottomAnchor.constraint(equalTo: searchScrollView.bottomAnchor).isActive = true
 		searchStackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-
-
+	}
+	
+	private func setupNowPlaying() {
+		let nowPlayingCollectionView = LabeledHorizontalCollectionWrapper()
 		nowPlayingCollectionView.title = "Now Playing"
 		searchStackView.addArrangedSubview(nowPlayingCollectionView)
 		movieController.fetchNowPlayingMovies { (results) in
 			do {
 				let movieResults = try results.get()
-				self.nowPlayingCollectionView.movies = movieResults
+				nowPlayingCollectionView.movies = movieResults
 			} catch {
 				NSLog("Error getting 'Now Playing' movie from result: \(error)")
 			}
 		}
-
+		
 		nowPlayingCollectionView.delegate = self
-
+	}
+	
+	private func setupUpcoming() {
+		let upcomingCollectionView = LabeledHorizontalCollectionWrapper()
 		upcomingCollectionView.title = "Upcoming"
 		searchStackView.addArrangedSubview(upcomingCollectionView)
 		movieController.fetchUpcomingMovies { (results) in
 			do {
 				let upcomingResults = try results.get()
-				self.upcomingCollectionView.movies = upcomingResults
+				upcomingCollectionView.movies = upcomingResults
 			} catch {
 				NSLog("Error getting 'Upcoming Movies' from results: \(error)")
 			}
 		}
 		upcomingCollectionView.delegate = self
-
+	}
+	
+	private func setupTopRated() {
+		let topRatedCollectionView = LabeledHorizontalCollectionWrapper()
 		topRatedCollectionView.title = "Top Rated"
 		searchStackView.addArrangedSubview(topRatedCollectionView)
 		movieController.fetchTopRatedMovies { (results) in
 			do {
 				let topRatedResults = try results.get()
-				self.topRatedCollectionView.movies = topRatedResults
+				topRatedCollectionView.movies = topRatedResults
 			} catch {
 				NSLog("Error getting 'Top-Rated Movies' from results: \(error)")
 			}
 		}
-
+		
 		topRatedCollectionView.delegate = self
     }
 
@@ -80,15 +109,9 @@ class DiscoverViewController: UIViewController {
 		movieSearchBar.resignFirstResponder()
 		cancelButton.isEnabled = false
 	}
-
-    
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if let searchVC = segue.destination as? SearchTableViewController {
-			movieSearchBar.delegate = searchVC
-			searchVC.delegate = self
-		}
-	}
 }
+
+//MARK: - Horizontal CollectionView Wrapper Delegate
 
 extension DiscoverViewController: LabeledHorizontalCollectionWrapperDelegate {
 	func labeledCollectionShowDetail(_ collection: LabeledHorizontalCollectionWrapper, for movie: Movie) {
@@ -96,9 +119,10 @@ extension DiscoverViewController: LabeledHorizontalCollectionWrapperDelegate {
 		guard let movieDetailVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController else { fatalError("Storyboard setup incorrectly") }
 		movieDetailVC.movie = movie
 		navigationController?.pushViewController(movieDetailVC, animated: true)
-//		navigationController?.navigationBar.isHidden = true
 	}
 }
+
+//MARK: - Search TableView Delegate
 
 extension DiscoverViewController: SearchTableViewControllerDelegate {
 	func searchTableViewControllerBeganEditing(_ searchTableViewController: SearchTableViewController, beganEditing: Bool) {

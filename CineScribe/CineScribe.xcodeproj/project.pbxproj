@@ -43,6 +43,9 @@
 		5FF4545D4CE7CA5E8E13BDC3 /* Pods_CineScribe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3913FE1A12FB521BF003354A /* Pods_CineScribe.framework */; };
 		B5150FAF233C1534002269C9 /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5150FAE233C1534002269C9 /* ReviewsViewController.swift */; };
 		B5150FC0233C1B67002269C9 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5150FBF233C1B67002269C9 /* ImageData.swift */; };
+		B5150FC8233D2A28002269C9 /* FirebaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5150FC7233D2A28002269C9 /* FirebaseTests.swift */; };
+		B5150FD1233D5582002269C9 /* CollectionsModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5150FD0233D5582002269C9 /* CollectionsModalVC.swift */; };
+		B5150FD3233D583B002269C9 /* ReviewsModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5150FD2233D583B002269C9 /* ReviewsModalVC.swift */; };
 		B56D6F542339783600524A9C /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D6F532339783600524A9C /* FirebaseClient.swift */; };
 		B56D6F56233984B000524A9C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B56D6F55233984B000524A9C /* GoogleService-Info.plist */; };
 		B56D6F5823399C5B00524A9C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D6F5723399C5B00524A9C /* User.swift */; };
@@ -50,6 +53,16 @@
 		B56D6F5D233A7C9A00524A9C /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D6F5C233A7C9A00524A9C /* Collection.swift */; };
 		B56D6F5F233AD8A900524A9C /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D6F5E233AD8A900524A9C /* Review.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B5150FCA233D2A28002269C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 374B057D2339134E0089FB4E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 374B05842339134E0089FB4E;
+			remoteInfo = CineScribe;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		11B7C0A24823808F00BF0FEF /* Pods-CineScribe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CineScribe.release.xcconfig"; path = "Pods/Target Support Files/Pods-CineScribe/Pods-CineScribe.release.xcconfig"; sourceTree = "<group>"; };
@@ -91,6 +104,11 @@
 		3913FE1A12FB521BF003354A /* Pods_CineScribe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CineScribe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5150FAE233C1534002269C9 /* ReviewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
 		B5150FBF233C1B67002269C9 /* ImageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
+		B5150FC5233D2A28002269C9 /* CineScribeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CineScribeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5150FC7233D2A28002269C9 /* FirebaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTests.swift; sourceTree = "<group>"; };
+		B5150FC9233D2A28002269C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5150FD0233D5582002269C9 /* CollectionsModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsModalVC.swift; sourceTree = "<group>"; };
+		B5150FD2233D583B002269C9 /* ReviewsModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsModalVC.swift; sourceTree = "<group>"; };
 		B56D6F532339783600524A9C /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		B56D6F55233984B000524A9C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B56D6F5723399C5B00524A9C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -109,6 +127,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B5150FC2233D2A28002269C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -117,6 +142,7 @@
 			children = (
 				374B05872339134E0089FB4E /* CineScribe */,
 				37A9A5722339F9270030AFD7 /* Nunito */,
+				B5150FC6233D2A28002269C9 /* CineScribeTests */,
 				374B05862339134E0089FB4E /* Products */,
 				A5D2BB69366E5B1139E48FC6 /* Pods */,
 				B1E67E54114BEE4B7565F2BB /* Frameworks */,
@@ -127,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				374B05852339134E0089FB4E /* CineScribe.app */,
+				B5150FC5233D2A28002269C9 /* CineScribeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -183,6 +210,8 @@
 				37A9A5702339EBB10030AFD7 /* ManageReviewViewController.swift */,
 				37CD8D93233B31C300EFE198 /* MovieDetailViewController.swift */,
 				37F40E7E233BF04700630F90 /* CastTableViewController.swift */,
+				B5150FD0233D5582002269C9 /* CollectionsModalVC.swift */,
+				B5150FD2233D583B002269C9 /* ReviewsModalVC.swift */,
 				37F40E82233D52D800630F90 /* DevInfoViewController.swift */,
 				37F40E84233D5AF200630F90 /* NoteMovieSearchTableViewController.swift */,
 			);
@@ -252,6 +281,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B5150FC6233D2A28002269C9 /* CineScribeTests */ = {
+			isa = PBXGroup;
+			children = (
+				B5150FC7233D2A28002269C9 /* FirebaseTests.swift */,
+				B5150FC9233D2A28002269C9 /* Info.plist */,
+			);
+			path = CineScribeTests;
+			sourceTree = "<group>";
+		};
 		B56D6F592339BBEC00524A9C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +320,24 @@
 			productReference = 374B05852339134E0089FB4E /* CineScribe.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B5150FC4233D2A28002269C9 /* CineScribeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5150FCE233D2A28002269C9 /* Build configuration list for PBXNativeTarget "CineScribeTests" */;
+			buildPhases = (
+				B5150FC1233D2A28002269C9 /* Sources */,
+				B5150FC2233D2A28002269C9 /* Frameworks */,
+				B5150FC3233D2A28002269C9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B5150FCB233D2A28002269C9 /* PBXTargetDependency */,
+			);
+			name = CineScribeTests;
+			productName = CineScribeTests;
+			productReference = B5150FC5233D2A28002269C9 /* CineScribeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -294,6 +350,10 @@
 				TargetAttributes = {
 					374B05842339134E0089FB4E = {
 						CreatedOnToolsVersion = 11.0;
+					};
+					B5150FC4233D2A28002269C9 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 374B05842339134E0089FB4E;
 					};
 				};
 			};
@@ -311,6 +371,7 @@
 			projectRoot = "";
 			targets = (
 				374B05842339134E0089FB4E /* CineScribe */,
+				B5150FC4233D2A28002269C9 /* CineScribeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -333,6 +394,13 @@
 				374B05AE2339151A0089FB4E /* NoteDetail.storyboard in Resources */,
 				37AF5075233A74AE00E18CA0 /* MovieDiscoverCollectionViewCell.xib in Resources */,
 				374B05902339134E0089FB4E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5150FC3233D2A28002269C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +454,7 @@
 				B5150FAF233C1534002269C9 /* ReviewsViewController.swift in Sources */,
 				37C7DA8D233940430081D771 /* movieDatabaseApiKey.swift in Sources */,
 				37C7DA97233970340081D771 /* CollectionCell.swift in Sources */,
+				B5150FD1233D5582002269C9 /* CollectionsModalVC.swift in Sources */,
 				374B058D2339134E0089FB4E /* MainViewController.swift in Sources */,
 				37A9A5712339EBB10030AFD7 /* ManageReviewViewController.swift in Sources */,
 				37CD8D94233B31C300EFE198 /* MovieDetailViewController.swift in Sources */,
@@ -405,6 +474,7 @@
 				B56D6F542339783600524A9C /* FirebaseClient.swift in Sources */,
 				37AF5074233A74AE00E18CA0 /* MovieDiscoverCollectionViewCell.swift in Sources */,
 				37F40E81233BF22B00630F90 /* CastTableViewCell.swift in Sources */,
+				B5150FD3233D583B002269C9 /* ReviewsModalVC.swift in Sources */,
 				379C4624233A9ACE0000F928 /* MovieController.swift in Sources */,
 				37C7DAA323398BC20081D771 /* SearchTableViewCell.swift in Sources */,
 				37AF506F233A716B00E18CA0 /* LabeledHorizontalCollectionWrapper.swift in Sources */,
@@ -412,7 +482,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B5150FC1233D2A28002269C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5150FC8233D2A28002269C9 /* FirebaseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B5150FCB233D2A28002269C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 374B05842339134E0089FB4E /* CineScribe */;
+			targetProxy = B5150FCA233D2A28002269C9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		374B058E2339134E0089FB4E /* Main.storyboard */ = {
@@ -555,6 +641,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = NO;
+				DEVELOPMENT_TEAM = "";
 				DEVELOPMENT_TEAM = D6VB3396MT;
 				INFOPLIST_FILE = "$(SRCROOT)/CineScribe/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -576,6 +664,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = NO;
+				DEVELOPMENT_TEAM = "";
 				DEVELOPMENT_TEAM = D6VB3396MT;
 				INFOPLIST_FILE = "$(SRCROOT)/CineScribe/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -587,6 +677,50 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		B5150FCC233D2A28002269C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = PD94K2S3RY;
+				HEADER_SEARCH_PATHS = "${PODS_ROOT}/Firebase/Core/Sources";
+				INFOPLIST_FILE = CineScribeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lambda.CineScribeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CineScribe.app/CineScribe";
+			};
+			name = Debug;
+		};
+		B5150FCD233D2A28002269C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = PD94K2S3RY;
+				HEADER_SEARCH_PATHS = "${PODS_ROOT}/Firebase/Core/Sources";
+				INFOPLIST_FILE = CineScribeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lambda.CineScribeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CineScribe.app/CineScribe";
 			};
 			name = Release;
 		};
@@ -607,6 +741,15 @@
 			buildConfigurations = (
 				374B059A233913500089FB4E /* Debug */,
 				374B059B233913500089FB4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5150FCE233D2A28002269C9 /* Build configuration list for PBXNativeTarget "CineScribeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5150FCC233D2A28002269C9 /* Debug */,
+				B5150FCD233D2A28002269C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

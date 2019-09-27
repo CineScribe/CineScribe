@@ -12,18 +12,20 @@ import Firebase
 struct Review {
     let id: UUID
     let dateCreated: Date
+    let title: String
 	let movieId: Int?
-    let title: String?
+	let movieImageUrl: URL?
     let memorableQuotes: String?
     let sceneDescription: String?
     let actorNotes: String?
     let cinematographyNotes: String?
 	
-	init(id: UUID = UUID(), dateCreated: Date = Date(), movieId: Int?, title: String?, memorableQuotes: String?, sceneDescription: String?, actorNotes: String?, cinematographyNotes: String?) {
+	init(id: UUID = UUID(), dateCreated: Date = Date(), title: String, movie: Movie?, memorableQuotes: String?, sceneDescription: String?, actorNotes: String?, cinematographyNotes: String?) {
 		self.id = id
 		self.title = title
 		self.dateCreated = dateCreated
-		self.movieId = movieId
+		self.movieId = movie?.id
+		self.movieImageUrl = movie?.posterURL
 		self.memorableQuotes = memorableQuotes
 		self.sceneDescription = sceneDescription
 		self.actorNotes = actorNotes
@@ -34,25 +36,28 @@ struct Review {
 		guard
 			let value = snapshot.value as? [String: AnyObject],
 			let dateString = value["dateCreated"] as? String,
-			let dateCreated = dateString.transformToIsoDate else {
+			let dateCreated = dateString.transformToIsoDate,
+			let title = value["title"] as? String else {
 				return nil
 		}
 		
 		self.id = UUID(uuidString: snapshot.key) ?? UUID()
 		self.dateCreated = dateCreated
-		self.title = value["title"] as? String
+		self.title = title
 		self.movieId = value["movieId"] as? Int
+		self.movieImageUrl = value["movieImageUrl"] as? URL
 		self.memorableQuotes = value["memorableQuotes"] as? String
 		self.sceneDescription = value["sceneDescription"] as? String
 		self.actorNotes = value["actorNotes"] as? String
 		self.cinematographyNotes = value["cinematographyNotes"] as? String
 	}
 	
-	func toDictionary() -> Any? {
+	func toDictionary() -> Any {
 		return [
 			"dateCreated": dateCreated.transformIsoToString,
+			"title": title,
 			"movieId": movieId as Any,
-			"title": title as Any,
+			"movieImageUrl": movieImageUrl?.absoluteString as Any,
 			"memorableQuotes": memorableQuotes as Any,
 			"sceneDescription": sceneDescription as Any,
 			"actorNotes": actorNotes as Any,

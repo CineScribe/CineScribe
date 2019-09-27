@@ -170,6 +170,7 @@
                                         <connections>
                                             <outlet property="movieArtImageView" destination="9oU-l5-shN" id="gYK-AB-H09"/>
                                             <outlet property="noteTitleLabel" destination="lcj-wz-DDs" id="tzs-AF-QS5"/>
+                                            <segue destination="wEu-so-1ru" kind="show" id="hNy-Mo-frl"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -202,10 +203,12 @@
         <!--ManageReview-->
         <scene sceneID="k21-5y-cOm">
             <objects>
-                <viewControllerPlaceholder storyboardName="ManageReview" id="wEu-so-1ru" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tlj-UJ-Cn0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="ManageReview" id="wEu-so-1ru" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="8GO-L8-Pv6"/>
+                </viewControllerPlaceholder>
             </objects>
-            <point key="canvasLocation" x="3275" y="-120"/>
+            <point key="canvasLocation" x="3356" y="131"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="DTd-5b-CQO">
@@ -279,4 +282,7 @@
         <image name="folder.badge.plus" catalog="system" width="64" height="44"/>
         <image name="it_movie" width="2000" height="3000"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="6dj-dc-KVw"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -14,7 +14,12 @@ protocol SearchTableViewControllerDelegate: AnyObject {
 }
 
 class SearchTableViewController: UITableViewController {
-
+	
+	//MARK: - IBOutlets
+	
+	
+	//MARK: - Properties
+	
 	var searchedMovies: [Movie] = [] {
 		didSet {
 			DispatchQueue.main.async {
@@ -30,15 +35,35 @@ class SearchTableViewController: UITableViewController {
 
 	let movieController = MovieController.shared
 	weak var delegate: SearchTableViewControllerDelegate?
-
+	
+	//MARK: - Life Cycle
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		tableView.tableFooterView = UIView()
 		tableView.separatorStyle = .none
     }
 
-    // MARK: - Table view data source
+    // MARK: - Navigation
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "ShowMovieDetailFromSearchCell" {
+			guard let navController = segue.destination as? UINavigationController,
+				let detailVC = navController.children.first as? MovieDetailViewController,
+				let indexPath = tableView.indexPathForSelectedRow else { return }
+			let movie = searchedMovies[indexPath.row]
+			detailVC.movie = movie
+		}
+    }
+	
+	//MARK: - IBActions
+	
+	
+	//MARK: - Helpers
+	
+	
+	// MARK: - Table view data source
+	
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return searchedMovies.count
     }
@@ -54,22 +79,9 @@ class SearchTableViewController: UITableViewController {
 
         return cell
     }
-
-
-
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == "ShowMovieDetailFromSearchCell" {
-			guard let navController = segue.destination as? UINavigationController,
-				let detailVC = navController.children.first as? MovieDetailViewController,
-				let indexPath = tableView.indexPathForSelectedRow else { return }
-			let movie = searchedMovies[indexPath.row]
-			detailVC.movie = movie
-		}
-    }
 }
+
+//MARK: - SearchBar Delegate
 
 extension SearchTableViewController: UISearchBarDelegate {
 

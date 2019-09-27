@@ -38,18 +38,26 @@ class MovieDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//		feedback.prepare()
 		setUI()
 		updateViews()
 		title = ""
     }
+	
+	@IBAction func unwindToMovieDetailVC(_ unwindSegue: UIStoryboardSegue) {
+	}
 
 	@IBAction func newNoteButtonTapped(_ sender: UIButton) {
 		let optionController = UIAlertController(title: "Choose if you'd like to create a new note from this movie or add to existing note", message: nil, preferredStyle: .actionSheet)
-		let newNoteAction = UIAlertAction(title: "Create New Note", style: .default, handler: nil)
-		let addToExistingAction = UIAlertAction(title: "Add To Existing Note", style: .default, handler: nil)
+		let newNoteAction = UIAlertAction(title: "Create New Note", style: .default) { (_) in
+			self.performSegue(withIdentifier: "CollectionsModalVC", sender: nil)
+		}
+		let addToExistingAction = UIAlertAction(title: "Add To Existing Note", style: .default) { (_) in
+			self.performSegue(withIdentifier: "CollectionsModalVC", sender: nil)
+		}
 		let cancelActions = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		
 		[newNoteAction, addToExistingAction, cancelActions].forEach { optionController.addAction($0) }
+		
 		present(optionController, animated: true, completion: nil)
 	}
 
@@ -64,6 +72,10 @@ class MovieDetailViewController: UIViewController {
 			if let movieToSend = movie {
 				castTableVC.movie = movieToSend
 			}
+		}
+		if let navController = segue.destination as? UINavigationController,
+			let collectionsModalVC = navController.children.first as? CollectionsModalVC {
+			collectionsModalVC.movie = movie
 		}
 	}
 

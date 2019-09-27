@@ -74,15 +74,17 @@ class FirebaseClient {
 		}
 	}
 	
-	func getAllReviews() {
-		reviewRef.child(currentUser.id.uuidString).observeSingleEvent(of: .value) { snapshot in
+	func getReviews(completion: @escaping () -> Void) {
+		reviewRef.child(currentUser.id.uuidString).observeSingleEvent(of: .value, with: { snapshot in
 			self.userReviews.removeAll()
 			for child in snapshot.children {
 				if let snap = child as? DataSnapshot,
 					let review = Review(snapshot: snap) {
-						self.userReviews.append(review)
+					self.userReviews.append(review)
 				}
 			}
+		}) { error in
+			NSLog("Error getting collections: \(error)")
 		}
 	}
 	
@@ -95,8 +97,8 @@ class FirebaseClient {
 			reviewRef.child("\(currentUser.id.uuidString)/\($0)").observeSingleEvent(of: .value) { snapshot in
 				if let review = Review(snapshot: snapshot) {
 					self.userReviews.append(review)
-					myGroup.leave()
 				}
+				myGroup.leave()
 			}
 		})
 
@@ -107,21 +109,27 @@ class FirebaseClient {
 	
 	//MARK: - Update
 	
-	func putReview(collectionId: UUID, movieId: Int?, title: String?, memorableQuotes: String?, sceneDescription: String?, actorNotes: String?, cinematographyNotes: String?, completion: @escaping () -> Void) {
-		let newReview = Review(movieId: movieId, title: title, memorableQuotes: memorableQuotes, sceneDescription: sceneDescription, actorNotes: actorNotes, cinematographyNotes: cinematographyNotes)
+	func putReview(collectionId: UUID, reviewId: UUID?, title: String, movie: Movie?, memorableQuotes: String?, sceneDescription: String?, actorNotes: String?, cinematographyNotes: String?, completion: @escaping () -> Void) {
+		var newReview: Review
+		
+		if let reviewId = reviewId {
+			newReview = Review(id: reviewId, title: title, movie: movie, memorableQuotes: memorableQuotes, sceneDescription: sceneDescription, actorNotes: actorNotes, cinematographyNotes: cinematographyNotes)
+		} else {
+			newReview = Review(title: title, movie: movie, memorableQuotes: memorableQuotes, sceneDescription: sceneDescription, actorNotes: actorNotes, cinematographyNotes: cinematographyNotes)
+		}
 		
 		reviewRef.child("\(currentUser.id.uuidString)/\(newReview.id.uuidString)").setValue(newReview.toDictionary()) { (error, _) in
 			if let error = error {
 				NSLog("Error creating/updating a review: \(error)")
 			} else {
 				let collectionReviewsRef = self.collectionRef.child("\(self.currentUser.id.uuidString)/\(collectionId)/reviews")
-				collectionReviewsRef.child(newReview.id.uuidString).setValue(movieId ?? 0) { (error, _) in
+				collectionReviewsRef.child(newReview.id.uuidString).setValue(movie?.id ?? 0) { (error, _) in
 					if let error = error {
 						NSLog("Error appending review to collection: \(error)")
 					}
 				}
 				if let collectionIndex = self.userCollections.firstIndex(where: {$0.id == collectionId}) {
-					self.userCollections[collectionIndex].reviews[collectionId.uuidString] = movieId ?? 0
+					self.userCollections[collectionIndex].reviews[collectionId.uuidString] = movie?.id ?? 0
 					self.userReviews.append(newReview)
 				}
 				
