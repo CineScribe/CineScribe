@@ -54,7 +54,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Search Movies" id="OhO-gS-0a9">
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="gCe-jo-TK5">
-                            <color key="tintColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" systemColor="systemIndigoColor" red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="cancelTapped:" destination="guR-ty-NDV" id="oKj-8m-Xdw"/>
                             </connections>
@@ -78,10 +78,10 @@
             </objects>
             <point key="canvasLocation" x="1723.1884057971015" y="164.73214285714286"/>
         </scene>
-        <!--Search Table View Controller-->
+        <!--Discovery Search Table View Controller-->
         <scene sceneID="Pg3-fT-ybQ">
             <objects>
-                <tableViewController storyboardIdentifier="SearchTableViewController" id="mQL-fU-dof" customClass="SearchTableViewController" customModule="CineScribe" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SearchTableViewController" id="mQL-fU-dof" customClass="DiscoverySearchTableViewController" customModule="CineScribe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tzi-5C-XUe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="701"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -119,7 +119,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tagline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="bhx-sO-lMN">
                                                             <rect key="frame" x="0.0" y="30" width="314.5" height="30"/>
                                                             <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="16"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
