@@ -4,7 +4,7 @@
 //
 //  Created by Marlon Raskin on 9/24/19.
 //  Copyright © 2019 Marlon Raskin. All rights reserved.
-//
+//  swiftlint:disable private_outlet
 
 import UIKit
 

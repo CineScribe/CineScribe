@@ -14,7 +14,7 @@ struct User {
 	let username: String
 	let password: String
 	
-	init(id: UUID = UUID(), username: String, password: String) {
+	init(username: String, password: String, id: UUID = UUID()) {
 		self.id = id
 		self.username = username
 		self.password = password

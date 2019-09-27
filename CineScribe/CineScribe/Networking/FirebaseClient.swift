@@ -19,7 +19,7 @@ class FirebaseClient {
 	var userReviews = [Review]()
 
 	#warning("Remove hard-coded user")
-	private var currentUser = User(id: UUID(uuidString: "DDF188EF-D391-489B-B254-5B58629E99F6")!, username: "Santana", password: "12345")
+	private var currentUser = User(username: "Santana", password: "12345", id: UUID(uuidString: "DDF188EF-D391-489B-B254-5B58629E99F6")!)
 	
 	init() {
 		userRef = rootRef.child("users")
@@ -153,23 +153,23 @@ class FirebaseClient {
 		let userCollectionRef = self.collectionRef.child(self.currentUser.id.uuidString)
 		let collectionReviewsRef = userCollectionRef.child("\(collectionId)/reviews")
 		
-		userCollectionRef.child("imageUrl").setValue(review.movieImageUrl?.absoluteString) { (error, _) in
+		userCollectionRef.child("imageUrl").setValue(review.movieImageUrl?.absoluteString) { error, _ in
 			if let error = error {
 				NSLog("Error adding imageUrl to collection: \(error)")
 			}
 		}
-		collectionReviewsRef.child(review.id.uuidString).setValue(review.movieId ?? 0) { (error, _) in
+		collectionReviewsRef.child(review.id.uuidString).setValue(review.movieId ?? 0) { error, _ in
 			if let error = error {
 				NSLog("Error appending review to collection: \(error)")
 			}
 		}
-		if let collectionIndex = self.userCollections.firstIndex(where: {$0.id == collectionId}) {
+		if let collectionIndex = self.userCollections.firstIndex(where: { $0.id == collectionId }) {
 			self.userCollections[collectionIndex].reviews[collectionId.uuidString] = review.movieId ?? 0
 			self.userReviews.append(review)
 		}
 	}
 		
-	//MARK: - Delete
+	// MARK: - Delete
 	
 	func delete(collection: Collection, completion: @escaping () -> Void) {
 	collectionRef.child("\(currentUser.id.uuidString)/\(collection.id.uuidString)").removeValue()

@@ -15,7 +15,7 @@ struct Collection {
 	var reviews: [String: Int]
 	var imageUrl: URL?
 	
-	init(id: UUID = UUID(), title: String, reviewIds: [String: Int] = [:]) {
+	init(title: String, reviewIds: [String: Int] = [:], id: UUID = UUID()) {
 		self.id = id
 		self.title = title
 		self.reviews = reviewIds

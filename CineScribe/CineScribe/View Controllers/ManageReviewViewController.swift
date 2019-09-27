@@ -47,7 +47,9 @@ class ManageReviewViewController: UIViewController {
 		case .newWithMovie(let movie):
 			return movie.id
 		case .existing(let review):
-			if let id = review.movieId { return id }
+			if let id = review.movieId {
+                return id
+            }
 			fallthrough
 		default:
 			return 0

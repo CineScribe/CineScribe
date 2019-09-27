@@ -34,7 +34,7 @@ class CollectionCell: UITableViewCell {
 		listCount.text = "\(collection.reviews.count)"
 		
 		guard let imageUrl = collection.imageUrl else { return }
-		ImageData.shared.fetchImage(with: imageUrl) { (error, fetchedImage) in
+		ImageData.shared.fetchImage(with: imageUrl) { error, fetchedImage in
 			if let error = error {
 				NSLog("Error fetching collection image: \(error)")
 			}

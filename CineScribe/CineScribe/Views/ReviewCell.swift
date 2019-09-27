@@ -11,7 +11,7 @@ import UIKit
 class ReviewCell: UICollectionViewCell {
 
 	// MARK: - Outlets & Properties
-	@IBOutlet weak var movieArtImageView: UIImageView!
+	 @IBOutlet private weak var movieArtImageView: UIImageView!
 	 @IBOutlet private weak var noteTitleLabel: UILabel!
 	
 	var review: Review? {
@@ -32,7 +32,7 @@ class ReviewCell: UICollectionViewCell {
 		noteTitleLabel.text = review.title
 		
 		guard let imageUrl = review.movieImageUrl else { return }
-		ImageData.shared.fetchImage(with: imageUrl) { (error, fetchedImage) in
+		ImageData.shared.fetchImage(with: imageUrl) { error, fetchedImage in
 			if let error = error {
 				NSLog("Error fetching collection image: \(error)")
 			}
