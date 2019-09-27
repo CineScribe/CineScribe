@@ -151,7 +151,7 @@
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="T0p-iH-htl" firstAttribute="leading" secondItem="9oU-l5-shN" secondAttribute="leading" id="5kB-Lr-Djv"/>
                                                         <constraint firstAttribute="trailing" secondItem="T0p-iH-htl" secondAttribute="trailing" id="OkE-pw-GGn"/>
@@ -242,10 +242,10 @@
             </objects>
             <point key="canvasLocation" x="115" y="557"/>
         </scene>
-        <!--Acknowledgements-->
+        <!--devInfo-->
         <scene sceneID="Obx-38-tlh">
             <objects>
-                <viewControllerPlaceholder storyboardName="Acknowledgements" id="hCO-Tk-zXG" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="devInfo" id="hCO-Tk-zXG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" selectedImage="captions.bubble" catalog="system" id="qW5-ai-ENq"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BRB-4G-7Mh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -54,6 +54,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Search Movies" id="OhO-gS-0a9">
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="gCe-jo-TK5">
+                            <color key="tintColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="cancelTapped:" destination="guR-ty-NDV" id="oKj-8m-Xdw"/>
                             </connections>
