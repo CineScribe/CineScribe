@@ -21,7 +21,7 @@ class MovieDetailViewController: UIViewController {
 	 @IBOutlet private weak var dateLabel: UILabel!
 	 @IBOutlet private weak var newNoteButton: UIButton!
 	 @IBOutlet private weak var castButton: UIButton!
-     @IBOutlet weak var chevronButton: UIButton!
+     @IBOutlet private weak var chevronButton: UIButton!
      @IBOutlet private var swipeBackGestureRecognizer: UIScreenEdgePanGestureRecognizer!
 
 	let imageData = ImageData.shared
