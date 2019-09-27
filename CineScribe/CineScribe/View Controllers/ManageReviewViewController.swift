@@ -169,5 +169,6 @@ class ManageReviewViewController: UIViewController {
 extension ManageReviewViewController: ManageReviewVCDelegate {
 	func setMovieToReview(movie: Movie) {
 		reviewType = .newWithMovie(movie)
+		navigationItem.rightBarButtonItems = nil
 	}
 }
