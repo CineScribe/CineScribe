@@ -122,19 +122,29 @@ class FirebaseClient {
 			if let error = error {
 				NSLog("Error creating/updating a review: \(error)")
 			} else {
-				let collectionReviewsRef = self.collectionRef.child("\(self.currentUser.id.uuidString)/\(collectionId)/reviews")
-				collectionReviewsRef.child(newReview.id.uuidString).setValue(movie?.id ?? 0) { (error, _) in
-					if let error = error {
-						NSLog("Error appending review to collection: \(error)")
-					}
-				}
-				if let collectionIndex = self.userCollections.firstIndex(where: {$0.id == collectionId}) {
-					self.userCollections[collectionIndex].reviews[collectionId.uuidString] = movie?.id ?? 0
-					self.userReviews.append(newReview)
-				}
-				
+				self.updateCollection(for: collectionId, review: newReview)
 				completion()
 			}
+		}
+	}
+	
+	private func updateCollection(for collectionId: UUID, review: Review) {
+		let userCollectionRef = self.collectionRef.child(self.currentUser.id.uuidString)
+		let collectionReviewsRef = userCollectionRef.child("\(collectionId)/reviews")
+		
+		userCollectionRef.child("imageUrl").setValue(review.movieImageUrl?.absoluteString) { (error, _) in
+			if let error = error {
+				NSLog("Error adding imageUrl to collection: \(error)")
+			}
+		}
+		collectionReviewsRef.child(review.id.uuidString).setValue(review.movieId ?? 0) { (error, _) in
+			if let error = error {
+				NSLog("Error appending review to collection: \(error)")
+			}
+		}
+		if let collectionIndex = self.userCollections.firstIndex(where: {$0.id == collectionId}) {
+			self.userCollections[collectionIndex].reviews[collectionId.uuidString] = review.movieId ?? 0
+			self.userReviews.append(review)
 		}
 	}
 		
