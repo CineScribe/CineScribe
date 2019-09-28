@@ -90,11 +90,9 @@ class MovieDetailViewController: UIViewController {
         impactGenerator.impactOccurred()
     }
 
-
 	@IBAction func backButtonTapped(_ sender: UIButton) {
 		navigationController?.popViewController(animated: true)
 	}
-
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "ShowCastModalSegue" {
