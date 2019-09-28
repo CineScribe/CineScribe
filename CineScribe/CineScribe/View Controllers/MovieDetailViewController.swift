@@ -8,6 +8,11 @@
 
 import UIKit
 
+let dateFormatterForLabel: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .medium
+    return formatter
+}()
 
 class MovieDetailViewController: UIViewController {
 
@@ -25,8 +30,7 @@ class MovieDetailViewController: UIViewController {
      @IBOutlet private var swipeBackGestureRecognizer: UIScreenEdgePanGestureRecognizer!
 
 	let imageData = ImageData.shared
-	let impactGenerator = UIImpactFeedbackGenerator()
-	let selectionGenerator = UISelectionFeedbackGenerator()
+    let impactGenerator = UIImpactFeedbackGenerator(style: .light)
 	let layer = CAGradientLayer()
 	private var isNewReview = false
 	var movie: Movie? {
@@ -47,6 +51,7 @@ class MovieDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        impactGenerator.prepare()
 		setUI()
 		updateViews()
 		title = ""
@@ -64,12 +69,13 @@ class MovieDetailViewController: UIViewController {
 	}
 
 	@IBAction func newNoteButtonTapped(_ sender: UIButton) {
+        impactGenerator.impactOccurred()
 		let optionController = UIAlertController(title: "Choose if you'd like to create a new review from this movie or add to existing review", message: nil, preferredStyle: .actionSheet)
-		let newNoteAction = UIAlertAction(title: "Create New Review", style: .default) { (_) in
+		let newNoteAction = UIAlertAction(title: "Create New Review", style: .default) { _ in
 			self.isNewReview = true
 			self.performSegue(withIdentifier: "CollectionsModalVC", sender: nil)
 		}
-		let addToExistingAction = UIAlertAction(title: "Add To Existing Review", style: .default) { (_) in
+		let addToExistingAction = UIAlertAction(title: "Add To Existing Review", style: .default) { _ in
 			self.isNewReview = false
 			self.performSegue(withIdentifier: "CollectionsModalVC", sender: nil)
 		}
@@ -79,6 +85,11 @@ class MovieDetailViewController: UIViewController {
 		
 		present(optionController, animated: true, completion: nil)
 	}
+
+    @IBAction func castButtonTapped(_ sender: UIButton) {
+        impactGenerator.impactOccurred()
+    }
+
 
 	@IBAction func backButtonTapped(_ sender: UIButton) {
 		navigationController?.popViewController(animated: true)
@@ -130,7 +141,11 @@ class MovieDetailViewController: UIViewController {
 		guard let movie = movie else { fatalError("Movie not set") }
 		titleLabel.text = movie.title
 		overviewLabel.text = movie.overview
-		dateLabel.text = movie.releaseDate
+        if let date = movie.releaseDate {
+            dateLabel.text = dateFormatterForLabel.string(from: date)
+        } else {
+            dateLabel.text = "No date"
+        }
 
 
 		imageData.fetchImage(for: movie, imageStyle: .poster) { error, posterImage in

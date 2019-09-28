@@ -36,26 +36,48 @@ class MovieController {
 	private let searchMovieBaseUrl = URL(string: "https://api.themoviedb.org/3/search/movie")!
 	private let apiQueryItem = URLQueryItem(name: "api_key", value: .movieDatabaseApiKey)
 
-	// MARK: - Fetch Movies Functions
-	func fetchNowPlayingMovies(completion: @escaping (Result<[Movie], NetworkError>) -> Void) {
+    let urlSession = URLSession.shared
+    let jsonDecoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        return decoder
+    }()
+
+	// MARK: - Movies Functions
+
+    let languageQuery = URLQueryItem(name: "language", value: "en-US")
+    let adultQuery = URLQueryItem(name: "include_adult", value: "false")
+
+	func fetchNowPlayingMovies(completion: @escaping (Result<MoviesResponse, NetworkError>) -> Void) {
 		var urlComponents = URLComponents(url: nowPlayingBaseUrl, resolvingAgainstBaseURL: true)
-		urlComponents?.queryItems = [apiQueryItem]
+		urlComponents?.queryItems = [apiQueryItem, languageQuery, adultQuery]
 		fetchMovieHelper(urlComponents: urlComponents, completion: completion)
 	}
 
-	func fetchTopRatedMovies(completion: @escaping (Result<[Movie], NetworkError>) -> Void) {
+	func fetchTopRatedMovies(completion: @escaping (Result<MoviesResponse, NetworkError>) -> Void) {
 		var urlComponents = URLComponents(url: topRatedBaseUrl, resolvingAgainstBaseURL: true)
-		urlComponents?.queryItems = [apiQueryItem]
+		urlComponents?.queryItems = [apiQueryItem, languageQuery, adultQuery]
 		fetchMovieHelper(urlComponents: urlComponents, completion: completion)
 	}
 
-	func fetchUpcomingMovies(completion: @escaping (Result<[Movie], NetworkError>) -> Void) {
+	func fetchUpcomingMovies(completion: @escaping (Result<MoviesResponse, NetworkError>) -> Void) {
 		var urlComponents = URLComponents(url: upcomingBaseUrl, resolvingAgainstBaseURL: true)
-		urlComponents?.queryItems = [apiQueryItem]
+		urlComponents?.queryItems = [apiQueryItem, languageQuery, adultQuery]
 		fetchMovieHelper(urlComponents: urlComponents, completion: completion)
 	}
 
-	private func fetchMovieHelper(urlComponents: URLComponents?, completion: @escaping (Result<[Movie], NetworkError>) -> Void) {
+    func searchDatabse(for movie: String, completion: @escaping (Result<MoviesResponse, NetworkError>) -> Void) {
+        var urlComponents = URLComponents(url: searchMovieBaseUrl, resolvingAgainstBaseURL: true)
+        let searchQuery = URLQueryItem(name: "query", value: movie)
+
+        urlComponents?.queryItems = [apiQueryItem, searchQuery, languageQuery, adultQuery]
+        fetchMovieHelper(urlComponents: urlComponents, completion: completion)
+    }
+
+	private func fetchMovieHelper(urlComponents: URLComponents?, completion: @escaping (Result<MoviesResponse, NetworkError>) -> Void) {
 		guard let requestUrl = urlComponents?.url else {
 			NSLog("Request URL is nil")
 			completion(.failure(.otherError))
@@ -78,10 +100,8 @@ class MovieController {
 			}
 
 			do {
-				let decoder = JSONDecoder()
-				decoder.keyDecodingStrategy = .convertFromSnakeCase
-				let results = try decoder.decode(MoviesResponse.self, from: data)
-				completion(.success(results.results))
+                let results = try self.jsonDecoder.decode(MoviesResponse.self, from: data)
+				completion(.success(results))
 			} catch {
 				NSLog("Error decoding results: \(error)")
 				completion(.failure(.noDecode))
@@ -90,17 +110,7 @@ class MovieController {
 	}
 
 
-	// MARK: - Search Function
-	func searchDatabse(for movie: String, completion: @escaping (Result<[Movie], NetworkError>) -> Void) {
-		var urlComponents = URLComponents(url: searchMovieBaseUrl, resolvingAgainstBaseURL: true)
-		let searchQuery = URLQueryItem(name: "query", value: movie)
-		let languageQuery = URLQueryItem(name: "language", value: "en-US")
-		let adultQuery = URLQueryItem(name: "include_adult", value: "false")
-
-		urlComponents?.queryItems = [apiQueryItem, searchQuery, languageQuery, adultQuery]
-
-		fetchMovieHelper(urlComponents: urlComponents, completion: completion)
-	}
+	// MARK: - Credits
 
 	func getCredits(for movie: Movie, completion: @escaping (Result<MovieCreditResponse, NetworkError>) -> Void) {
 		getCredits(with: movie.id, completion: completion)
@@ -135,9 +145,7 @@ class MovieController {
 			}
 
 			do {
-				let decoder = JSONDecoder()
-				decoder.keyDecodingStrategy = .convertFromSnakeCase
-				let results = try decoder.decode(MovieCreditResponse.self, from: data)
+                let results = try self.jsonDecoder.decode(MovieCreditResponse.self, from: data)
 				completion(.success(results))
 			} catch {
 				NSLog("Error decoding results for type MovieCreditResponse: \(error)")

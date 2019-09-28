@@ -12,6 +12,7 @@ class CastTableViewController: UITableViewController {
 
 	let movieController = MovieController.shared
 	let imageData = ImageData.shared
+    let selectionGenerator = UISelectionFeedbackGenerator()
 
 	 @IBOutlet private weak var titleLabel: UILabel!
 	 @IBOutlet private weak var segControl: UISegmentedControl!
@@ -28,6 +29,7 @@ class CastTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectionGenerator.prepare()
 		tableView.tableFooterView = UIView()
 		tableView.separatorStyle = .none
 		updateViews()
@@ -56,6 +58,7 @@ class CastTableViewController: UITableViewController {
 	}
 
 	@IBAction func segControlToggled(_ sender: UISegmentedControl) {
+        selectionGenerator.selectionChanged()
 		tableView.reloadData()
 	}
 

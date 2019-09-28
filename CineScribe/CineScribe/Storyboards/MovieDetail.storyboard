@@ -120,6 +120,7 @@
                                     <color key="titleColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="castButtonTapped:" destination="jIz-f2-GYw" eventType="touchUpInside" id="4ht-Ps-uCY"/>
                                     <segue destination="gv5-fJ-saJ" kind="presentation" identifier="ShowCastModalSegue" id="41t-vt-oMH"/>
                                 </connections>
                             </button>

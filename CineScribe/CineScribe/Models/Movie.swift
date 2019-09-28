@@ -23,7 +23,7 @@ struct Movie: Codable {
 	let tagline: String?
 	let credits: MovieCreditResponse?
 	let genres: [MovieGenre]?
-	let releaseDate: String
+	let releaseDate: Date?
     let posterPath: String?
 	let backdropPath: String?
 
