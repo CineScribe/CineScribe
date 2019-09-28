@@ -10,15 +10,15 @@ import UIKit
 
 class ReviewMovieSearchTableViewController: UIViewController {
 	
-	//MARK: - IBOutlets
+	// MARK: - IBOutlets
 	
-	@IBOutlet weak var moviesTableView: UITableView!
-	@IBOutlet weak var movieSearchBar: UISearchBar!
+	@IBOutlet private weak var moviesTableView: UITableView!
+	@IBOutlet private weak var movieSearchBar: UISearchBar!
 	
-	//MARK: - Properties
+	// MARK: - Properties
 	
 	private let movieController = MovieController.shared
-	var reviewDelegate: ManageReviewVCDelegate?
+	weak var reviewDelegate: ManageReviewVCDelegate?
 	private var searchResults: [Movie] = [] {
 		didSet {
 			DispatchQueue.main.async {
@@ -27,7 +27,7 @@ class ReviewMovieSearchTableViewController: UIViewController {
 		}
 	}
 	
-	//MARK: - Life Cycle
+	// MARK: - Life Cycle
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class ReviewMovieSearchTableViewController: UIViewController {
 		movieSearchBar.becomeFirstResponder()
     }
 	
-	//MARK: - IBActions
+	// MARK: - IBActions
 	
 	@IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
 		guard let indexPath = moviesTableView.indexPathForSelectedRow else { return }
@@ -47,7 +47,7 @@ class ReviewMovieSearchTableViewController: UIViewController {
 		dismiss(animated: true, completion: nil)
 	}
 	
-	//MARK: - Helpers
+	// MARK: - Helpers
 	
 
 }
@@ -58,10 +58,10 @@ extension ReviewMovieSearchTableViewController: UISearchBarDelegate {
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 		guard let searchQuery = movieSearchBar.text else { return }
 
-		movieController.searchDatabse(for: searchQuery) { (results) in
+		movieController.searchDatabse(for: searchQuery) { results in
 			do {
 				let movies = try results.get()
-				self.searchResults = movies
+                self.searchResults = movies.results
 			} catch {
 				NSLog("Error fetching movies for search while adding to review: \(error)")
 			}

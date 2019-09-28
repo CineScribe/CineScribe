@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ManageReviewVCDelegate {
+protocol ManageReviewVCDelegate: AnyObject {
 	func setMovieToReview(movie: Movie)
 }
 
@@ -39,7 +39,7 @@ class ManageReviewViewController: UIViewController {
 	
 	private var textBtns = [UIButton]()
 	private var textViews = [UITextView]()
-	var reviewDelegate: ManageReviewVCDelegate?
+	weak var reviewDelegate: ManageReviewVCDelegate?
 	var firebaseClient: FirebaseClient?
 	var currentcollectionId: UUID?
 	var reviewType = ManageReviewType.new
@@ -88,7 +88,7 @@ class ManageReviewViewController: UIViewController {
 		}
 	}
 	
-	//MARK: - IBActions
+	// MARK: - IBActions
 	
     @IBAction func saveBtnTapped(_ sender: Any) {
         guard let collectionId = currentcollectionId, let title = titleTextField.optionalText else { return }

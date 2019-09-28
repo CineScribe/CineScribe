@@ -29,9 +29,9 @@ class DiscoverViewController: UIViewController {
 		cancelButton.isEnabled = false
 
 		setupViews()
-		setupNowPlaying()
-		setupUpcoming()
-		setupTopRated()
+		loadNowPlaying()
+		loadUpcoming()
+		loadTopRated()
     }
     
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -56,14 +56,14 @@ class DiscoverViewController: UIViewController {
 		searchStackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
 	}
 	
-	private func setupNowPlaying() {
+	private func loadNowPlaying() {
 		let nowPlayingCollectionView = LabeledHorizontalCollectionWrapper()
 		nowPlayingCollectionView.title = "Now Playing"
 		searchStackView.addArrangedSubview(nowPlayingCollectionView)
 		movieController.fetchNowPlayingMovies { results in
 			do {
 				let movieResults = try results.get()
-				nowPlayingCollectionView.movies = movieResults
+                nowPlayingCollectionView.movies = movieResults.results
 			} catch {
 				NSLog("Error getting 'Now Playing' movie from result: \(error)")
 			}
@@ -72,34 +72,35 @@ class DiscoverViewController: UIViewController {
 		nowPlayingCollectionView.delegate = self
 	}
 	
-	private func setupUpcoming() {
+	private func loadUpcoming() {
 		let upcomingCollectionView = LabeledHorizontalCollectionWrapper()
 		upcomingCollectionView.title = "Upcoming"
 		searchStackView.addArrangedSubview(upcomingCollectionView)
 		movieController.fetchUpcomingMovies { results in
 			do {
 				let upcomingResults = try results.get()
-				upcomingCollectionView.movies = upcomingResults
+                upcomingCollectionView.movies = upcomingResults.results
 			} catch {
 				NSLog("Error getting 'Upcoming Movies' from results: \(error)")
 			}
 		}
+
 		upcomingCollectionView.delegate = self
 	}
 	
-	private func setupTopRated() {
+	private func loadTopRated() {
 		let topRatedCollectionView = LabeledHorizontalCollectionWrapper()
 		topRatedCollectionView.title = "Top Rated"
 		searchStackView.addArrangedSubview(topRatedCollectionView)
 		movieController.fetchTopRatedMovies { results in
 			do {
 				let topRatedResults = try results.get()
-				topRatedCollectionView.movies = topRatedResults
+                topRatedCollectionView.movies = topRatedResults.results
 			} catch {
 				NSLog("Error getting 'Top-Rated Movies' from results: \(error)")
 			}
 		}
-		
+        
 		topRatedCollectionView.delegate = self
     }
 

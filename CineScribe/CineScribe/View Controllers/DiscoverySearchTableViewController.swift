@@ -100,7 +100,7 @@ extension DiscoverySearchTableViewController: UISearchBarDelegate {
 		movieController.searchDatabse(for: searchQuery) { results in
 			do {
 				let searchedResults = try results.get()
-				self.searchedMovies = searchedResults
+                self.searchedMovies = searchedResults.results
 			} catch {
 				NSLog("Error fetching results for search query: \(error)")
 			}
