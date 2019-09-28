@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nunito-Regular.ttf">
+            <string>Nunito-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDiscoverCollectionViewCell" customModule="CineScribe" customModuleProvider="target">
+            <connections>
+                <outlet property="movieImageView" destination="Qd5-Sx-ajM" id="WPj-sF-fNf"/>
+                <outlet property="movieTitleContainerView" destination="SuA-Pp-CVC" id="trs-j3-ONN"/>
+                <outlet property="movieTitleLabel" destination="7Mr-gf-Xqr" id="dzv-ph-KY9"/>
+                <outlet property="myContentView" destination="fd4-Gk-1sl" id="2h6-pK-EEg"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fd4-Gk-1sl">
+            <rect key="frame" x="0.0" y="0.0" width="244" height="206"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qd5-Sx-ajM">
+                    <rect key="frame" x="0.0" y="0.0" width="244" height="206"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SuA-Pp-CVC">
+                    <rect key="frame" x="0.0" y="161" width="244" height="45"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="7Mr-gf-Xqr">
+                            <rect key="frame" x="0.0" y="0.0" width="244" height="45"/>
+                            <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="1Bx-5B-WdV"/>
+                        <constraint firstAttribute="trailing" secondItem="7Mr-gf-Xqr" secondAttribute="trailing" id="2jQ-xC-ckk"/>
+                        <constraint firstItem="7Mr-gf-Xqr" firstAttribute="leading" secondItem="SuA-Pp-CVC" secondAttribute="leading" id="PkL-cM-5XQ"/>
+                        <constraint firstAttribute="bottom" secondItem="7Mr-gf-Xqr" secondAttribute="bottom" id="dLx-qs-E6E"/>
+                        <constraint firstItem="7Mr-gf-Xqr" firstAttribute="top" secondItem="SuA-Pp-CVC" secondAttribute="top" id="hdA-lt-MLP"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="SuA-Pp-CVC" firstAttribute="leading" secondItem="fd4-Gk-1sl" secondAttribute="leading" id="7fD-P1-0CK"/>
+                <constraint firstAttribute="bottom" secondItem="Qd5-Sx-ajM" secondAttribute="bottom" id="Ijq-Pn-Tym"/>
+                <constraint firstAttribute="trailing" secondItem="Qd5-Sx-ajM" secondAttribute="trailing" id="bDo-pM-7mg"/>
+                <constraint firstItem="Qd5-Sx-ajM" firstAttribute="top" secondItem="fd4-Gk-1sl" secondAttribute="top" id="bZ1-Xx-Sfa"/>
+                <constraint firstAttribute="trailing" secondItem="SuA-Pp-CVC" secondAttribute="trailing" id="fDF-LR-cr3"/>
+                <constraint firstAttribute="bottom" secondItem="SuA-Pp-CVC" secondAttribute="bottom" id="y2h-7X-LeP"/>
+                <constraint firstItem="Qd5-Sx-ajM" firstAttribute="leading" secondItem="fd4-Gk-1sl" secondAttribute="leading" id="zSa-Fc-Rah"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="10.144927536231885" y="107.8125"/>
+        </view>
+    </objects>
+</document>

@@ -4,7 +4,7 @@
 //
 //  Created by Marlon Raskin on 9/23/19.
 //  Copyright © 2019 Marlon Raskin. All rights reserved.
-//
+//  swiftlint:disable unused_optional_binding
 
 import UIKit
 
@@ -48,6 +48,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		// to restore the scene back to its current state.
 	}
 
-
 }
-
