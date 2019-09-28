@@ -10,7 +10,6 @@
   * UIKit
   * CoreData
   * Firebase
-  * Pull to Reach
   * The Movie database API
   
 ### Target: iOS 13
@@ -23,6 +22,7 @@
   <img src="IMG_2244.png" width="400"> <img src="IMG_2245.png" width="400">
   <img src="IMG_2246.png" width="400"> <img src="IMG_2247.png" width="400">
   <img src="IMG_2248.png" width="400"> <img src="IMG_2249.png" width="400">
+  <img src="IMG_2251.png" width="400">
   
   
 
