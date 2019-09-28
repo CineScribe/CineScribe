@@ -61,7 +61,7 @@ final class ImageData {
 		}.resume()
 	}
 
-
+	// both of the other two functions in here should pass through their request to this function.
 	public func fetchImage(with url: URL, completion: @escaping (Error?, UIImage?) -> Void) {
 
 		let urlString = url.absoluteString
