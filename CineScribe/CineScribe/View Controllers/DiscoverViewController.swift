@@ -55,7 +55,8 @@ class DiscoverViewController: UIViewController {
 		searchStackView.bottomAnchor.constraint(equalTo: searchScrollView.bottomAnchor).isActive = true
 		searchStackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
 	}
-	
+
+	// it MIGHT be possible to consolidate these three, nearly identical functions into one - to be fair, assuming it would work, it might be hard to follow
 	private func setupNowPlaying() {
 		let nowPlayingCollectionView = LabeledHorizontalCollectionWrapper()
 		nowPlayingCollectionView.title = "Now Playing"

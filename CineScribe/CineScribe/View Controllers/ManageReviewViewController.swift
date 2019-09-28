@@ -39,7 +39,7 @@ class ManageReviewViewController: UIViewController {
 	
 	private var textBtns = [UIButton]()
 	private var textViews = [UITextView]()
-	var reviewDelegate: ManageReviewVCDelegate?
+	var reviewDelegate: ManageReviewVCDelegate? // should be weak (swiftlint gives a warning)
 	var firebaseClient: FirebaseClient?
 	var currentcollectionId: UUID?
 	var reviewType = ManageReviewType.new
