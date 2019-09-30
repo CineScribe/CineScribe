@@ -19,14 +19,17 @@ class MovieDetailViewController: UIViewController {
 	 @IBOutlet private weak var overviewLabel: UILabel!
 	 @IBOutlet private weak var dateLabel: UILabel!
 	 @IBOutlet private weak var newNoteButton: UIButton!
-	 @IBOutlet private weak var castButton: UIButton!
+     @IBOutlet private weak var taglineLabel: UILabel!
+     @IBOutlet private weak var castButton: UIButton!
      @IBOutlet private weak var chevronButton: UIButton!
      @IBOutlet private var swipeBackGestureRecognizer: UIScreenEdgePanGestureRecognizer!
 
 	let imageData = ImageData.shared
+    let movieController = MovieController.shared
     let impactGenerator = UIImpactFeedbackGenerator(style: .light)
 	let layer = CAGradientLayer()
 	private var isNewReview = false
+    var detailsRequested: Bool = false
 	var movie: Movie? {
 		didSet {
 			updateViews()
@@ -137,6 +140,21 @@ class MovieDetailViewController: UIViewController {
 	private func updateViews() {
 		loadViewIfNeeded()
 		guard let movie = movie else { fatalError("Movie not set") }
+
+        if !detailsRequested {
+            movieController.fetchMovieDetails(with: movie.id) { result in
+                do {
+                    let result = try result.get()
+                    DispatchQueue.main.async {
+                        self.taglineLabel.text = result.tagline ?? ""
+                    }
+                } catch {
+                    NSLog("Error fetching details: \(error)")
+                }
+            }
+            detailsRequested = true
+        }
+
 		titleLabel.text = movie.title
 		overviewLabel.text = movie.overview
         if let date = movie.releaseDate {
