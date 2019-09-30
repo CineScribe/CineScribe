@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>442635462056-83bj4c6nq98cn9nkch1lef966gb4rini.apps.googleusercontent.com</string>
+	<string>442635462056-h1vs7ahq8634aa0jqqfkvsj99n72qch8.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.442635462056-83bj4c6nq98cn9nkch1lef966gb4rini</string>
+	<string>com.googleusercontent.apps.442635462056-h1vs7ahq8634aa0jqqfkvsj99n72qch8</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDyiK0X_HmhaU0aMleQQn9TgjOqO1h1JrA</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.marlonraskin.CineScribe</string>
+	<string>com.augustlight.CineScribe</string>
 	<key>PROJECT_ID</key>
 	<string>cinescribe-f65c3</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:442635462056:ios:7d0492c23a7d3ca812e99d</string>
+	<string>1:442635462056:ios:026a53d4e0c9d4fc12e99d</string>
 	<key>DATABASE_URL</key>
 	<string>https://cinescribe-f65c3.firebaseio.com</string>
 </dict>
