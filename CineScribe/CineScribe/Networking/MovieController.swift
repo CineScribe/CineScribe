@@ -40,9 +40,6 @@ class MovieController {
     let jsonDecoder: JSONDecoder = {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        decoder.dateDecodingStrategy = .formatted(dateFormatter)
         return decoder
     }()
 
@@ -74,7 +71,7 @@ class MovieController {
         var urlComponents = URLComponents(url: searchMovieBaseUrl, resolvingAgainstBaseURL: true)
         let searchQuery = URLQueryItem(name: "query", value: movie)
 
-        urlComponents?.queryItems = [apiQueryItem, searchQuery, languageQuery, adultQuery]
+        urlComponents?.queryItems = [apiQueryItem, searchQuery, regionQuery, languageQuery, adultQuery]
         fetchMovieHelper(urlComponents: urlComponents, completion: completion)
     }
 
