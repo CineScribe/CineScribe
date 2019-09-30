@@ -21,6 +21,7 @@ struct Movie: Codable {
     let title: String
     let overview: String
 	let tagline: String?
+    let runtime: Int?
 	let credits: MovieCreditResponse?
 	let genres: [MovieGenre]?
 	let releaseDateString: String
@@ -54,6 +55,7 @@ struct Movie: Codable {
         case title
         case overview
         case tagline
+        case runtime
         case credits
         case genres
         case releaseDateString = "releaseDate"

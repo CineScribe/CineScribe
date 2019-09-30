@@ -43,11 +43,14 @@ class MovieController {
         return decoder
     }()
 
-	// MARK: - Movies Functions
 
+	// MARK: - Movies Functions
     let languageQuery = URLQueryItem(name: "language", value: "en-US")
-    let regionQuery = URLQueryItem(name: "region", value: "US")
     let adultQuery = URLQueryItem(name: "include_adult", value: "false")
+    let regionQuery: URLQueryItem = {
+        let region = NSLocale.current.regionCode ?? "US"
+        return URLQueryItem(name: "region", value: region)
+    }()
 
 	func fetchNowPlayingMovies(completion: @escaping (Result<MoviesResponse, NetworkError>) -> Void) {
 		var urlComponents = URLComponents(url: nowPlayingBaseUrl, resolvingAgainstBaseURL: true)
@@ -73,6 +76,43 @@ class MovieController {
 
         urlComponents?.queryItems = [apiQueryItem, searchQuery, regionQuery, languageQuery, adultQuery]
         fetchMovieHelper(urlComponents: urlComponents, completion: completion)
+    }
+
+    func fetchMovieDetails(with movieId: Int, completion: @escaping (Result<Movie, NetworkError>) -> Void) {
+        let movieIdStr = "\(movieId)"
+        let movieDetailURL = castBaseURL.appendingPathComponent(movieIdStr)
+        var urlComponents = URLComponents(url: movieDetailURL, resolvingAgainstBaseURL: true)
+        urlComponents?.queryItems = [apiQueryItem, languageQuery, adultQuery]
+
+        guard let requestUrl = urlComponents?.url else {
+            NSLog("Request URL is nil")
+            completion(.failure(.otherError))
+            return
+        }
+
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = HTTPMethod.get.rawValue
+
+        URLSession.shared.dataTask(with: request) { data, _, error in
+            if let error = error {
+                NSLog("Error fetching data: \(error)")
+                completion(.failure(.otherError))
+                return
+            }
+
+            guard let data = data else {
+                completion(.failure(.badData))
+                return
+            }
+
+            do {
+                let result = try self.jsonDecoder.decode(Movie.self, from: data)
+                completion(.success(result))
+            } catch {
+                NSLog("Error decoding results: \(error)")
+                completion(.failure(.noDecode))
+            }
+        }.resume()
     }
 
 	private func fetchMovieHelper(urlComponents: URLComponents?, completion: @escaping (Result<MoviesResponse, NetworkError>) -> Void) {
