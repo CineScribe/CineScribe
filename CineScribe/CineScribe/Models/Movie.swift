@@ -23,7 +23,7 @@ struct Movie: Codable {
 	let tagline: String?
 	let credits: MovieCreditResponse?
 	let genres: [MovieGenre]?
-	let releaseDate: Date?
+	let releaseDateString: String
     let posterPath: String?
 	let backdropPath: String?
 
@@ -35,12 +35,30 @@ struct Movie: Codable {
 		return credits?.crew
 	}
 
+    var releaseDate: Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.date(from: releaseDateString)
+    }
+
 	var posterURL: URL {
 		return URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
 	}
 
     public var backdropURL: URL {
         return URL(string: "https://image.tmdb.org/t/p/w500\(backdropPath ?? "")")!
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case overview
+        case tagline
+        case credits
+        case genres
+        case releaseDateString = "releaseDate"
+        case posterPath
+        case backdropPath
     }
 }
 

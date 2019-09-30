@@ -8,12 +8,6 @@
 
 import UIKit
 
-let dateFormatterForLabel: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .medium
-    return formatter
-}()
-
 class MovieDetailViewController: UIViewController {
 
 	// MARK: - Properties & Outlets
@@ -38,6 +32,12 @@ class MovieDetailViewController: UIViewController {
 			updateViews()
 		}
 	}
+
+    let dateFormatterForLabel: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter
+    }()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

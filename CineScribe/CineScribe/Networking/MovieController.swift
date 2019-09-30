@@ -31,7 +31,7 @@ class MovieController {
 
 	private let castBaseURL = URL(string: "https://api.themoviedb.org/3/movie")!
 	private let upcomingBaseUrl = URL(string: "https://api.themoviedb.org/3/movie/upcoming")!
-	private let topRatedBaseUrl = URL(string: "https://api.themoviedb.org/3/movie/top_rated")!
+	private let popularBaseUrl = URL(string: "https://api.themoviedb.org/3/movie/popular")!
 	private let nowPlayingBaseUrl = URL(string: "https://api.themoviedb.org/3/movie/now_playing")!
 	private let searchMovieBaseUrl = URL(string: "https://api.themoviedb.org/3/search/movie")!
 	private let apiQueryItem = URLQueryItem(name: "api_key", value: .movieDatabaseApiKey)
@@ -40,32 +40,30 @@ class MovieController {
     let jsonDecoder: JSONDecoder = {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        decoder.dateDecodingStrategy = .formatted(dateFormatter)
         return decoder
     }()
 
 	// MARK: - Movies Functions
 
     let languageQuery = URLQueryItem(name: "language", value: "en-US")
+    let regionQuery = URLQueryItem(name: "region", value: "US")
     let adultQuery = URLQueryItem(name: "include_adult", value: "false")
 
 	func fetchNowPlayingMovies(completion: @escaping (Result<MoviesResponse, NetworkError>) -> Void) {
 		var urlComponents = URLComponents(url: nowPlayingBaseUrl, resolvingAgainstBaseURL: true)
-		urlComponents?.queryItems = [apiQueryItem, languageQuery, adultQuery]
+		urlComponents?.queryItems = [apiQueryItem, regionQuery, languageQuery, adultQuery]
 		fetchMovieHelper(urlComponents: urlComponents, completion: completion)
 	}
 
-	func fetchTopRatedMovies(completion: @escaping (Result<MoviesResponse, NetworkError>) -> Void) {
-		var urlComponents = URLComponents(url: topRatedBaseUrl, resolvingAgainstBaseURL: true)
-		urlComponents?.queryItems = [apiQueryItem, languageQuery, adultQuery]
+	func fetchPopularMovies(completion: @escaping (Result<MoviesResponse, NetworkError>) -> Void) {
+		var urlComponents = URLComponents(url: popularBaseUrl, resolvingAgainstBaseURL: true)
+		urlComponents?.queryItems = [apiQueryItem, regionQuery, languageQuery, adultQuery]
 		fetchMovieHelper(urlComponents: urlComponents, completion: completion)
 	}
 
 	func fetchUpcomingMovies(completion: @escaping (Result<MoviesResponse, NetworkError>) -> Void) {
 		var urlComponents = URLComponents(url: upcomingBaseUrl, resolvingAgainstBaseURL: true)
-		urlComponents?.queryItems = [apiQueryItem, languageQuery, adultQuery]
+		urlComponents?.queryItems = [apiQueryItem, regionQuery, languageQuery, adultQuery]
 		fetchMovieHelper(urlComponents: urlComponents, completion: completion)
 	}
 
@@ -73,7 +71,7 @@ class MovieController {
         var urlComponents = URLComponents(url: searchMovieBaseUrl, resolvingAgainstBaseURL: true)
         let searchQuery = URLQueryItem(name: "query", value: movie)
 
-        urlComponents?.queryItems = [apiQueryItem, searchQuery, languageQuery, adultQuery]
+        urlComponents?.queryItems = [apiQueryItem, searchQuery, regionQuery, languageQuery, adultQuery]
         fetchMovieHelper(urlComponents: urlComponents, completion: completion)
     }
 
