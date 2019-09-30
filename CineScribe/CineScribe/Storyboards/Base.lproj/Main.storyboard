@@ -43,17 +43,25 @@
                                                     <rect key="frame" x="40" y="354.5" width="334" height="23.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03g-me-I5k">
-                                                            <rect key="frame" x="0.0" y="0.0" width="318" height="23.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="290" height="23.5"/>
                                                             <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apO-y7-avG">
-                                                            <rect key="frame" x="326" y="0.0" width="8" height="23.5"/>
+                                                            <rect key="frame" x="298" y="0.0" width="8" height="23.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bAG-jP-r1s">
+                                                            <rect key="frame" x="314" y="0.0" width="20" height="23.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="20" id="VVg-ID-2tQ"/>
+                                                            </constraints>
+                                                            <color key="tintColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <state key="normal" image="square.grid.2x2" catalog="system"/>
+                                                        </button>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -282,6 +290,7 @@
         <image name="folder" catalog="system" width="64" height="48"/>
         <image name="folder.badge.plus" catalog="system" width="64" height="44"/>
         <image name="list-placeholder" width="3762" height="5643"/>
+        <image name="square.grid.2x2" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6dj-dc-KVw"/>
