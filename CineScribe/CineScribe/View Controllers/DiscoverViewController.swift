@@ -90,9 +90,9 @@ class DiscoverViewController: UIViewController {
 	
 	private func loadTopRated() {
 		let topRatedCollectionView = LabeledHorizontalCollectionWrapper()
-		topRatedCollectionView.title = "Top Rated"
+		topRatedCollectionView.title = "Popular"
 		searchStackView.addArrangedSubview(topRatedCollectionView)
-		movieController.fetchTopRatedMovies { results in
+		movieController.fetchPopularMovies { results in
 			do {
 				let topRatedResults = try results.get()
                 topRatedCollectionView.movies = topRatedResults.results

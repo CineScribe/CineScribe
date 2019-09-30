@@ -31,7 +31,7 @@ class MovieController {
 
 	private let castBaseURL = URL(string: "https://api.themoviedb.org/3/movie")!
 	private let upcomingBaseUrl = URL(string: "https://api.themoviedb.org/3/movie/upcoming")!
-	private let topRatedBaseUrl = URL(string: "https://api.themoviedb.org/3/movie/top_rated")!
+	private let popularBaseUrl = URL(string: "https://api.themoviedb.org/3/movie/popular")!
 	private let nowPlayingBaseUrl = URL(string: "https://api.themoviedb.org/3/movie/now_playing")!
 	private let searchMovieBaseUrl = URL(string: "https://api.themoviedb.org/3/search/movie")!
 	private let apiQueryItem = URLQueryItem(name: "api_key", value: .movieDatabaseApiKey)
@@ -55,8 +55,8 @@ class MovieController {
 		fetchMovieHelper(urlComponents: urlComponents, completion: completion)
 	}
 
-	func fetchTopRatedMovies(completion: @escaping (Result<MoviesResponse, NetworkError>) -> Void) {
-		var urlComponents = URLComponents(url: topRatedBaseUrl, resolvingAgainstBaseURL: true)
+	func fetchPopularMovies(completion: @escaping (Result<MoviesResponse, NetworkError>) -> Void) {
+		var urlComponents = URLComponents(url: popularBaseUrl, resolvingAgainstBaseURL: true)
 		urlComponents?.queryItems = [apiQueryItem, regionQuery, languageQuery, adultQuery]
 		fetchMovieHelper(urlComponents: urlComponents, completion: completion)
 	}
