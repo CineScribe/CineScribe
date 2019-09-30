@@ -8,7 +8,6 @@
   
 ### Technologies:
   * UIKit
-  * CoreData
   * Firebase
   * The Movie database API
   
