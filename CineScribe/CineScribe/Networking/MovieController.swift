@@ -49,23 +49,24 @@ class MovieController {
 	// MARK: - Movies Functions
 
     let languageQuery = URLQueryItem(name: "language", value: "en-US")
+    let regionQuery = URLQueryItem(name: "region", value: "US")
     let adultQuery = URLQueryItem(name: "include_adult", value: "false")
 
 	func fetchNowPlayingMovies(completion: @escaping (Result<MoviesResponse, NetworkError>) -> Void) {
 		var urlComponents = URLComponents(url: nowPlayingBaseUrl, resolvingAgainstBaseURL: true)
-		urlComponents?.queryItems = [apiQueryItem, languageQuery, adultQuery]
+		urlComponents?.queryItems = [apiQueryItem, regionQuery, languageQuery, adultQuery]
 		fetchMovieHelper(urlComponents: urlComponents, completion: completion)
 	}
 
 	func fetchTopRatedMovies(completion: @escaping (Result<MoviesResponse, NetworkError>) -> Void) {
 		var urlComponents = URLComponents(url: topRatedBaseUrl, resolvingAgainstBaseURL: true)
-		urlComponents?.queryItems = [apiQueryItem, languageQuery, adultQuery]
+		urlComponents?.queryItems = [apiQueryItem, regionQuery, languageQuery, adultQuery]
 		fetchMovieHelper(urlComponents: urlComponents, completion: completion)
 	}
 
 	func fetchUpcomingMovies(completion: @escaping (Result<MoviesResponse, NetworkError>) -> Void) {
 		var urlComponents = URLComponents(url: upcomingBaseUrl, resolvingAgainstBaseURL: true)
-		urlComponents?.queryItems = [apiQueryItem, languageQuery, adultQuery]
+		urlComponents?.queryItems = [apiQueryItem, regionQuery, languageQuery, adultQuery]
 		fetchMovieHelper(urlComponents: urlComponents, completion: completion)
 	}
 
