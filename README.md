@@ -3,7 +3,7 @@
 ### Description: CineScribe is an app that provides movie reviewers and vloggers a tool to record fresh ideas, thoughts, and feelings about a movie that was just seen while it's fresh so that when they are ready to polish their reviews and add to it, they have a great jumping off point.
 
 ### Developers:
-  * Jeff Santana @Santana-Says
+  * Jeff Santana [@Santana-Says](https://github.com/Santana-Says)
   * Marlon Raskin [@marlonjames71](https://github.com/marlonjames71)
   
 ### Technologies:
