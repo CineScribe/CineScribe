@@ -4,7 +4,7 @@
 
 ### Developers:
   * Jeff Santana @Santana-Says
-  * Marlon Raskin (https://github.com/marlonjames71)[@marlonjames71]
+  * Marlon Raskin [@marlonjames71](https://github.com/marlonjames71)
   
 ### Technologies:
   * UIKit
