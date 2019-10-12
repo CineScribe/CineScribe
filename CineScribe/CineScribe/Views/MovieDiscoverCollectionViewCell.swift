@@ -39,6 +39,7 @@ class MovieDiscoverCollectionViewCell: UICollectionViewCell {
 		myContentView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
 		myContentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
 		myContentView.layer.cornerRadius = 8
+        myContentView.layer.cornerCurve = .continuous
 		myContentView.clipsToBounds = true
 		movieTitleContainerView.backgroundColor = .secondarySystemBackground
 	}

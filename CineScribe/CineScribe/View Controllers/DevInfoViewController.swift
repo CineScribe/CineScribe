@@ -17,6 +17,7 @@ class DevInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		[jeffImageView, marlonImageView].forEach { $0?.layer.cornerRadius = 12 }
+        [jeffImageView, marlonImageView].forEach { $0?.layer.cornerCurve = .continuous }
         guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] else { return }
         guard let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") else { return }
         buildVersionLabel.text = "Version: \(version) ⌇ Build: \(buildNumber)"

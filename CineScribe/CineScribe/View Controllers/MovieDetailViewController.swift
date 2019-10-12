@@ -119,6 +119,7 @@ class MovieDetailViewController: UIViewController {
 		layer.frame = fadeView.bounds
 		layer.colors = [UIColor.systemBackground.withAlphaComponent(0.0).cgColor, UIColor.systemBackground.cgColor]
 		posterImageView.layer.cornerRadius = 6
+        posterImageView.layer.cornerCurve = .continuous
 		posterImageView.layer.shadowColor = UIColor(red: 0.12, green: 0.12, blue: 0.12, alpha: 1.00).cgColor
 		posterImageView.layer.shadowRadius = 16
 		posterImageView.layer.shadowOpacity = 0.8
