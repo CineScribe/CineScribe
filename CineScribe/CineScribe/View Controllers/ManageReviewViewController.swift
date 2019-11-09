@@ -39,6 +39,7 @@ class ManageReviewViewController: UIViewController {
 	
 	private var textBtns = [UIButton]()
 	private var textViews = [UITextView]()
+	private var review: Review?
 	weak var reviewDelegate: ManageReviewVCDelegate?
 	var firebaseClient: FirebaseClient?
 	var currentcollectionId: UUID?
@@ -62,12 +63,6 @@ class ManageReviewViewController: UIViewController {
 		}
 		return nil
 	}
-	private var review: Review? {
-		if case let ManageReviewType.existing(review) = reviewType {
-			return review
-		}
-		return nil
-	}
 	
 	// MARK: - Life Cycle
 	
@@ -78,6 +73,10 @@ class ManageReviewViewController: UIViewController {
 		
 		textBtns = [titleBtn, quotesBtn, sceneNotesBtn, actorNotesBtn, cinemaNotesBtn]
 		textViews = [quotesTextView, sceneNotesTextView, actorNotesTextView, cinemaNotesTextView]
+		
+		if case let ManageReviewType.existing(review) = reviewType {
+			self.review = review
+		}
 		
 		setupViews()
 	}
@@ -91,7 +90,9 @@ class ManageReviewViewController: UIViewController {
 	// MARK: - IBActions
 	
     @IBAction func saveBtnTapped(_ sender: Any) {
-        guard let collectionId = currentcollectionId, let title = titleTextField.optionalText else { return }
+        guard let collectionId = currentcollectionId,
+			let title = titleTextField.optionalText
+			else { return }
 
         firebaseClient?.putReview(collectionId: collectionId,
                                   reviewId: review?.id,
