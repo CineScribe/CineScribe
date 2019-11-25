@@ -39,7 +39,7 @@ class ManageReviewViewController: UIViewController {
 	
 	private var textBtns = [UIButton]()
 	private var textViews = [UITextView]()
-	weak var reviewDelegate: ManageReviewVCDelegate?
+	private var review: Review?
 	var firebaseClient: FirebaseClient?
 	var currentcollectionId: UUID?
 	var reviewType = ManageReviewType.new
@@ -62,36 +62,34 @@ class ManageReviewViewController: UIViewController {
 		}
 		return nil
 	}
-	private var review: Review? {
-		if case let ManageReviewType.existing(review) = reviewType {
-			return review
-		}
-		return nil
-	}
 	
 	// MARK: - Life Cycle
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		reviewDelegate = self
-		
 		textBtns = [titleBtn, quotesBtn, sceneNotesBtn, actorNotesBtn, cinemaNotesBtn]
 		textViews = [quotesTextView, sceneNotesTextView, actorNotesTextView, cinemaNotesTextView]
+		
+		if case let ManageReviewType.existing(review) = reviewType {
+			self.review = review
+		}
 		
 		setupViews()
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if let navController = segue.destination as? UINavigationController, let movieSearchVC = navController.children.first as? ReviewMovieSearchTableViewController {
-			movieSearchVC.reviewDelegate = reviewDelegate
+			movieSearchVC.reviewDelegate = self
 		}
 	}
 	
 	// MARK: - IBActions
 	
     @IBAction func saveBtnTapped(_ sender: Any) {
-        guard let collectionId = currentcollectionId, let title = titleTextField.optionalText else { return }
+        guard let collectionId = currentcollectionId,
+			let title = titleTextField.optionalText
+			else { return }
 
         firebaseClient?.putReview(collectionId: collectionId,
                                   reviewId: review?.id,
