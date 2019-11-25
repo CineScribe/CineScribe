@@ -19,9 +19,9 @@
   
   ## Screenshots
   <p align="center">
-   <img src="movies.png" width="250" title="Cinescribe">
-   <img src="movieDetails.png" width="250" title="Cinescribe">
-   <img src="saveReview.gif" width="250" title="Cinescribe">
+   <img src="Images/movies.png" width="250" title="Cinescribe">
+   <img src="Images/movieDetails.png" width="250" title="Cinescribe">
+   <img src="Images/saveReview.gif" width="250" title="Cinescribe">
   </p>
   
   
