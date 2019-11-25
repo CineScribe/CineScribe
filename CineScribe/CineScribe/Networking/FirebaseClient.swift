@@ -151,22 +151,16 @@ class FirebaseClient {
 	
 	private func updateCollection(for collectionId: UUID, review: Review) {
 		let userCollectionRef = self.collectionRef.child("\(self.currentUser.id.uuidString)/\(collectionId)")
-		let collectionReviewsRef = userCollectionRef.child("reviews")
+		var childUpdates = [String : Any]()
 		
-		userCollectionRef.child("imageUrl").setValue(review.movieImageUrl?.absoluteString) { error, _ in
-			if let error = error {
-				NSLog("Error adding imageUrl to collection: \(error)")
-			}
+		if let imageURL = review.movieImageUrl?.absoluteString {
+			childUpdates["imageUrl"] = imageURL
 		}
-		collectionReviewsRef.child(review.id.uuidString).setValue(review.movieId ?? 0) { error, _ in
-			if let error = error {
-				NSLog("Error appending review to collection: \(error)")
-			}
+		if let movieId = review.movieId {
+			childUpdates["reviews/\(review.id.uuidString)"] = movieId
 		}
-		if let collectionIndex = self.userCollections.firstIndex(where: { $0.id == collectionId }) {
-			self.userCollections[collectionIndex].reviews[collectionId.uuidString] = review.movieId ?? 0
-			self.userReviews.append(review)
-		}
+		
+		userCollectionRef.updateChildValues(childUpdates)
 	}
 		
 	// MARK: - Delete
