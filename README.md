@@ -19,10 +19,9 @@
   
   ## Screenshots
   <p align="center">
-   <img src="IMG_2244.png" width="230" title="Cinescribe">
-   <img src="IMG_2246.png" width="230" title="Cinescribe">
-   <img src="IMG_2248.png" width="230" title="Cinescribe">
-   <img src="IMG_2251.png" width="230" title="Cinescribe">
+   <img src="movies.png" width="250" title="Cinescribe">
+   <img src="movieDetails.png" width="250" title="Cinescribe">
+   <img src="saveReview.gif" width="250" title="Cinescribe">
   </p>
   
   
