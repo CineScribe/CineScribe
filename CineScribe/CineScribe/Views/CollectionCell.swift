@@ -33,12 +33,15 @@ class CollectionCell: UITableViewCell {
 		listNameLabel.text = collection.title
 		listCount.text = "\(collection.reviews.count)"
 		
-		guard let imageUrl = collection.imageUrl else { return }
-		ImageData.shared.fetchImage(with: imageUrl) { error, fetchedImage in
-			if let error = error {
-				NSLog("Error fetching collection image: \(error)")
+		if let imageUrl = collection.imageUrl {
+			ImageData.shared.fetchImage(with: imageUrl) { error, fetchedImage in
+				if let error = error {
+					NSLog("Error fetching collection image: \(error)")
+				}
+				self.movieArtImageView.image = fetchedImage
 			}
-			self.movieArtImageView.image = fetchedImage
+		} else {
+			movieArtImageView.image = UIImage(named: "list-placeholder")
 		}
 	}
 }
