@@ -9,6 +9,10 @@
 import Foundation
 import Firebase
 
+enum NotificationNames: String {
+	case newReview
+}
+
 class FirebaseClient {
 	
 	private let rootRef = Database.database().reference()
@@ -17,6 +21,7 @@ class FirebaseClient {
 	private let collectionRef: DatabaseReference
 	var userCollections = [Collection]()
 	var userReviews = [Review]()
+	var notificationCenter = NotificationCenter.default
 
 	#warning("Remove hard-coded user")
 	private var currentUser = User(username: "Santana", password: "12345", id: UUID(uuidString: "DDF188EF-D391-489B-B254-5B58629E99F6")!)
@@ -62,12 +67,13 @@ class FirebaseClient {
 	func getAllCollections(completion: @escaping () -> Void) {
 		collectionRef.child(currentUser.id.uuidString).observe(.value, with: { snapshot in
 			self.userCollections.removeAll()
-					   for child in snapshot.children {
-						   if let snap = child as? DataSnapshot,
-							   let collection = Collection(snapshot: snap) {
-								   self.userCollections.append(collection)
-						   }
-					   }
+			for child in snapshot.children {
+				if let snap = child as? DataSnapshot,
+					let collection = Collection(snapshot: snap) {
+					self.userCollections.append(collection)
+				}
+			}
+			self.notificationCenter.post(name: Notification.Name( NotificationNames.newReview.rawValue), object: nil)
 			completion()
 		}) { error in
 			NSLog("Error getting collections: \(error)")

@@ -46,3 +46,9 @@ struct Collection {
 		]
 	}
 }
+
+extension Collection: Equatable {
+	static func ==(lhs: Collection, rhs: Collection) -> Bool {
+		lhs.id == rhs.id
+	}
+}

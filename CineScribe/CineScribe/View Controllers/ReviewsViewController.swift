@@ -26,10 +26,8 @@ class ReviewsViewController: UIViewController {
 		
 		notesCollectionView.dataSource = self
 		title = currentCollection?.title
-	}
-	
-	override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+		firebaseClient?.notificationCenter.addObserver(self, selector: #selector(fetchReviews), name: Notification.Name( NotificationNames.newReview.rawValue), object: nil)
+		
 		fetchReviews()
 	}
 	
@@ -51,8 +49,8 @@ class ReviewsViewController: UIViewController {
 	
 	// MARK: - Helpers
 	
-	private func fetchReviews() {
-		guard let collection = currentCollection else { return }
+	@objc private func fetchReviews() {
+		guard let collection = firebaseClient?.userCollections.first(where: {$0 == currentCollection}) else { return }
 		
 		firebaseClient?.getReviews(from: collection, completion: {
 			self.notesCollectionView.reloadData()
@@ -73,6 +71,4 @@ extension ReviewsViewController: UICollectionViewDataSource {
 
 		return cell
 	}
-
-
 }

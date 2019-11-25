@@ -40,7 +40,6 @@ class ManageReviewViewController: UIViewController {
 	private var textBtns = [UIButton]()
 	private var textViews = [UITextView]()
 	private var review: Review?
-	weak var reviewDelegate: ManageReviewVCDelegate?
 	var firebaseClient: FirebaseClient?
 	var currentcollectionId: UUID?
 	var reviewType = ManageReviewType.new
@@ -69,8 +68,6 @@ class ManageReviewViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		reviewDelegate = self
-		
 		textBtns = [titleBtn, quotesBtn, sceneNotesBtn, actorNotesBtn, cinemaNotesBtn]
 		textViews = [quotesTextView, sceneNotesTextView, actorNotesTextView, cinemaNotesTextView]
 		
@@ -83,7 +80,7 @@ class ManageReviewViewController: UIViewController {
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if let navController = segue.destination as? UINavigationController, let movieSearchVC = navController.children.first as? ReviewMovieSearchTableViewController {
-			movieSearchVC.reviewDelegate = reviewDelegate
+			movieSearchVC.reviewDelegate = self
 		}
 	}
 	
